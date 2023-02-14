@@ -5,11 +5,9 @@ while(True):
     n = input()
     try:
         n = int(n)
-        if(n <= 0):
-            print("Wrong input. Retry.")
-        else:
-            break
-    except ValueError:
+        assert(n > 0)
+        break
+    except (ValueError, AssertionError):
         print("Wrong input. Retry.")
 
 while(True):
@@ -19,11 +17,9 @@ while(True):
     try:
         n1 = int(n1)
         n2 = int(n2)
-        if(n1 <= 0 or n2 <= 0 or n1*n2 != n):
-            print("Wrong input. Retry.")
-        else:
-            break
-    except ValueError:
+        assert(n1>0 and n2>0 and n1*n2==n)
+        break
+    except (ValueError, AssertionError):
         print("Wrong input. Retry.")
 
 while(True):
@@ -31,11 +27,9 @@ while(True):
     m = input()
     try:
         m = int(m)
-        if(m <= 0 or m > n):
-            print("Wrong input. Retry.")
-        else:
-            break
-    except ValueError:
+        assert(m>0 and m<n)
+        break
+    except (ValueError, AssertionError):
         print("Wrong input. Retry.")
 
 # test print
