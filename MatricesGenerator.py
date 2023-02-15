@@ -1,7 +1,7 @@
+# (UniPd 2008818) Mattia Toffolon
 # Matrices Generator for a QAP problem
 
-import math
-
+# Function that returns the force value (used later as a distance) between two given unit locations
 def force(n1, n2, r, s, t, u):
     m = 0
     for v in {-1, 0, 1}:
@@ -12,6 +12,7 @@ def force(n1, n2, r, s, t, u):
                 return 0
     return m
 
+# Function that checks if the given matrices coincide with the ones saved in the relative file
 def check(n, A, B):
     try:
         f = open("Tai" + str(n) + "c")
@@ -33,13 +34,14 @@ def check(n, A, B):
                     if(i < n):
                         print("AssertionError: ", int(num), " != ", A[i][j], " at position [", i,"][", j, "] of matrix A")   
                     else:
-                        print("AssertionError: ", int(num), " != ", B[i-n][j], " at position [", i,"][", j, "] of matrix B")                 
+                        print("AssertionError: ", int(num), " != ", B[i-n][j], " at position [", i-n,"][", j, "] of matrix B")                 
                     return
         f.close
         print("The generated matrices and the ones saved in the file match!")
     except FileNotFoundError as e:
         print(e)
-        
+
+# Parameters insertion
 while(True):
     print("Insert the 'n' value (must be a positive integer):")
     n = input()
@@ -51,7 +53,7 @@ while(True):
         print("Wrong input. Retry.")
 
 while(True):
-    print("Insert the 'n1' and 'n2' values (must be positive integers so that n1xn2=n):")
+    print("Insert the 'n1' and 'n2' values (must be positive integers so that n1*n2==n):")
     n1 = input()
     n2 = input()
     try:
@@ -72,9 +74,7 @@ while(True):
     except (ValueError, AssertionError):
         print("Wrong input. Retry.")
 
-"""# test print
-print(n1, " ", n2, " ", n, " ", m)"""
-
+# Matrix A generation and Matrix B initialization
 A = [0]*n
 B = [0]*n
 for i in range(n):
@@ -84,23 +84,29 @@ for i in range(n):
     else:
         A[i] = [0]*n
 
-"""#test print
-for row in A:
-    for val in row:
-        print(val, end=" ")
-    print()"""
-
+# Matrix B generation
 scale = 100000
 for r in range(n1):
     for s in range(n2):
         for t in range(n1):
             for u in range(n2):
-                B[n2*(r-1)+s][n2*(t-1)+u] = round(force(n1, n2, r, s, t, u)*scale)
+                i = n2*(r-1)+s
+                j = n2*(t-1)+u
+                if(B[i][j] != 0):
+                    continue
+                else:
+                    B[i][j] = round(force(n1, n2, r, s, t, u)*scale)
+                    B[j][i] = B[i][j]
 
-"""#test print
+# Matrices printing
+for row in A:
+    for val in row:
+        print(val, end=" ")
+    print()
 for row in B:
     for val in row:
         print(val, end=" ")
-    print()"""
+    print()
 
+# Matrices validity check
 check(n, A, B)
