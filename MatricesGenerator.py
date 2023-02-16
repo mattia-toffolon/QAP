@@ -1,7 +1,8 @@
 # (UniPd 2008818) Mattia Toffolon
 # Matrices Generator for a QAP problem
 
-# Function that returns the force value (used later as a distance) between two given unit locations
+# (Density of grey)
+# Function that returns the force value (used later as a distance) between two given unit locations of the matrix: n1 x n2
 def force(n1, n2, r, s, t, u):
     m = 0
     for v in {-1, 0, 1}:
@@ -10,6 +11,7 @@ def force(n1, n2, r, s, t, u):
                 m = max(m, 1/((r-t+n1*v)**2 + (s-u+n2*w)**2))
             except ZeroDivisionError:
                 return 0
+    assert(m >= 0)
     return m
 
 # Function that checks if the given matrices coincide with the ones saved in the relative file
@@ -41,7 +43,7 @@ def check(n, A, B):
     except FileNotFoundError as e:
         print(e)
 
-# Parameters insertion
+# Parameters insertion (n, n1, n2, m)
 while(True):
     print("Insert the 'n' value (must be a positive integer):")
     n = input()
@@ -74,7 +76,8 @@ while(True):
     except (ValueError, AssertionError):
         print("Wrong input. Retry.")
 
-# Matrix A generation and Matrix B initialization
+# Matrix A and Matrix B generation
+# (A is the flows matrix and B is the distances matrix)
 A = [0]*n
 B = [0]*n
 for i in range(n):
@@ -84,7 +87,6 @@ for i in range(n):
     else:
         A[i] = [0]*n
 
-# Matrix B generation
 scale = 100000
 for r in range(n1):
     for s in range(n2):
@@ -108,5 +110,6 @@ for row in B:
         print(val, end=" ")
     print()
 
-# Matrices validity check
-check(n, A, B)
+# Matrices validity check (available only for certain matrix formats)
+if (n, n1, n2, m)==(64, 8, 8, 13) or (n, n1, n2, m)==(256, 16, 16, 92):
+    check(n, A, B)
