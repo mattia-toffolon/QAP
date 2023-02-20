@@ -87,6 +87,7 @@ for i in range(n):
     else:
         A[i] = [0]*n
 
+# (note: B is always simmetric)
 scale = 100000
 for r in range(n1):
     for s in range(n2):
