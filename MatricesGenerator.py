@@ -44,32 +44,19 @@ def check(n, A, B):
         print(e)
 
 # Parameters insertion (n, n1, n2, m)
+print('Insert the n, n1, n2, m values.')
+print('Domains & Constraints:\n - n integer, n>0;\n - n1 n2 integers, n1*n2==n;\n - m integer, m<=n.')
 while(True):
-    print("Insert the 'n' value (must be a positive integer):")
-    n = input()
+    n = input('n: ')
+    n1 = input('n1: ')
+    n2 = input('n2: ')
+    m = input('m: ')
     try:
         n = int(n)
         assert(n > 0)
-        break
-    except (ValueError, AssertionError):
-        print("Wrong input. Retry.")
-
-while(True):
-    print("Insert the 'n1' and 'n2' values (must be positive integers so that n1*n2==n):")
-    n1 = input()
-    n2 = input()
-    try:
         n1 = int(n1)
         n2 = int(n2)
         assert(n1>0 and n2>0 and n1*n2==n)
-        break
-    except (ValueError, AssertionError):
-        print("Wrong input. Retry.")
-
-while(True):
-    print("Insert the 'm' value (must be a positive integer so that m<=n):")
-    m = input()
-    try:
         m = int(m)
         assert(m>0 and m<n)
         break
