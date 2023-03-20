@@ -18,20 +18,20 @@ def init_distances(model, l1, l2):
     return B[l1][l2]
 
 #...
-def lin1_rule(model, l1, l2):
-    return False
+def lin1_rule(model, i, j):
+    return model.y[i][j] <= model.x[i]
 
 #...
-def lin2_rule(model, l1, l2):
-    return False
+def lin2_rule(model, i, j):
+    return model.y[i][j] <= model.x[j]
 
 #...
-def lin3_rule(model, l1, l2):
-    return False
+def lin3_rule(model, i, j):
+    return model.y[i][j] >= model.x[i]+model.x[j]-1
 
 #...
-def m_rule(model, l1, l2):
-    return False
+def m_rule(model):
+    return sum(model.x[i] for i in model.Locations) == n1
 
 def buildmodel():
     # Model
@@ -49,7 +49,7 @@ def buildmodel():
     model.rule1(model.Locations, model.Locations, rule=lin1_rule)
     model.rule2(model.Locations, model.Locations, rule=lin2_rule)
     model.rule3(model.Locations, model.Locations, rule=lin3_rule)
-    model.rule4(model.Locations, rule=m_rule)
+    model.rule4(rule=m_rule)
     return model
 
 if __name__=="__main__":
