@@ -1,15 +1,21 @@
+# (UniPd 2008818) Mattia Toffolon
+# QAP problem solver
+
 ##!/usr/bin/env python
 # encoding: utf-8
-
 from pyomo.environ import *
 from pyomo.opt import SolverFactory
+import MatricesGenerator as mg
 
-n  = 10 #USER INPUT
-m = 3   #USER INPUT
+n  = 9 #USER INPUT
+n1 = 3 #USER INPUT
+n2 = 3 #USER INPUT
+m = 3  #USER INPUT
+B = mg.B_generator(n, n1, n2, m)
 
 #...
 def init_distances(model, l1, l2):
-    return 1
+    return B[l1][l2]
 
 #...
 def lin1_rule(model, l1, l2):
