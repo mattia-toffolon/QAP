@@ -54,3 +54,8 @@ def buildmodel():
 
 if __name__=="__main__":
     model = buildmodel()
+    opt = SolverFactory('cplex_persistent')
+    opt.set_instance(model)
+    res = opt.solve(tee=True)
+    for p in model.x:
+        print("x[{}] = {}".format(p, value(model.x[p])))
