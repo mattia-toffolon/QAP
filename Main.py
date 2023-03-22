@@ -19,15 +19,15 @@ def init_distances(model, l1, l2):
 
 #...
 def lin1_rule(model, i, j):
-    return model.y[i][j] <= model.x[i]
+    return model.y[i, j] <= model.x[i]
 
 #...
 def lin2_rule(model, i, j):
-    return model.y[i][j] <= model.x[j]
+    return model.y[i, j] <= model.x[j]
 
 #...
 def lin3_rule(model, i, j):
-    return model.y[i][j] >= model.x[i]+model.x[j]-1
+    return model.y[i, j] >= model.x[i]+model.x[j]-1
 
 #...
 def m_rule(model):
@@ -44,12 +44,12 @@ def buildmodel():
     model.x = Var(model.Locations, domain=Boolean)
     model.y = Var(model.Locations, model.Locations, domain=Boolean)
     # objective
-    model.obj = Objective(expr = sum(model.Distances[i][j] * model.y[i][j] for i in model.Locations for j in model.Locations), sense=minimize)
+    model.obj = Objective(expr = sum(model.Distances[i, j] * model.y[i, j] for i in model.Locations for j in model.Locations), sense=minimize)
     # constraints
-    model.rule1(model.Locations, model.Locations, rule=lin1_rule)
-    model.rule2(model.Locations, model.Locations, rule=lin2_rule)
-    model.rule3(model.Locations, model.Locations, rule=lin3_rule)
-    model.rule4(rule=m_rule)
+    model.rule1 = Constraint(model.Locations, model.Locations, rule=lin1_rule)
+    model.rule2 = Constraint(model.Locations, model.Locations, rule=lin2_rule)
+    model.rule3 = Constraint(model.Locations, model.Locations, rule=lin3_rule)
+    model.rule4 = Constraint(rule=m_rule)
     return model
 
 if __name__=="__main__":
