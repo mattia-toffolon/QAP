@@ -50,18 +50,17 @@ def check(n, A, B):
 
 def A_generator(n, n1, n2, m):
     # Parameters check (n, n1, n2, m)
-    while(True):
-        try:
-            n = int(n)
-            assert(n > 0)
-            n1 = int(n1)
-            n2 = int(n2)
-            assert(n1>0 and n2>0 and n1*n2==n)
-            m = int(m)
-            assert(m>0 and m<n)
-            break
-        except (ValueError, AssertionError):
-            print("Wrong parameters format. Retry.")
+    try:
+        n = int(n)
+        assert(n > 0)
+        n1 = int(n1)
+        n2 = int(n2)
+        assert(n1>0 and n2>0 and n1*n2==n)
+        m = int(m)
+        assert(m>0 and m<n)
+    except (ValueError, AssertionError):
+        print("Wrong parameters format. Retry.")
+        return
     # Matrix A generation (A is the flows matrix)
     A = [0]*n
     for i in range(n):
@@ -73,18 +72,17 @@ def A_generator(n, n1, n2, m):
 
 def B_generator(n, n1, n2, m):
     # Parameters check (n, n1, n2, m)
-    while(True):
-        try:
-            n = int(n)
-            assert(n > 0)
-            n1 = int(n1)
-            n2 = int(n2)
-            assert(n1>0 and n2>0 and n1*n2==n)
-            m = int(m)
-            assert(m>0 and m<n)
-            break
-        except (ValueError, AssertionError):
-            print("Wrong parameters format. Retry.")
+    try:
+        n = int(n)
+        assert(n > 0)
+        n1 = int(n1)
+        n2 = int(n2)
+        assert(n1>0 and n2>0 and n1*n2==n)
+        m = int(m)
+        assert(m>0 and m<n)
+    except (ValueError, AssertionError):
+        print("Wrong parameters format. Retry.")
+        return
     # Matrix B generation (B is the distances matrix)
     B = [0]*n
     for i in range(n):
