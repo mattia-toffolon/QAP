@@ -31,7 +31,7 @@ def lin3_rule(model, i, j):
 
 #...
 def m_rule(model):
-    return sum(model.x[i] for i in model.Locations) == n1
+    return sum(model.x[i] for i in model.Locations) == m
 
 def buildmodel():
     # Model
