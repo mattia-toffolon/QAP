@@ -7,10 +7,10 @@ from pyomo.environ import *
 from pyomo.opt import SolverFactory
 import MatricesGenerator as mg
 
-n  = 16 #USER INPUT
-n1 = 4 #USER INPUT
-n2 = 4 #USER INPUT
-m = 6  #USER INPUT
+n  = 25 #USER INPUT
+n1 = 5 #USER INPUT
+n2 = 5 #USER INPUT
+m = 10 #USER INPUT
 B = mg.B_generator(n, n1, n2, m)
 
 #...
