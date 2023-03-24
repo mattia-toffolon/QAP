@@ -7,29 +7,36 @@ from pyomo.environ import *
 from pyomo.opt import SolverFactory
 import MatricesGenerator as mg
 
-n  = 25 #USER INPUT
-n1 = 5 #USER INPUT
-n2 = 5 #USER INPUT
-m = 10 #USER INPUT
+"""
+Parameters constraints:
+- n integer, n > 0
+- n1 n2 integers, n1*n2==n
+- m integer, 0 < m < n
+"""
+n  = 25 
+n1 = 5  
+n2 = 5  
+m = 10  
+
 B = mg.B_generator(n, n1, n2, m)
 
-#...
+# Function that initialize the distance parameters
 def init_distances(model, l1, l2):
     return B[l1][l2]
 
-#...
+# First function that links the y and x variables
 def lin1_rule(model, i, j):
     return model.y[i, j] <= model.x[i]
 
-#...
+# Second function that links the y and x variables
 def lin2_rule(model, i, j):
     return model.y[i, j] <= model.x[j]
 
-#...
+# Third function that links the y and x variables
 def lin3_rule(model, i, j):
     return model.y[i, j] >= model.x[i]+model.x[j]-1
 
-#...
+# Function that guarantees that the number of assigned facilities is exactly m
 def m_rule(model):
     return sum(model.x[i] for i in model.Locations) == m
 

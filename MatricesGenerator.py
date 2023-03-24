@@ -17,37 +17,7 @@ def force(n1, n2, r, s, t, u):
     assert(m >= 0)
     return m
 
-"""
-# Function that checks if the given matrices coincide with the ones saved in the relative file
-def check(n, A, B):
-    try:
-        f = open("Tai" + str(n) + "c")
-        f.readline()
-        f.readline()
-        for i in range(n*2):
-            line = f.readline()
-            j=0
-            for num in line.split(' '):
-                try:
-                    if(i < n):
-                        assert(int(num) == A[i][j])
-                    else:
-                        assert(int(num) == B[i-n][j])
-                    j += 1
-                except ValueError:
-                    continue       
-                except AssertionError:
-                    if(i < n):
-                        print("AssertionError: ", int(num), " != ", A[i][j], " at position [", i,"][", j, "] of matrix A")   
-                    else:
-                        print("AssertionError: ", int(num), " != ", B[i-n][j], " at position [", i-n,"][", j, "] of matrix B")                 
-                    return
-        f.close
-        print("The generated matrices and the ones saved in the file match!")
-    except FileNotFoundError as e:
-        print(e)
-"""
-
+# Function that generates the flows matrix (A)
 def A_generator(n, n1, n2, m):
     # Parameters check (n, n1, n2, m)
     try:
@@ -59,9 +29,9 @@ def A_generator(n, n1, n2, m):
         m = int(m)
         assert(m>0 and m<n)
     except (ValueError, AssertionError):
-        print("Wrong parameters format. Retry.")
+        print("Parameters' constraints not satisfied.")
         return
-    # Matrix A generation (A is the flows matrix)
+
     A = [0]*n
     for i in range(n):
         if(i < m):
@@ -70,6 +40,7 @@ def A_generator(n, n1, n2, m):
             A[i] = [0]*n
     return A
 
+# Function that generates the distances matrix (B)
 def B_generator(n, n1, n2, m):
     # Parameters check (n, n1, n2, m)
     try:
@@ -81,9 +52,9 @@ def B_generator(n, n1, n2, m):
         m = int(m)
         assert(m>0 and m<n)
     except (ValueError, AssertionError):
-        print("Wrong parameters format. Retry.")
+        print("Parameters' constraints not satisfied.")
         return
-    # Matrix B generation (B is the distances matrix)
+
     B = [0]*n
     for i in range(n):
         B[i] = [0]*n
@@ -101,19 +72,3 @@ def B_generator(n, n1, n2, m):
                         B[i][j] = round(force(n1, n2, r, s, t, u)*scale)
                         B[j][i] = B[i][j]
     return B
-
-"""
-# Matrices printing
-for row in A:
-    for val in row:
-        print(val, end=" ")
-    print()
-for row in B:
-    for val in row:
-        print(val, end=" ")
-    print()
-
-# Matrices validity check (available only for certain matrix formats)
-if (n, n1, n2, m)==(64, 8, 8, 13) or (n, n1, n2, m)==(256, 16, 16, 92):
-    check(n, A, B)
-"""
