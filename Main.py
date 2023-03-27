@@ -5,7 +5,12 @@
 # encoding: utf-8
 from pyomo.environ import *
 from pyomo.opt import SolverFactory
+from cplex import *
+import time
 import MatricesGenerator as mg
+
+c = Cplex.cplex()
+c.parameters.randomseed
 
 """
 Parameters constraints:
@@ -60,9 +65,17 @@ def buildmodel():
     return model
 
 if __name__=="__main__":
+
+    tic = time.perf_counter()
+
     model = buildmodel()
     opt = SolverFactory('cplex_persistent')
     opt.set_instance(model)
     res = opt.solve(tee=True)
+
+    toc = time.perf_counter()
+
     for p in model.x:
         print("x[{}] = {}".format(p, value(model.x[p])))
+
+print(f"Model solved in {toc - tic:0.4f} seconds")
