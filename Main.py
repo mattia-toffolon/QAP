@@ -7,10 +7,14 @@ from pyomo.environ import *
 from pyomo.opt import SolverFactory
 from cplex import *
 import time
+import random
+import sys
 import MatricesGenerator as mg
 
 c = Cplex()
-c.parameters.randomseed
+seed = random.randrange(0, sys.maxsize)
+c.parameters.randomseed = seed
+print(c.parameters.randomseed, ' -  ', sys.maxsize, ' ', seed)
 
 """
 Parameters constraints:
@@ -78,4 +82,4 @@ if __name__=="__main__":
     for p in model.x:
         print("x[{}] = {}".format(p, value(model.x[p])))
 
-print(f"Model solved in {toc - tic:0.4f} seconds")
+    print(f"Model solved in {toc - tic:0.4f} seconds")
