@@ -9,7 +9,7 @@ from cplex import *
 import time
 import MatricesGenerator as mg
 
-c = cplex.Cplex()
+c = Cplex()
 c.parameters.randomseed
 
 """
