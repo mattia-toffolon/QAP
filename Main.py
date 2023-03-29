@@ -10,10 +10,8 @@ import random
 import MatricesGenerator as mg
 
 c = Cplex()
-c.parameters.randomseed.set(random.randrange(0, 2**30))
-
-n_parameters = {16, 25, 36}
-gray_densities = {20.0, 30.0, 40.0}
+n_parameters = {9, 16, 25, 36}
+gray_densities = {30.0, 40.0, 50.0}
 
 B_matrices = {}
 for n in n_parameters:
@@ -64,10 +62,11 @@ if __name__=="__main__":
     for n in n_parameters:
         for d in gray_densities:
             for i in range(5):
+                c.parameters.randomseed.set(random.randrange(0, 2**30))
                 model = buildmodel(n, d)
                 opt = SolverFactory('cplex_persistent')
                 opt.set_instance(model)
                 res = opt.solve(tee=True)
                 for p in model.x:
                     print("x[{}] = {}".format(p, value(model.x[p])))
-    print("\n\nAll Instances have been solved.")
+    print("\n\nAll Instances have been solved.\n\n")
