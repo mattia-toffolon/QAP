@@ -21,7 +21,7 @@ Parameters constraints:
 n  = 36
 d = 40.0
 
-B = mg.B_generator(n, d)
+B = mg.B_generator(n)
 
 # Function that initialize the distance parameters
 def init_distances(model, l1, l2):
@@ -41,7 +41,7 @@ def lin3_rule(model, i, j):
 
 # Function that guarantees that the number of assigned facilities is exactly m
 def m_rule(model):
-    return sum(model.x[i] for i in model.Locations) == m
+    return sum(model.x[i] for i in model.Locations) == round(n*(d/100))
 
 def buildmodel():
     # Model
