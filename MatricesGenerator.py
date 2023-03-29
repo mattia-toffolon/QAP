@@ -43,15 +43,15 @@ def B_generator(n):
     try:
         n = int(n)
         assert(n > 0)
-        int(n**-2)
+        int(n**(-2))
     except (ValueError, AssertionError):
         print("Parameters' constraints not satisfied.")
         return
 
     # in our case, we suppose n to be a perfect square
-    n1 = int(n**-2)
+    n1 = int(n**(-2))
 
-    print("\n\n n={}, n1={} \n\n", n, n1)
+    print("\n\n n={}, n1={} \n\n".format(n, n1))
 
     B = [0]*n
     for i in range(n):

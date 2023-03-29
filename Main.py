@@ -21,7 +21,7 @@ Parameters constraints:
 n  = 36
 d = 40.0
 
-print("\n\n n={}, d={}, m={} \n\n", n, d, round(n*(d/100)))
+print("\n\n n={}, d={}, m={} \n\n".format(n, d, round(n*(d/100))))
 
 B = mg.B_generator(n)
 
