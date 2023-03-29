@@ -50,9 +50,6 @@ def B_generator(n):
 
     # in our case, we suppose n to be a perfect square
     n1 = int(n**0.5)
-
-    print("\n\n n={}, n1={} \n\n".format(n, n1))
-
     B = [0]*n
     for i in range(n):
         B[i] = [0]*n
