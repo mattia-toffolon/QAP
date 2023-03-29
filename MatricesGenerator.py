@@ -49,7 +49,7 @@ def B_generator(n):
         return
 
     # in our case, we suppose n to be a perfect square
-    n1 = n**-2
+    n1 = int(n**-2)
     B = [0]*n
     for i in range(n):
         B[i] = [0]*n
