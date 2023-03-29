@@ -18,16 +18,16 @@ Parameters constraints:
 - n integer, n > 0, n perfect square
 - d float, d percentage
 """
-n  = 36
-d = 40.0
 
-print("\n\n n={}, d={}, m={} \n\n".format(n, d, round(n*(d/100))))
+B_matrices = {}
+for n in {16, 25, 36}:
+    B_matrices[n] = mg.B_generator(n)
 
 B = mg.B_generator(n)
 
 # Function that initialize the distance parameters
-def init_distances(model, l1, l2):
-    return B[l1][l2]
+def init_distances(model, l1, l2, n):
+    return (B[n])[l1][l2]
 
 # First function that links the y and x variables
 def lin1_rule(model, i, j):
@@ -42,16 +42,18 @@ def lin3_rule(model, i, j):
     return model.y[i, j] >= model.x[i]+model.x[j]-1
 
 # Function that guarantees that the number of assigned facilities is exactly m
-def m_rule(model):
+def m_rule(model, d):
     return sum(model.x[i] for i in model.Locations) == round(n*(d/100))
 
-def buildmodel():
+def buildmodel(n, d):
     # Model
     model = ConcreteModel()
     # sets
     model.Locations = RangeSet(0, n-1)
     # params
-    model.Distances = Param(model.Locations, model.Locations, initialize=init_distances)
+    model.n = n
+    model.d = d
+    model.Distances = Param(model.Locations, model.Locations, model.n, initialize=init_distances)
     # variables
     model.x = Var(model.Locations, domain=Boolean)
     model.y = Var(model.Locations, model.Locations, domain=Boolean)
@@ -61,11 +63,15 @@ def buildmodel():
     model.rule1 = Constraint(model.Locations, model.Locations, rule=lin1_rule)
     model.rule2 = Constraint(model.Locations, model.Locations, rule=lin2_rule)
     model.rule3 = Constraint(model.Locations, model.Locations, rule=lin3_rule)
-    model.rule4 = Constraint(rule=m_rule)
+    model.rule4 = Constraint(model.d, rule=m_rule)
     return model
 
 if __name__=="__main__":
-    model = buildmodel()
+
+    n = 25
+    d = 40.0
+
+    model = buildmodel(n, d)
     opt = SolverFactory('cplex_persistent')
     opt.set_instance(model)
     res = opt.solve(tee=True)
