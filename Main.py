@@ -26,8 +26,8 @@ for n in {16, 25, 36}:
 B = mg.B_generator(n)
 
 # Function that initialize the distance parameters
-def init_distances(model, l1, l2, n):
-    return (B[n])[l1][l2]
+def init_distances(model, l1, l2):
+    return (B[model.n])[l1][l2]
 
 # First function that links the y and x variables
 def lin1_rule(model, i, j):
@@ -53,7 +53,7 @@ def buildmodel(n, d):
     # params
     model.n = n
     model.d = d
-    model.Distances = Param(model.Locations, model.Locations, model.n, initialize=init_distances)
+    model.Distances = Param(model.Locations, model.Locations, initialize=init_distances)
     # variables
     model.x = Var(model.Locations, domain=Boolean)
     model.y = Var(model.Locations, model.Locations, domain=Boolean)
