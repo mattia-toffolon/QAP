@@ -12,9 +12,10 @@ import sys
 import MatricesGenerator as mg
 
 c = Cplex()
-seed = random.randrange(0, sys.maxsize)
-c.parameters.randomseed = seed
-print(c.parameters.randomseed, ' -  ', sys.maxsize, ' ', seed)
+seed = random.randrange(0, 2**30)
+c.parameters.randomseed.set(seed)
+c.parameters.timelimit.set(20.0)
+print(c.parameters.randomseed.get(), ' - ', seed)
 
 """
 Parameters constraints:
@@ -22,10 +23,10 @@ Parameters constraints:
 - n1 n2 integers, n1*n2==n
 - m integer, 0 < m < n
 """
-n  = 25 
-n1 = 5  
-n2 = 5  
-m = 10  
+n  = 36
+n1 = 6
+n2 = 6
+m = 15 
 
 B = mg.B_generator(n, n1, n2, m)
 
