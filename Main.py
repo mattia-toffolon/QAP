@@ -15,16 +15,13 @@ c.parameters.timelimit.set(20.0)
 
 """
 Parameters constraints:
-- n integer, n > 0
-- n1 n2 integers, n1*n2==n
-- m integer, 0 < m < n
+- n integer, n > 0, n perfect square
+- d float, d percentage
 """
 n  = 36
-n1 = 6
-n2 = 6
-m = 14 
+d = 40.0
 
-B = mg.B_generator(n, n1, n2, m)
+B = mg.B_generator(n, d)
 
 # Function that initialize the distance parameters
 def init_distances(model, l1, l2):
