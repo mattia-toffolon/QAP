@@ -11,16 +11,12 @@ import MatricesGenerator as mg
 
 c = Cplex()
 c.parameters.randomseed.set(random.randrange(0, 2**30))
-c.parameters.timelimit.set(20.0)
 
-"""
-Parameters constraints:
-- n integer, n > 0, n perfect square
-- d float, d percentage
-"""
+n_parameters = {16, 25, 36}
+gray_densities = {20.0, 30.0, 40.0}
 
 B_matrices = {}
-for n in {16, 25, 36}:
+for n in n_parameters:
     B_matrices[n] = mg.B_generator(n)
 
 # Function that initialize the distance parameters
@@ -65,13 +61,13 @@ def buildmodel(n, d):
     return model
 
 if __name__=="__main__":
-
-    n = 25
-    d = 40.0
-
-    model = buildmodel(n, d)
-    opt = SolverFactory('cplex_persistent')
-    opt.set_instance(model)
-    res = opt.solve(tee=True)
-    for p in model.x:
-        print("x[{}] = {}".format(p, value(model.x[p])))
+    for n in n_parameters:
+        for d in gray_densities:
+            for i in range(5):
+                model = buildmodel(n, d)
+                opt = SolverFactory('cplex_persistent')
+                opt.set_instance(model)
+                res = opt.solve(tee=True)
+                for p in model.x:
+                    print("x[{}] = {}".format(p, value(model.x[p])))
+    print("\n\nAll Instances have been solved.")

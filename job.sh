@@ -3,7 +3,7 @@
 #SBATCH --partition arrow 
 #SBATCH --ntasks 1
 #SBATCH --mem 14GB
-#SBATCH --time 03:00
+#SBATCH --time 01:00:00
 
 # warm up processors
 sudo cpupower frequency-set -g performance
