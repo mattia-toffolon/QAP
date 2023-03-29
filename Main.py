@@ -21,10 +21,10 @@ Parameters constraints:
 - n1 n2 integers, n1*n2==n
 - m integer, 0 < m < n
 """
-n  = 36
-n1 = 6
-n2 = 6
-m = 15 
+n  = 25
+n1 = 5
+n2 = 5
+m = 11 
 
 B = mg.B_generator(n, n1, n2, m)
 
