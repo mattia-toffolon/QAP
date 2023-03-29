@@ -10,10 +10,8 @@ import random
 import MatricesGenerator as mg
 
 c = Cplex()
-seed = random.randrange(0, 2**30)
-c.parameters.randomseed.set(seed)
+c.parameters.randomseed.set(random.randrange(0, 2**30))
 c.parameters.timelimit.set(20.0)
-print(c.parameters.randomseed.get(), ' - ', seed)
 
 """
 Parameters constraints:
@@ -21,10 +19,10 @@ Parameters constraints:
 - n1 n2 integers, n1*n2==n
 - m integer, 0 < m < n
 """
-n  = 25
-n1 = 5
-n2 = 5
-m = 11 
+n  = 36
+n1 = 6
+n2 = 6
+m = 14 
 
 B = mg.B_generator(n, n1, n2, m)
 
@@ -72,8 +70,5 @@ if __name__=="__main__":
     opt = SolverFactory('cplex_persistent')
     opt.set_instance(model)
     res = opt.solve(tee=True)
-    f = open("log.txt", "x")
     for p in model.x:
-        #print("x[{}] = {}".format(p, value(model.x[p])))
-        f.write("x[{}] = {}".format(p, value(model.x[p])))
-    f.close()
+        print("x[{}] = {}".format(p, value(model.x[p])))
