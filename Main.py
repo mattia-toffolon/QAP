@@ -6,9 +6,7 @@
 from pyomo.environ import *
 from pyomo.opt import SolverFactory
 from cplex import *
-import time
 import random
-import sys
 import MatricesGenerator as mg
 
 c = Cplex()
@@ -70,17 +68,12 @@ def buildmodel():
     return model
 
 if __name__=="__main__":
-
-    tic = time.perf_counter()
-
     model = buildmodel()
     opt = SolverFactory('cplex_persistent')
     opt.set_instance(model)
     res = opt.solve(tee=True)
-
-    toc = time.perf_counter()
-
+    f = open("log.txt", "x")
     for p in model.x:
-        print("x[{}] = {}".format(p, value(model.x[p])))
-
-    print(f"Model solved in {toc - tic:0.4f} seconds")
+        #print("x[{}] = {}".format(p, value(model.x[p])))
+        f.write("x[{}] = {}".format(p, value(model.x[p])))
+    f.close()
