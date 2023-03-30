@@ -9,9 +9,8 @@ from cplex import *
 import random
 import MatricesGenerator as mg
 
-c = Cplex()
 n_parameters = {9, 16, 25, 36}
-gray_densities = {30.0, 40.0, 50.0}
+gray_densities = {40.0, 50.0, 60.0, 70.0}
 
 B_matrices = {}
 for n in n_parameters:
@@ -59,6 +58,7 @@ def buildmodel(n, d):
     return model
 
 if __name__=="__main__":
+    c = Cplex()
     for n in n_parameters:
         for d in gray_densities:
             for i in range(5):
@@ -69,4 +69,4 @@ if __name__=="__main__":
                 res = opt.solve(tee=True)
                 for p in model.x:
                     print("x[{}] = {}".format(p, value(model.x[p])))
-    print("\n\nAll Instances have been solved.\n\n")
+    print("\n\nAll instances have been solved.\n\n")
