@@ -5,8 +5,7 @@
 # encoding: utf-8
 from pyomo.environ import *
 from pyomo.opt import SolverFactory
-from cplex import *
-import random
+import random as rnd
 import MatricesGenerator as mg
 
 n_parameters = {9, 16, 25, 36}
@@ -58,13 +57,12 @@ def buildmodel(n, d):
     return model
 
 if __name__=="__main__":
-    c = Cplex()
     for n in n_parameters:
         for d in gray_densities:
             for i in range(5):
-                c.parameters.randomseed.set(random.randrange(0, 2**30))
                 model = buildmodel(n, d)
                 opt = SolverFactory('cplex_persistent')
+                opt.options['randomseed'] = rnd.randrange(0, 2**30)
                 opt.set_instance(model)
                 res = opt.solve(tee=True)
                 for p in model.x:
