@@ -34,7 +34,7 @@ def lin3_rule(model, i, j):
 
 # Function that guarantees that the number of assigned facilities is exactly m
 def m_rule(model):
-    return sum(model.x[i] for i in model.Locations) == round(model.n*(model.d/100))
+    return sum(model.x[i] for i in model.Locations) == round(model.n[0]*(model.d/100))
 
 def buildmodel(n, d):
     # Model
