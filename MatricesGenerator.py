@@ -38,32 +38,31 @@ def A_generator(n, d):
     return A
 
 # Function that generates the distances matrix (B)
-def B_generator(n):
+def B_generator(n, n1, n2):
     # Parameters check (n, n1, n2, m)
     try:
         n = int(n)
-        assert(n > 0)
-        int(n**0.5)
+        assert(n>0 and n1>0 and n2>0)
+        assert(n1*n2 == n)
     except (ValueError, AssertionError):
         print("Parameters' constraints not satisfied.")
         return
 
     # in our case, we suppose n to be a perfect square
-    n1 = int(n**0.5)
     B = [0]*n
     for i in range(n):
         B[i] = [0]*n
     # (note: B is always simmetric)
     scale = 100000
     for r in range(n1):
-        for s in range(n1):
+        for s in range(n2):
             for t in range(n1):
-                for u in range(n1):
-                    i = n1*(r-1)+s
-                    j = n1*(t-1)+u
+                for u in range(n2):
+                    i = n2*(r-1)+s
+                    j = n2*(t-1)+u
                     if(B[i][j] != 0):
                         continue
                     else:
-                        B[i][j] = round(force(n1, n1, r, s, t, u)*scale)
+                        B[i][j] = round(force(n1, n2, r, s, t, u)*scale)
                         B[j][i] = B[i][j]
     return B

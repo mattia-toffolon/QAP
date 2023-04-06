@@ -9,12 +9,12 @@ import random as rnd
 import time
 import MatricesGenerator as mg
 
-n_parameters = {9, 16, 25, 36}
-gray_densities = {40.0, 50.0, 60.0, 70.0}
+n_parameters = [(9,3,3), (16,4,4), (25,5,5)]
+gray_densities = [40.0, 50.0, 60.0, 70.0]
 
 B_matrices = {}
 for n in n_parameters:
-    B_matrices[n] = mg.B_generator(n)
+    B_matrices[n] = mg.B_generator(n[0], n[1], n[2])
 
 # Function that initialize the distance parameters
 def init_distances(model, l1, l2):
@@ -70,4 +70,4 @@ if __name__=="__main__":
                 for p in model.x:
                     print("x[{}] = {}".format(p, value(model.x[p])))
     toc = time.perf_counter()
-    print(f"\n\nAll instances have been solved. \nTotal time: {int((toc-tic)/60)}min {int((toc-tic)%60)}\n\n")
+    print(f"\n\nAll instances have been solved. \nTotal time: {int((toc-tic)/60)}min {int((toc-tic)%60)}sec\n\n")
