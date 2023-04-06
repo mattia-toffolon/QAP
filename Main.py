@@ -40,7 +40,7 @@ def buildmodel(n, d):
     # Model
     model = ConcreteModel()
     # sets
-    model.Locations = RangeSet(0, n-1)
+    model.Locations = RangeSet(0, n[0]-1)
     # params
     model.n = n
     model.d = d
