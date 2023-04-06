@@ -6,6 +6,7 @@
 from pyomo.environ import *
 from pyomo.opt import SolverFactory
 import random as rnd
+import time
 import MatricesGenerator as mg
 
 n_parameters = {9, 16, 25, 36}
@@ -57,6 +58,7 @@ def buildmodel(n, d):
     return model
 
 if __name__=="__main__":
+    tic = time.perf_counter()
     for n in n_parameters:
         for d in gray_densities:
             for i in range(5):
@@ -67,4 +69,5 @@ if __name__=="__main__":
                 res = opt.solve(tee=True)
                 for p in model.x:
                     print("x[{}] = {}".format(p, value(model.x[p])))
-    print("\n\nAll instances have been solved.\n\n")
+    toc = time.perf_counter()
+    print(f"\n\nAll instances have been solved. \nTotal time: {int((toc-tic)/60)}min {int((toc-tic)%60)}\n\n")
