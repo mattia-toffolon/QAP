@@ -7,10 +7,11 @@ from pyomo.environ import *
 from pyomo.opt import SolverFactory
 import random as rnd
 import time
+import numpy as np
 import MatricesGenerator as mg
 
-n_parameters = [(9,3,3), (16,4,4), (25,5,5)]
-gray_densities = [40.0, 50.0, 60.0, 70.0]
+n_parameters = [(9,3,3)]
+gray_densities = [40.0]
 
 B_matrices = {}
 for n in n_parameters:
@@ -18,7 +19,7 @@ for n in n_parameters:
 
 # Function that initialize the distance parameters
 def init_distances(model, l1, l2):
-    return (B_matrices[model.n])[l1][l2]
+    return (B_matrices[model.n])[l1, l2]
 
 # First function that links the y and x variables
 def lin1_rule(model, i, j):

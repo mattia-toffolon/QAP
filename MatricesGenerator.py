@@ -4,6 +4,8 @@
 ##!/usr/bin/env python
 # encoding: utf-8
 
+import numpy as np
+
 # (Density of grey)
 # Function that returns the force value (used later as a distance) between two given unit locations of the matrix: n1 x n2
 def force(n1, n2, r, s, t, u):
@@ -49,9 +51,7 @@ def B_generator(n, n1, n2):
         return
 
     # in our case, we suppose n to be a perfect square
-    B = [0]*n
-    for i in range(n):
-        B[i] = [0]*n
+    B = np.zeros((n, n), dtype=int)
     # (note: B is always simmetric)
     scale = 100000
     for r in range(n1):
@@ -60,9 +60,9 @@ def B_generator(n, n1, n2):
                 for u in range(n2):
                     i = n2*(r-1)+s
                     j = n2*(t-1)+u
-                    if(B[i][j] != 0):
+                    if(B[i, j] != 0):
                         continue
                     else:
-                        B[i][j] = round(force(n1, n2, r, s, t, u)*scale)
-                        B[j][i] = B[i][j]
+                        B[i, j] = round(force(n1, n2, r, s, t, u)*scale)
+                        B[j, i] = B[i, j]
     return B
