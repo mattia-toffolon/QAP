@@ -62,13 +62,17 @@ if __name__=="__main__":
     tic = time.perf_counter()
     for n in n_parameters:
         for d in gray_densities:
-            for i in range(5):
+            for i in range(1):
                 model = buildmodel(n, d)
                 opt = SolverFactory('cplex_persistent')
                 opt.options['randomseed'] = rnd.randrange(0, 2**30)
                 opt.set_instance(model)
                 res = opt.solve(tee=True)
+                f = open(f"Solutions/n{n[0]}_{n[1]}_{n[2]}_d{int(d)}.txt", "w")
+                f.write(f"{n[1]} {n[2]} {int(d)}\n")
                 for p in model.x:
                     print("x[{}] = {}".format(p, value(model.x[p])))
+                    f.write(f"{p} {round(value(model.x[p]))}\n")
+                f.close()
     toc = time.perf_counter()
     print(f"\n\nAll instances have been solved. \nTotal time: {int((toc-tic)/60)}min {int((toc-tic)%60)}sec\n\n")
