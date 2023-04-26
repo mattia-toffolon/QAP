@@ -74,12 +74,21 @@ if __name__=="__main__":
                 res = opt.solve(tee=True)
                 t2 = time.perf_counter()
                 times.append(t2-t1)
-                f = open(f"Solutions/n{n[0]}_{n[1]}_{n[2]}_d{int(d)}.txt", "w")
-                f.write(f"{n[1]} {n[2]} {int(d)}\n")
+
                 for p in model.x:
                     print("x[{}] = {}".format(p, value(model.x[p])))
-                    f.write(f"{p} {round(value(model.x[p]))}\n")
-                f.close()
+
+                try:
+                    f = open(f"Solutions/n{n[0]}_{n[1]}_{n[2]}_d{int(d)}.txt", "x")
+                    f.close()
+                    f = open(f"Solutions/n{n[0]}_{n[1]}_{n[2]}_d{int(d)}.txt", "w")
+                    f.write(f"{n[1]} {n[2]} {int(d)}\n")
+                    for p in model.x:
+                        f.write(f"{p} {round(value(model.x[p]))}\n")
+                    f.close()
+                except FileExistsError:
+                    print("Solution already saved")
+                    
             avg_times[(n,d)] = sum(times)/len(times)
 
     toc = time.perf_counter()
