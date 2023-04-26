@@ -87,7 +87,7 @@ if __name__=="__main__":
                         f.write(f"{p} {round(value(model.x[p]))}\n")
                     f.close()
                 except FileExistsError:
-                    print("Solution already saved")
+                    print("\n\nSolution already saved")
                     
             avg_times[(n,d)] = sum(times)/len(times)
 
