@@ -86,4 +86,5 @@ if __name__=="__main__":
     print(f"\n\nAll instances have been solved. \nTotal time: {int((toc-tic)/60)}min {int((toc-tic)%60)}sec\n\n")
     print("Avarage solution time:")
     for t in avg_times:
-        print(f"n{t[0]}_d{t[1]} : {int((avg_times[t])/60)}min {int(avg_times[t])%60}sec\n\n")
+        print(f"n{t[0]}_d{t[1]} : {int((avg_times[t])/60)} min {((avg_times[t])%60):.2f} sec")
+    print('\n\n')
