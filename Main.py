@@ -86,13 +86,14 @@ if __name__=="__main__":
                     for p in model.x:
                         f.write(f"{p} {round(value(model.x[p]))}\n")
                     f.close()
+                    print("Solution saved succesfully!")
                 except FileExistsError:
-                    print("\n\nSolution already saved")
+                    print("\n\nSolution already saved\n\n")
                     
             avg_times[(n,d)] = sum(times)/len(times)
 
     toc = time.perf_counter()
-    print(f"\n\nAll instances have been solved. \nTotal time: {int((toc-tic)/60)}min {int((toc-tic)%60)}sec\n\n")
+    print(f"All instances have been solved. \nTotal time: {int((toc-tic)/60)}min {int((toc-tic)%60)}sec\n\n")
     print("Avarage solution time:")
     for t in avg_times:
         print(f"n{t[0]}_d{t[1]} : {int((avg_times[t])/60)} min {((avg_times[t])%60):.2f} sec")
