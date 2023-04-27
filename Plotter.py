@@ -27,6 +27,6 @@ if __name__=='__main__':
 
     f.close()
     
-    sns.heatmap(S, linewidths=.5, linecolor='#e7e7e7', cmap='Greys', cbar=False, square=True)
-    plt.title(f"Tai{n}c_{n1}x{n2}_{d} Solution")
+    sns.heatmap(S, linewidths=.5, linecolor='#d9d9d9', cmap='Greys', cbar=False, square=True, annot=np.arange(n).reshape((n1,n2)), xticklabels=False, yticklabels=False)
+    plt.title(f"Tai{n}c_{n1}x{n2}_{d} Solution", fontsize=18)
     plt.show()
