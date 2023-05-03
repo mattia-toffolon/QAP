@@ -1,0 +1,27 @@
+% interlinea 1.5
+\onehalfspacing
+
+% margini senato
+\textwidth       =  16.00 cm            % larghezza 21 cm - 3 cm (sinistro) - 2 (destro)
+\textheight      =  23.16 cm            % altezza 29.7 cm - 2 cm (superiore) - 1 cm (headstep) - 1 cm (footskip)
+\topmargin       =  -0.54 cm            % margine superiore 3 cm diminuito di 1 inch
+\oddsidemargin   =   0.46 cm            % margine sinistro 4 cm diminuito di 1 inch
+\evensidemargin  =  -0.54 cm            % margine destro 2.5 cm diminuito di un inch
+
+\setlength{\footskip}{1.0cm}
+\setlength{\headsep}{1.0cm}
+
+% stile pagina
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1 }{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
+\fancyhead{}
+\fancyhead[LE,RO]{\sffamily \textsc{\thepage}}
+\fancyhead[RE]{\sffamily \textsc{\leftmark}}
+\fancyhead[LO]{\sffamily \textsc{\rightmark}}
+\fancyfoot{}
+
+% ridefinisco lo stile plain
+\fancypagestyle{plain}{ \fancyhead{} \fancyfoot{}
+\fancyfoot[C]{\sffamily \thepage}
+\renewcommand{\headrulewidth}{0pt}}

@@ -1,0 +1,13 @@
+.python-version
+*.DS_Store
+__pycache__/
+document/*.aux
+document/*.log
+document/*.dvi
+document/*.blg
+document/*.bcf
+document/*.xml
+document/*.bbl
+document/*.out
+document/*.toc
+document/*.synctex.gz

@@ -1,0 +1,74 @@
+%%% pacchetti utilizzati nel testo
+
+% include font di più dimensioni
+\usepackage{lmodern}
+
+% bibliografia
+\usepackage[
+	backend=biber,
+	style=numeric,
+    sorting=none
+]{biblatex}
+\appto{\bibsetup}{\sloppy}
+
+% formattazione url
+\usepackage{url}
+
+% spazi tra paragrafi
+\edef\restoreparindent{\parindent=\the\parindent\relax}
+\usepackage{parskip}
+\restoreparindent
+
+% formule matematiche
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% codifica
+\usepackage[utf8]{inputenc}
+
+% lingua
+\usepackage[italian]{babel}
+
+% verifica struttura documento
+\usepackage{layout}
+
+% definizione layout di pagina
+\usepackage{fancyhdr}
+\usepackage[left=3cm, right=3cm, bottom=3cm, heightrounded]{geometry}
+
+% inclusione immagini
+\usepackage{graphicx}
+\usepackage{graphbox}
+
+% pseudocodice 
+\usepackage[ruled,vlined, spanish]{algorithm2e}
+
+% conversione immagini vettoriali
+\usepackage{epstopdf}
+
+% linee interne al documento
+\usepackage{setspace}
+
+%Listati di codice
+\usepackage{verbatim}
+\usepackage{listings}
+
+%Didascalie immagini
+\usepackage[hang,small,sf,font=scriptsize, labelfont=bf]{caption}
+\usepackage{subcaption}
+
+
+%Impostazioni note a piè pagina
+\usepackage[stable]{footmisc}
+
+%Citazioni e riferimenti a label
+\usepackage[english]{varioref}
+
+%Citazione frasi
+\usepackage{csquotes}
+
+%Crea link ipertestuali
+\usepackage[hidelinks]{hyperref}

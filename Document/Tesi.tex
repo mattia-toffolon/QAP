@@ -1,0 +1,49 @@
+\documentclass[a4paper,12pt]{book}
+
+% import pacchetti
+\input{model/packages}
+
+% definizione layout documento
+\input{model/layout}
+
+% Comandi ridefiniti
+\input{model/new_commands}
+
+% aggiunta bibliografia
+\addbibresource{bib/bib-latex.bib}
+
+\begin{document}
+
+\renewcommand{\contentsname}{\vspace{-2cm} Indice \vspace{-0.5cm}}
+
+% FRONTESPIZIO 
+\begin{titlepage}
+
+	\begin{center}
+	
+	\includegraphics[scale=0.11]{images/sigillo.eps} \\ % \hfill \includegraphics[scale=0.2]{source-images/logo_dei.pdf}\\
+	\vspace*{1cm}
+	\textsc{\LARGE Università degli Studi di Padova}\\
+	\vspace{0.25cm}
+	\textsc{\normalsize Dipartimento di Ingegneria dell'Informazione}\\
+	\vspace{0.25cm}
+	\textsc{\normalsize Corso di Laurea Triennale in Ingegneria Informatica}
+	
+	\vfill
+	% Titolo
+	\textsc{\LARGE Esperimenti mip per una classe di problemi di assegnamento quadratico}\\
+
+	% Relatore e laureando	
+	\vfill
+	\vspace*{4cm}
+	\textsl{\large Relatore} \hfill \textsl{\large Laureando}\\
+	\large Prof. Domenico Salvagnin \hfill Mattia Toffolon\\
+	
+	\vfill
+	% Data, AA
+	{\large Anno Accademico 2022/2023}\\
+	\textsl{\large Padova, XX luglio 2023}
+	\end{center}
+\end{titlepage}
+
+\end{document}
