@@ -46,4 +46,43 @@
 	\end{center}
 \end{titlepage}
 
+% DE-COMMENTARE PER VISUALIZZARE MARGINI E STRUTTURA PAGINA 
+%\makeatletter
+%\renewcommand*{\lay@value}[2]{%
+%  \strip@pt\dimexpr0.351459\dimexpr\csname#2\endcsname\relax\relax mm%
+%}
+%\makeatother
+%\layout
+
+\thispagestyle{empty} %pagina bianca dopo il titolo
+\cleardoublepage
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\vspace*{\fill}
+\begin{flushright}
+\textit{~ A mamma, papà e Cristian ~}
+\end{flushright}
+\vspace*{\fill}
+
+\pagenumbering{gobble} 
+\thispagestyle{empty}
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+\tableofcontents %Indice
+
+\clearpage{\pagestyle{plain}\cleardoublepage} %Numerazione araba per i capitoli
+\pagenumbering{arabic}
+
+\clearpage{\pagestyle{plain}\cleardoublepage} % inizia il nuovo capitolo su di una pagina dispari
+\chapter*{Introduzione} % nome capitolo
+\label{chapter:zero} % label capitolo
+\addcontentsline{toc}{chapter}{Introduzione}
+\input{Introduzione.tex} % importa il capitolo dal corrispondente file
+
+\pagestyle{plain}
+\cleardoublepage
+\chapter*{Bibliografia} % nome capitolo
+\addcontentsline{toc}{chapter}{Bibliografia}
+\printbibliography[heading=none]
+
 \end{document}
