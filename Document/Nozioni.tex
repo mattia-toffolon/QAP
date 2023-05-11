@@ -1,1 +1,138 @@
-Nozioni preliminari
+In questo primo capitolo sono stati riportati alcuni concetti che rappresentano le fondamenta teoriche del
+lavoro svolto. Come prima cosa è stato definito formalmente il concetto di problema di ottimizzazione. Successivamente
+si è proseguito con una coincisa trattazione relativa a due importanti algoritmi usati nella risoluzione di 
+problemi di ottimizzazione: \textit{branch-and-bound} e \textit{branch-and-cut}. Infine, è stata esposta la
+definizione formale di problema di assegnamento quadratico sul quale questo lavoro è stato basato. Molte delle definizioni in questo capitolo sono ispirate alle 
+dispense del corso di \textsl{Modelli e Software per l'Ottimizzazione Discreta}, tenuto dal professore 
+Domenico Salvagnin \cite{salvagnin1}\cite{salvagnin2}.
+
+\section{Problema di ottimizzazione}
+Un problema di ottimizzazione può essere formulato come 
+\begin{align}
+	\label{eq:opt}
+	\begin{array}{l}
+      \text{min(\textit{or} max)}f(x)\\
+      S	\\
+      x \in D
+    \end{array}
+\end{align}
+dove $f(x)$ è una funzione a valori reali nelle variabili $x$, $D$ è il dominio di $x$ e $S$ un insieme finito di vincoli. In generale,  
+$x$ è una tupla ($x_1,...,x_n$) e $D$ è un prodotto cartesiano $D_1 \times ... \times D_n$, e vale $x_j \, \in \, D_j$. 
+
+In generale, un problema di ottimizzazione nella forma (\ref{eq:opt}) è intrattabile, nel senso che non esistono
+algoritmi efficienti (o addirittura algoritmi) per la sua risoluzione.
+Si rende pertanto necessario considerare casi particolari di questa formulazione che presentano struttura e proprietà
+particolari da poter sfruttare.
+
+\newpage
+\section{Programmazione lineare intera}
+Uno dei casi particolari della formulazione generale di problema di ottimizzazione (\ref{eq:opt}) è quello della programmazione lineare intera.
+Un problema di programmazione lineare intera consiste nella minimizzazione (o massimizzazione) di una funzione lineare soggetta ad un 
+numero finito di vincoli lineari, con in aggiunta il vincolo che alcune delle variabili del problema debbano assumere valori interi. 
+In generale, il problema può quindi essere riformulato come:
+\begin{align*}
+	\begin{array}{l}
+      \text{min} \, cx\\
+      a_i x \sim b_i \qquad\qquad i=1,...,m \\
+      l_j \leq x_j \leq u_j \qquad j=1,...,n =N \\
+      x_j \in \mathbb{Z}  \;\,\qquad\qquad \forall j \in J \subseteq N = {1,...,n}	
+	\end{array}
+\end{align*}
+\indent
+Se $J=N$ si parla di programmazione lineare intera pura, altrimenti di programmazione lineare intera mista (o MIP, dall'inglese 
+\textit{Mixed Integer Programming}).
+
+La programmazione lineare intera restringe quindi notevolmente la tipologia di vincoli a disposizione nel
+processo di formalizzazione matematica del problema, determinando una maggior difficoltà in fase di modellazione.
+Tuttavia, nel caso della MIP, questa restrizione non comporta un'eccessiva limitazione sul tipo di 
+problemi formulabili secondo questo paradigma. Alcuni esempi classici di problemi risolvibili mediante MIP sono \textit{knapsack}, problemi di 
+\textit{scheduling}, \textit{minimum vertex cover} e, naturalmente, \textit{quadratic assignemnt problem}.
+Inoltre, l'introduzione dei vincoli di linearità ed interezza comporta notevoli vantaggi nella definizione ed
+implementazione di algoritmi di risoluzione, due dei quali sono stati descritti più nel dettaglio nelle seguenti sezioni.
+
+\subsection{Algoritmo Branch and Bound}
+L'algoritmo branch-and-bound (B\&B) è un algoritmo di ottimizzazione generica basato sull'enumerazione dell'insieme delle soluzioni
+ammissibili di un problema di ottimizzazione combinatoria, introdotto nel 1960 da A. H. Land e A. G. Doig \cite{10.2307/1910129}. 
+
+Questo algoritmo permette di gestire il problema dell'esplosione combinatoria scartando intere porzioni dello spazio delle soluzioni attraverso operazioni di \textit{pruning}.
+Ciò risulta possibile quando si riesce a dimostrare che questi sottospazi non possono contenere soluzioni migliori di 
+quelle note. Branch-and-bound implementa inoltre una strategia \textit{divide and conquer}, che permette di ottenere la soluzione al problema
+ricombinando quelle relative a partizioni del problema stesso. Viene riportata di seguito una breve descrizione dell'algoritmo.
+
+Sia $F$ l'insieme delle soluzioni ammissibili di un problema di minimizzazione (oppure di massimizzazione, a meno di un 
+cambio di segno della funzione obiettivo), $c \, : \, F \, \rightarrow \mathbb{R} $ la funzione obiettivo e $\Bar{x} \in F$ una 
+soluzione ammissibile nota, generata mediante euristiche o mediante assegnazioni casuali. Il costo di tale soluzione
+nota $z=f(\Bar{x})$, detto \textit{incumbent}, rappresenta per sua natura un limite superiore al valore della soluzione ottima. 
+
+L'algoritmo branch-and-bound prevede una fase iniziale di \textit{bounding} in cui uno o più vincoli del problema vengono rilassati, allargando di 
+conseguenza l'insieme delle possibili soluzioni $G \supseteq F$. La soluzione di questo rilassamento, se esiste,
+rappresenta un \textit{lower bound} alla soluzione ottima del problema iniziale. Se la soluzione di tale rilassamento appartiene a $F$
+o ha costo uguale all'attuale \textit{incumbent}, l'algoritmo termina in quanto si è trovata una soluzione ottima del problema.
+Se il rilassamento dovesse risultare impossibile, è possibile anche in questo caso terminare la ricerca di una soluzione in quanto si può 
+concludere che anche il problema di partenza è impossibile.
+
+Invece, nel caso in cui una soluzione al rilassamento esiste ma non è contenuta nell'insieme delle soluzioni ammissibili $F$,
+l'algoritmo procede con l'identificare una separazione $F^*$ di $F$, ossia un insieme finito di sottoinsiemi tale che:
+\begin{align*}
+\bigcup_{F_i \in F^*} F_{i} = F
+\end{align*}
+Tale fase, detta di \textit{branching}, è giustificata dal fatto che la soluzione ottima del problema è data dalla minima
+tra le soluzioni delle varie separazioni $F_i \in F^*$ dette figli di $F$.
+\begin{align*}
+    min \blbrace c\( x\) |\; x \in F \brbrace = min\blbrace min\blbrace c\( x\) | \; x \in F_i \brbrace |\; F_i \in F^* \brbrace
+\end{align*}
+$F^*$ è spesso, anche se non necessariamente, una partizione dell'insieme 
+iniziale $F$. A questo punto, tutti i figli di $F$ vengono aggiunti alla coda dei sottoproblemi da processare.
+
+L'algoritmo procede quindi con il selezionare un sottoproblema $P_i$ dalla coda e risolverne un rilassamento. Si possono presentare quattro casi differenti:
+\begin{itemize}
+\itemsep-0.5em 
+\item Se si trova una soluzione $\in F$ migliore dell'attuale incumbent, quest'ultimo viene 
+sostituito dalla soluzione trovata e si procede con lo studio di un altro sottoproblema.
+\item Se il rilassamento del sottoproblema non ammette soluzione, allora si smette di esplorare l'intero sottoalbero a lui associato 
+nello spazio di ricerca (\textit{pruning by infeasibility}).
+\item Altrimenti, si confronta la soluzione trovata con il valore corrente dell'\textit{upper-bound} dato dall'incumbent; se
+quest'ultimo è minore della soluzione del rilassamento trovata, è possibile anche in questo caso smettere di esplorare il sottoalbero associato al
+sottoproblema corrente, in quanto non può portare ad una soluzione migliore di quella già nota (\textit{pruning by optimality}).
+\item Infine, se non è stato in alcun modo possibile scartare o concludere l'esplorazione del sottoalbero associato a $P_i$, è necessario
+eseguire nuovamente il \textit{branching}, aggiungendo i nuovi sottoproblemi alla lista dei sottoproblemi da processare.
+\end{itemize}
+L'algoritmo prosegue processando sottoproblemi finché la lista di questi non si svuota. Quando ciò avviene, la soluzione
+rappresentata dall'attuale \textit{incumbent} è la soluzione ottima al problema iniziale.
+
+Quella appena descritta rappresenta una formulazione generica dell'algoritmo B\&B. Questa formulazione può essere
+tuttavia specializzata nella risoluzione di problemi MIP in maniera immediata, agendo sulle condizioni che regolano 
+\textit{bounding} e \textit{branching}. Per quanto riguarda il primo, la scelta più diffusa consiste nel considerare
+il rilassamento lineare dei sottoproblemi, rilassando dunque il vincolo di interezza.
+Se la soluzione del rilassamento non è intera, una possibile separazione in sottoproblemi può essere effettuata considerando la partizione:
+\begin{align*}
+x_j \leq \floor*{x_j^*} \vee x_j \geq \ceil*{x_j^*}
+\end{align*}
+\indent
+Infine, è importante notare come, per costruzione, ogni soluzione trovata dall'algoritmo è migliore dell'incumbent e, di conseguenza, 
+l'andamento dell'upper bound del problema decresce fino al raggiungimento della soluzione ottima. A differenza degli upper bound, i lower bound 
+dei singoli sottoproblemi non hanno invece valenza globale. Nonostante ciò, è comunque possibile derivare un lower bound globale considerando il minimo 
+tra tutti i lower bound dei sottoproblemi ancora aperti. Avere a disposizione in qualsiasi momento entrambi i bound del problema, 
+permetta quindi di valutare la bontà della soluzione provvisoria in ogni momento. 
+
+\subsection{Algoritmo Branch and Cut}
+L'algoritmo \textit{branch-and-cut} (B\&C) rappresenta una versione migliorata dell'algoritmo branch-and-bound, introdotta nel 1987
+da M. Padberg e G. Rinaldi \cite{PADBERG19871} e ideata appositamente per la risoluzione di problemi MIP. 
+
+L'algoritmo branch-and-cut è un ibrido tra branch-and-bound, trattato nella sezione precedente, e un algoritmo
+a piani di taglio puro, in cui la soluzione è viene ottenuta mediante raffinazioni progressive dello spazio delle soluzioni attraverso la
+progressiva aggiunti di vincoli.
+Queste due tecniche si rafforzano a vicenda, contribuendo al raggiungimento di prestazioni complessive superiori a quelle
+che otterrebbe ciascuna di esse singolarmente.
+
+L'idea alla base di questo algoritmo è quella di "rafforzare", per ogni sotto-problema, la formulazione associata al suo rilassamento
+lineare mediante la generazione di piani di taglio. I vantaggi a livello risolutivo sono diversi, tra cui una maggior probabilità di
+ottenere soluzioni intere del rilassamento lineare o, in alternativa, di ottenere lower bound più stretti e pertanto più efficienti in 
+fase di pruning. 
+
+Nonostante l'idea alla base di questo approccio sia relativamente semplice, l'implementazione dell'algoritmo B\&C è tutt'altro che
+banale e richiede l'esistenza di procedure efficienti per la risoluzione del seguente problema di \textsl{separazione}: data una
+soluzione frazionaria {$x^*$}, trovare una diseguaglianza valida $\alpha^Tx\leq \alpha_0$, se esiste, violata da $x^*$, cioè
+tale che $\alpha^Tx^*>\alpha_0$.
+
+\section{Quadratic assignement problem}
