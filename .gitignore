@@ -11,3 +11,5 @@ Document/*.bbl
 Document/*.out
 Document/*.toc
 Document/*.synctex.gz
+Document/*.fdb_latexmk
+Document/*.fls
