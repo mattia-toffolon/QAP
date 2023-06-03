@@ -46,7 +46,7 @@ La programmazione lineare intera restringe quindi notevolmente la tipologia di v
 processo di formalizzazione matematica del problema, determinando una maggior difficoltà in fase di modellazione.
 Tuttavia, nel caso della MIP, questa restrizione non comporta un'eccessiva limitazione sul tipo di 
 problemi formulabili secondo questo paradigma. Alcuni esempi classici di problemi risolvibili mediante MIP sono \textit{knapsack}, problemi di 
-\textit{scheduling}, \textit{minimum vertex cover} e, naturalmente, \textit{quadratic assignemnt problem}.
+\textit{scheduling}, \textit{minimum vertex cover} e, naturalmente, \textit{quadratic assignment problem}.
 Inoltre, l'introduzione dei vincoli di linearità ed interezza comporta notevoli vantaggi nella definizione ed
 implementazione di algoritmi di risoluzione, due dei quali sono stati descritti più nel dettaglio nelle seguenti sezioni.
 
@@ -135,4 +135,12 @@ banale e richiede l'esistenza di procedure efficienti per la risoluzione del seg
 soluzione frazionaria {$x^*$}, trovare una diseguaglianza valida $\alpha^Tx\leq \alpha_0$, se esiste, violata da $x^*$, cioè
 tale che $\alpha^Tx^*>\alpha_0$.
 
-\section{Quadratic assignement problem}
+\section{Quadratic assignment problem}
+I QAP (Quadratic assignment problem), conosciuti anche come \textit{problemi di assegnamento quadratico}, si fondano sulla ricerca
+di un posizionamento ottimale di un dato insieme di unità, anche dette \textit{facilities} in riferimento ai \textit{facility location problems}
+di cui i QAP sono una branca, in un dato insieme di posizioni, anche dette \textit{locations}. Sono noti i flussi di informazione che
+ogni unità deve scambiare con le altre e le distanze tra le varie posizioni. Un posizionamento è ottimo se è minima la somma
+dei prodotti tra distanza fra due posizioni e flusso di informazione tra le unità presenti in tali posizioni. 
+Come provato da S. Sahni e T. Gonzalez nel 1976 \cite{SAHNI1976}, un problema di assegnamento quadratico è di tipo NP-difficile, 
+ciò significa che non esistono algoritmi in grado di trovarne una soluzione in un tempo polinomiale. 
+Inoltre, può essere risolto all'ottimo solo per instanze particolarmente piccole.
