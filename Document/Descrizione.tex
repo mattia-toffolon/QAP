@@ -1,1 +1,66 @@
-Prova
+A seguito di una prima parte teorica introduttiva, si procede in questo capitolo con la presentazione 
+dell'impostazione pratica che si è voluto dare alle sperimentazioni condotte. La struttura secondo la quale verranno esposte 
+le informazioni nei seguenti paragrafi ricalca la partizione logica alla base del codice sviluppato, pragmaticamente diviso 
+in quattro moduli tra loro indipendenti:
+\begin{itemize}
+    \item Generazione dei parametri
+    \item Generazione delle istanze di problemi MIP
+    \item Risoluzione delle istanze di problemi
+    \item Estrazione ed analisi dei risultati
+\end{itemize}
+
+
+
+
+\section{Generazione dei parametri}
+Il primo problema presentatosi è stato quello relativo all'individuamento dei parametri di flusso e distanza, in quanto 
+fondamentali per la creazione di istanze del problema e conseguentemente anche per la loro risoluzione.
+
+La prima possibilità valutata è stata la generazione di valori casuali per comporre le matrici dei parametri $A$ e $B$. 
+Questa però è stato scartata fin da subito poichè utilizzare valori di tale tipologia non permette di fornire una versione 
+pseudo-realistica di istanze del problema ed inoltre, non garantisce alcun tipo di uniformità nella generazione delle istanze, 
+il che non ci permette di effettuare successivamente uno studio approfondito sulla complessità di risoluzione di queste.
+
+La soluzione a questo problema è stata individuata in un articolo del professor Éric D. Taillard del 1995
+\cite{TAILLARD}. Come verrà illustrato più nello specifico nella prossima sezione, il metodo utilizzato è detto Densità di
+grigio, in inglese (\textit{Density of grey}). Esso, oltre a compensare i difetti del metodo di istanziamento casuale, permette
+di automatizzare la creazione delle matrici dei parametri realizzando un algoritmo che richiede ai fini della generazione 
+esclusivamente due valori: dimensione dell'istanza e densità utilizzata.
+
+Per realizzare tale processo è stato fatto uso del linguaggio di programmazione \textit{Python} \cite{python}, come anticipato
+nell'introduzione, e come supporto \textit{NumPy} \cite{NumPy}, una libreria open source che aggiunge supporto a grandi matrici 
+e array multidimensionali insieme a una vasta collezione di funzioni matematiche di alto livello per poter operare efficientemente 
+su queste strutture dati.
+
+\subsection{Istanze Tai*c}
+prova
+
+
+
+
+\section{Generazione delle istanze di problemi MIP}
+prova
+
+\subsection{Modellazione algebrica}
+prova
+
+\subsection{Linearizzazione del modello}
+prova
+
+\subsection{Semplificazione del modello}
+prova
+
+\subsection{Modellazione nel software}
+prova
+
+
+
+
+\section{Risoluzione delle istanze di problemi}
+prova
+
+
+
+
+\section{Estrazione ed analisi dei risultati}
+prova
