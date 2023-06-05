@@ -137,10 +137,20 @@ tale che $\alpha^Tx^*>\alpha_0$.
 
 \section{Quadratic assignment problem}
 I QAP (Quadratic assignment problem), conosciuti anche come \textit{problemi di assegnamento quadratico}, si fondano sulla ricerca
-di un posizionamento ottimale di un dato insieme di unità, anche dette \textit{facilities} in riferimento ai \textit{facility location problems}
-di cui i QAP sono una branca, in un dato insieme di posizioni, anche dette \textit{locations}. Sono noti i flussi di informazione che
-ogni unità deve scambiare con le altre e le distanze tra le varie posizioni. Un posizionamento è ottimo se è minima la somma
-dei prodotti tra distanza fra due posizioni e flusso di informazione tra le unità presenti in tali posizioni. 
+di un posizionamento ottimale di un dato insieme di unità anche dette \textit{facilities}, in riferimento ai \textit{facility location problems}
+di cui i QAP sono una branca, in un dato insieme di posizioni anche dette \textit{locations}. 
 Come provato da S. Sahni e T. Gonzalez nel 1976 \cite{SAHNI1976}, un problema di assegnamento quadratico è di tipo NP-difficile, 
 ciò significa che non esistono algoritmi in grado di trovarne una soluzione in un tempo polinomiale. 
 Inoltre, può essere risolto all'ottimo solo per instanze particolarmente piccole.
+
+Nello specifico, il problema può essere presentato come segue: $n$ unità devono essere assegnate ad $n$ posizioni differenti, sapendo che
+$a_{ij}$ è il flusso di informazioni che deve essere trasferito dall'unità $i$ all'unità $j$ e che la distanza tra le posizioni
+$r$ ed $s$ è pari a $b_{rs}$, si vuole trovare l'assegnamento delle unità nelle posizioni ottimo, ovvero quello che minimizza la somma dei prodotti
+flusso $\times$ distanza. Matematicamente, il problema si può formulare nel seguente modo:
+
+\begin{align*}
+    \min_{\pi \, \in \, P(n)} \sum_{i\,=\,1}^{n} \sum_{j=1}^{n} a_{ij} b_{\pi_{i} \pi_{j}}
+\end{align*}
+
+dove $A=\( a_{ij} \)$ e $B=\( b_{rs} \)$ sone due matrici $n \times n$, $P(n)$ è l'insieme di tutte le possibili permutazioni di
+$\{ 1, 2, ..., n\}$ e $\pi_{i}$ indica la posizione dell'unità $i$ nella permutazione $\pi \in P(n)$.
