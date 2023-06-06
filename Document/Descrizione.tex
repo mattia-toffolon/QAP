@@ -19,23 +19,59 @@ fondamentali per la creazione di istanze del problema e conseguentemente anche p
 La prima possibilità valutata è stata la generazione di valori casuali per comporre le matrici dei parametri $A$ e $B$. 
 Questa però è stato scartata fin da subito poichè utilizzare valori di tale tipologia non permette di fornire una versione 
 pseudo-realistica di istanze del problema ed inoltre, non garantisce alcun tipo di uniformità nella generazione delle istanze, 
-il che non ci permette di effettuare successivamente uno studio approfondito sulla complessità di risoluzione di queste.
+il che non ci permette di effettuare successivamente uno studio approfondito sulla loro complessità di risoluzione.
 
-La soluzione a questo problema è stata individuata in un articolo del professor Éric D. Taillard del 1995
+La soluzione a questo problema è stata individuata in un metodo illustrato in un articolo del professor Éric D. Taillard del 1995
 \cite{TAILLARD}. Come verrà illustrato più nello specifico nella prossima sezione, il metodo utilizzato è detto Densità di
 grigio, in inglese (\textit{Density of grey}). Esso, oltre a compensare i difetti del metodo di istanziamento casuale, permette
 di automatizzare la creazione delle matrici dei parametri realizzando un algoritmo che richiede ai fini della generazione 
 esclusivamente due valori: dimensione dell'istanza e densità utilizzata.
 
-Per realizzare tale processo è stato fatto uso del linguaggio di programmazione \textit{Python} \cite{python}, come anticipato
-nell'introduzione, e come supporto \textit{NumPy} \cite{NumPy}, una libreria open source che aggiunge supporto a grandi matrici 
+Come anticipato nell'introduzione, per realizzare tale processo è stato fatto uso del linguaggio di programmazione \textit{Python} 
+\cite{python} e come supporto \textit{NumPy} \cite{NumPy}, una libreria open source che aggiunge supporto a grandi matrici 
 e array multidimensionali insieme a una vasta collezione di funzioni matematiche di alto livello per poter operare efficientemente 
 su queste strutture dati.
 
 \subsection{Istanze Tai*c}
-prova
+Le istanze Tai*C, la cui denominazione deriva dal nome del loro ideatore, sono una particolare classe di problemi di assegnamento quadratico
+che si fondano sull'utilizzo del metodo di Densità di grigio, il quale può essere descritto nel seguente modo.
 
+Al fine di ottenere una tonalità di grigio di densità pari a $m/n$ , il metodo in questione consiste nel generare una griglia 
+rettangolare contenente $n = n_1 \times n_2$ caselle quadrate, $m$ delle quali sono nere e $n-m$ sono bianche. 
+Giustapponendo molte di queste griglie è possibile ottenere una superficie grigia di gradazione pari a $m/n$.
+Per ottenere la miglior qualità di colore, è necessario che le caselle nere, o quelle bianche, siano sparse uniformemente nella griglia.
 
+Per rendere al meglio l'idea che sta alla base del metodo, è possibile paragonare le caselle nere a degli elettroni e la griglia 
+allo spazio accessibile agli elettroni. Il posizionamente di quest'ultimi deve essere effettuato in modo tale che la somma delle 
+intensità delle forze di repulsione elettrostatica è minimizzata.
+
+Nei problemi considerati, le forze $f_{rstu}$ $\(r,t \in \[1,n_1\] \; s,u \in \[1,n_2\]\)$ presenti tra le caselle $i$ e $j$
+locate rispettivamente nelle posizioni della griglia di coordinate $\(r,s\)$ e $\(t,u\)$ sono definite come segue:
+\begin{align*}
+    f_{rstu} \, = \, \max_{v,w \,\in\, \{-1,0,1\}} \frac{1}{\(r-t+n_1 v\)^2 + \(s-u+n_2 w\)^2}
+\end{align*}
+
+Per ottenere una densità di grigio pari a $m/n$ è possibile risolvere un problema di tipo $QAP$ (assegnamento quadratico) in cui 
+i parametri sono definiti nel seguente modo.
+\begin{align*}
+    a_{ij} \, = \, \begin{cases} 1 & \mbox{if } i \leq m \mbox{ and } j \leq m \\ 0 & \mbox{otherwise} \end{cases} 
+    \qquad \;\;
+    b_{ij} \,=\, b_{\; n_2 \(r-1\)+s \;\; n_2\(t-1\)+u} \,=\, f_{rstu}
+\end{align*}
+
+La $i$-esima componente $\(i\leq m\)$ di una soluzione $\pi$, $\pi_i = \pi_{n_2 \(r-1\)+s}$ fornisce la posizione in cui
+deve essere posizonata una casella nera.
+
+Nonostante la relativa semplicità di questi problemi, molti metodi risolutivi potrebbero non funzionare correttamente a causa 
+dell'esistenza di più soluzioni con lo stesso valore obiettivo. Tali soluzioni posso essere ottenute scambiando la posizione 
+di due caselle nere oppure attuando rotazioni, traslazioni o simmetrie delle caselle nella griglia. Queste tre infatti,
+sono azioni che non mutano il valore della soluzione associata.
+
+Questi problemi sono identificati in letteratura dalla sigla $grey$n$_1\_$n$_2\_$m e sono stati risolti pseudo-ottimamente 
+fino a valori $n_1 = n_2 = 8$. Scegliendo definizioni dei parametri di distanza differenti oppure variando le scelte prese sui 
+valori $n_1$, $n_2$ ed $m$ è possibile ottenere moltissime varianti del problema.
+
+PSEUDOCODICE ALGORITMI !!!
 
 
 \section{Generazione delle istanze di problemi MIP}
