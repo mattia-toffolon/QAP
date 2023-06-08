@@ -41,7 +41,14 @@ rettangolare contenente $n = n_1 \times n_2$ caselle quadrate, $m$ delle quali s
 Giustapponendo molte di queste griglie è possibile ottenere una superficie grigia di gradazione pari a $m/n$.
 Per ottenere la miglior qualità di colore, è necessario che le caselle nere, o quelle bianche, siano sparse uniformemente nella griglia.
 
-IMMAGINI ESEMPIO
+A prova di ciò viene qui riportata un'applicazione del metodo realizzata con una delle soluzioni ottenute.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.21]{images/Density_of_Grey.png}
+    \caption{a sinistra la griglia relativa ad una soluzione ottima di un'istanza \textit{Tai36c} a densità $d=30\%$, 
+             \newline a destra quella ottenuta accostando $1600$ griglie del tipo a sinistra}
+    \label{fig:dnsgry}
+\end{figure}
 
 Per rendere al meglio l'idea che sta alla base del metodo, è possibile paragonare le caselle nere a degli elettroni e la griglia 
 allo spazio accessibile agli elettroni. Il posizionamente di quest'ultimi deve essere effettuato in modo tale che la somma delle 
@@ -82,9 +89,9 @@ Qui di seguito sono riportati gli pseudocodici degli algoritmi in questione insi
 utilizzate all'intero di essi.
 
 \begin{algorithm}
-    \caption{Matrix A generation}\label{euclid}
+    \caption{Matrix A generation}\label{A_gen}
     \begin{algorithmic}[1]
-    \Function{A-generator}{$n$, $n_2$, r, s, t, u}
+    \Function{A-generator}{$n, \,d$}
     \State $* \quad sia\; A = \[a_{ij}\] \quad *$
     \State $m \gets round\(n\cdot \(d/100\)\)$
     \ForAll{$i \in [0,n)$}
@@ -99,12 +106,8 @@ utilizzate all'intero di essi.
     \end{algorithmic}
 \end{algorithm}
 
-Come si può intuire osservando il precedente pseudocodice, nella costruzione del primo algoritmo è stata presa la decisione di 
-esprimere la densità $d$ in punti percentuali, ovvero $d \in \[0,100\]$. Da qui il perchè nel calcolo del valore di $m$ è necessaria 
-la divisione per $100$.
-
 \begin{algorithm}
-    \caption{Matrix B generation}\label{euclid}
+    \caption{Matrix B generation}\label{B_gen}
     \begin{algorithmic}[1]
     \Function{Force}{$n_1,\, n_2,\, r,\, s,\, t,\, u$}
     \State $max \gets 0$
@@ -140,16 +143,22 @@ la divisione per $100$.
     \end{algorithmic}
 \end{algorithm}
 
-Relativamente a quest'ultimo algoritmo sono necessarie alcune puntualizzazioni. Alla riga n°10 si può notare come il valore della distanza 
+Come si può intuire osservando lo pseudocodice del primo algoritmo, nella sua costruzione è stata presa la decisione di 
+esprimere la densità $d$ in punti percentuali, ovvero $d \in \[0,100\]$. Da qui il perchè nel calcolo del valore di $m$ è necessaria 
+la divisione per $100$.
+
+Relativamente al secondo algoritmo invece, sono necessarie alcune puntualizzazioni. Alla riga n°10 si può notare come il valore della distanza 
 calcolata tramite la funzione \textit{Force} non avviene direttamente ma vengono effettuate delle operazioni intermedie. Come prima cosa 
 il valore ritornato dalla funzione viene scalato di un fattore \textit{scale} pari a $100000$ e successivamente viene arrotondato all'intero 
 più vicino. In tale modo è stato possibile confrontare le matrici ottenute, nello specifico la \textit{Tai64c} e la \textit{Tai256c}, 
 con quelle messe a disposizione dal sito web \textit{QAPLIB} \cite{QAPLIB}, una libreria online contenente diverse tipologie di istanze 
 di prolemi di assegnamento quadratico tra cui la \textit{Tai*c}. Quest'operazione ha permesso in fase di costruzione dell'algoritmo di 
-garantirne la correttezza.
+garantirne la correttezza. All riga n°21 invece, si sfrutta la proprietà di simmetria della matrice $B$ per risparmiare 
+metà dei calcoli dei valori di distanza, riducendo così la complessità temporale dell'algoritmo. Si ricorda infatti che, date due unità 
+qualsiasi, la distanza della prima dalla seconda è la medesima della seconda dalla prima.
 
 Come si può notare sono state utilizzate due funzioni di cui non è stato riportato lo pseudocodice, \textit{max} e \textit{round}.
-Questo perchè sono due funzioni elementari messe a disposizione della libreria standard di \textit{Python} \cite{python} il cui 
+Questo perchè sono due funzioni elementari messe a disposizione della libreria standard di \textit{Python} \cite{python} di cui il 
 funzionamento è noto. La prima richiede due valori come parametri e ritorna il massimo tra questi mentre la seconda ritorna 
 l'arrotondamento all'intero più vicino del numero fornito come parametro.
 
