@@ -11,6 +11,7 @@ in quattro moduli tra loro indipendenti:
 
 
 
+%----------------------------------NEW SECTION
 
 \section{Generazione dei parametri}
 Il primo problema presentatosi è stato quello relativo all'individuamento dei parametri di flusso e distanza, in quanto 
@@ -162,11 +163,69 @@ Questo perchè sono due funzioni elementari messe a disposizione della libreria 
 funzionamento è noto. La prima richiede due valori come parametri e ritorna il massimo tra questi mentre la seconda ritorna 
 l'arrotondamento all'intero più vicino del numero fornito come parametro.
 
+
+
+%----------------------------------NEW SECTION
+\newpage
 \section{Generazione delle istanze di problemi MIP}
-prova
+Terminata la generazione delle matrici dei parametri, costituenti il \textit{dataset} grezzo alla base di questo lavoro, è stato necessario ricavare a 
+partire da ciascuna coppia di matrici $A$ e $B$ il corrispondente problema di programmazione lineare intera di assegnamento quadratico. Per fare questo è stato 
+inizialmente necessario ricavare una modellazione algebrica del problema stesso, definendo variabili, vincoli e funzione obiettivo con cui 
+rappresentarlo formalmente. Come sarà possibile vedere successivamente, a tale modello è stato necessario apportare diverse modifiche per renderlo
+prima corretto e poi anche ottimizzato. Solo in un secondo momento è stato quindi possibile procedere con l'implementazione del modello nel software 
+e la costruzione delle singole istanze, mediante l'ausilio di un'apposita libreria Python.
 
 \subsection{Modellazione algebrica}
-prova
+Un \textit{modello algebrico} di un problema di programmazione lineare intera è un modello che descrive le caratteristiche della soluzione 
+ottima al problema mediante relazioni matematiche \cite{rop}. Un modello algebrico è composto dai seguenti elementi:
+\begin{itemize}
+\item \textsl{insiemi}, che racchiudono gli elementi del sistema permettendo l'indicizzazione delle grandezze trattate nel problema
+\item \textsl{parametri}, ossia quantità costanti e definite nella formulazione del problema stesso, che solitamente sono delle proprietà relative agli insiemi definiti precedentemente
+\item \textsl{variabili}, ossia le grandezze incognite del sistema, su cui l'algoritmo può agire (nei limiti imposti dai vincoli dal loro dominio) per ottimizzare il valore della soluzione
+\item \textsl{vincoli}, ossia relazioni matematiche che permettono di verificare l'ammissibilità delle soluzioni e, di conseguenza, definire quali assegnazioni alle variabili sono accettabili nel contesto del problema e quali invece non lo sono
+\item \textsl{funzione obiettivo}, che permette la traduzione di una soluzione del problema in un valore numerico, rendendone possibile di conseguenza l'ottimizzazione
+\end{itemize}
+
+Un modello algebrico di un problema di programmazione lineare permette quindi la definizione in forma dichiarativa delle caratteristiche della soluzione cercata, 
+piuttosto che definire una strategia con cui eseguire la ricerca della soluzione stessa. Un modello di programmazione matematica potrebbe essere quindi paragonato 
+ad un linguaggio dichiarativo, che descrive il risultato che si vuole ottenere, piuttosto che ad un linguaggio procedurale, che indica invece la sequenza di passi 
+da percorrere per arrivare a quel risultato.
+
+Durante la fase di modellazione formale del problema viene persa parte della potenza descrittiva caratteristica del linguaggio naturale, a vantaggio però della 
+possibilità di utilizzare algoritmi particolarmente efficienti nella risoluzione dello stesso, che possono essere applicati solo quando il problema è definito in questa forma.
+
+//DA CAMBIARE !!
+
+La modellazione algebrica non è stata, nel caso del problema analizzato in questo lavoro, particolarmente onerosa.
+
+\noindent
+Per prima cosa sono stati identificati gli insiemi del problema, ovvero
+\begin{align*}
+V \,  : \, \mbox{insieme dei vertici del grafo}\\
+E \, : \, \mbox{insieme degli archi del grafo}
+\end{align*}
+Successivamente, è stato necessario identificare i parametri del problema. Avendo studiato la formulazione \textit{unweighted} del problema di vertex cover, in cui tutti i vertici hanno un peso associato $c_v=1$, non è stato necessario definire alcun parametro.  Infine sono state definite le variabili del problema, indicizzate dall'insieme dei vertici $V$
+\begin{align*}
+x_v = \begin{cases}  1 & \mbox{se il vertice } v \in V \mbox{ è compreso nel vertex cover} \\ 0 & \mbox{altrimenti} \end{cases}
+\end{align*}
+In questo caso il vincolo imposto dal problema è uno solo, ossia che almeno uno dei due vertici collegati da un arco sia presente nel vertex cover, per ognuno degli archi del grafo. Questo vincolo può essere rappresentato in forma dichiarativa mediante le variabili e gli insiemi precedentemente definiti come
+\begin{align*}
+x_u + x_v \geq 1 \quad \forall (u,v) \in E,  u \in V, v \in V
+\end{align*}
+La definizione della funzione obiettivo $f(x)$, che dovrà essere minimizzata dal risolutore,  viene a questo punto naturale
+\vspace{-0.5cm}
+\begin{align*}
+f(x) = \sum_{v \in V} x_v
+\end{align*}
+Il modello algebrico del problema di programmazione lineare del minimo vertex cover può quindi essere complessivamente definito come 
+\begin{align}
+    \label{eq:mipprob}
+	\begin{array}{l}
+      min\, (\sum_{v \in V} x_v)\\
+      x_u + x_v \geq 1  \qquad \forall (u,v) \in E,  u \in V, v \in V \\
+      x_v \in {0,1}  \qquad \forall v \in V 
+    \end{array}
+\end{align}
 
 \subsection{Linearizzazione del modello}
 prova
@@ -180,11 +239,15 @@ prova
 
 
 
+%----------------------------------NEW SECTION
+
 \section{Risoluzione delle istanze di problemi}
 prova
 
 
 
+
+%----------------------------------NEW SECTION
 
 \section{Estrazione ed analisi dei risultati}
 prova
