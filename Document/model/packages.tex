@@ -44,7 +44,12 @@
 \usepackage{graphbox}
 
 % pseudocodice 
-\usepackage[ruled,vlined, spanish]{algorithm2e}
+% \usepackage[ruled,vlined, spanish]{algorithm2e}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
 
 % conversione immagini vettoriali
 \usepackage{epstopdf}

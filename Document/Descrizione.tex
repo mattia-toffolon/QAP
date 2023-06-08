@@ -41,6 +41,8 @@ rettangolare contenente $n = n_1 \times n_2$ caselle quadrate, $m$ delle quali s
 Giustapponendo molte di queste griglie è possibile ottenere una superficie grigia di gradazione pari a $m/n$.
 Per ottenere la miglior qualità di colore, è necessario che le caselle nere, o quelle bianche, siano sparse uniformemente nella griglia.
 
+IMMAGINI ESEMPIO
+
 Per rendere al meglio l'idea che sta alla base del metodo, è possibile paragonare le caselle nere a degli elettroni e la griglia 
 allo spazio accessibile agli elettroni. Il posizionamente di quest'ultimi deve essere effettuato in modo tale che la somma delle 
 intensità delle forze di repulsione elettrostatica è minimizzata.
@@ -71,8 +73,85 @@ Questi problemi sono identificati in letteratura dalla sigla $grey$n$_1\_$n$_2\_
 fino a valori $n_1 = n_2 = 8$. Scegliendo definizioni dei parametri di distanza differenti oppure variando le scelte prese sui 
 valori $n_1$, $n_2$ ed $m$ è possibile ottenere moltissime varianti del problema.
 
-PSEUDOCODICE ALGORITMI !!!
+A questo punto è possibile sfruttare le definizioni degli elementi che caratterizzano questo modello, per realizzare degli algoritmi 
+che generino la matrice dei flussi $A$ e quella delle distanze $B$ sulla base dei soli tre parametri richiesti, le dimensioni $n_1$ e $n_2$ 
+(si ricorda queste sono in relazione con la dimensione dell'istanza $n$ nel seguente modo: $n=n_1\times n_2$) e la densità di grigio 
+utilizzata $d$. 
 
+Qui di seguito sono riportati gli pseudocodici degli algoritmi in questione insieme a quello delle eventuali funzioni che sono state 
+utilizzate all'intero di essi.
+
+\begin{algorithm}
+    \caption{Matrix A generation}\label{euclid}
+    \begin{algorithmic}[1]
+    \Function{A-generator}{$n$, $n_2$, r, s, t, u}
+    \State $* \quad sia\; A = \[a_{ij}\] \quad *$
+    \State $m \gets round\(n\cdot \(d/100\)\)$
+    \ForAll{$i \in [0,n)$}
+    \ForAll{$j \in [0,n)$}
+        \If{$i<m \;\text{or}\; j<m$} \State $a_{ij} \gets 1$
+        \Else \State $a_{ij} \gets 0$
+        \EndIf
+    \EndFor
+    \EndFor
+    \Return $A$
+    \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+Come si può intuire osservando il precedente pseudocodice, nella costruzione del primo algoritmo è stata presa la decisione di 
+esprimere la densità $d$ in punti percentuali, ovvero $d \in \[0,100\]$. Da qui il perchè nel calcolo del valore di $m$ è necessaria 
+la divisione per $100$.
+
+\begin{algorithm}
+    \caption{Matrix B generation}\label{euclid}
+    \begin{algorithmic}[1]
+    \Function{Force}{$n_1,\, n_2,\, r,\, s,\, t,\, u$}
+    \State $max \gets 0$
+    \ForAll{$v \in \{-1, 0, 1\}$}
+    \ForAll{$w \in \{-1, 0, 1\}$}
+        \State $m \gets 1\,/\(\(r-t+n_1 v\)^2 + \(s-u+n_2 w\)^2\)$
+        \State $max \gets \max \(max, m\)$
+    \EndFor
+    \EndFor
+    \Return $max$
+    \EndFunction
+    \BState
+    \Function{B-generator}{$n_1,\, n_2$}
+    \State $* \quad sia\; B = \[b_{ij}\] \,con \;valori \;inizializzati \;a \;zero \quad *$
+    \State $scale \gets 100000$
+    \ForAll{$r \in [0,n_1)$}
+    \ForAll{$s \in [0,n_2)$}
+    \ForAll{$t \in [0,n_1)$}
+    \ForAll{$u \in [0,n_2)$}
+        \State $i \gets n_2 \cdot \(r-1\)+s$
+        \State $j \gets n_2 \cdot \(t-1\)+u$
+        \If{$b_{ij} \, \neq \, 0$} \State continue
+        \Else 
+            \State $b_{ij} \gets \text{round} \(\text{Force}\(n_1,n_2,r,s,t,u\)\cdot scale\)$
+            \State $b_{ji} \gets b_{ij}$
+        \EndIf
+    \EndFor
+    \EndFor
+    \EndFor
+    \EndFor
+    \Return $B$
+    \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+Relativamente a quest'ultimo algoritmo sono necessarie alcune puntualizzazioni. Alla riga n°10 si può notare come il valore della distanza 
+calcolata tramite la funzione \textit{Force} non avviene direttamente ma vengono effettuate delle operazioni intermedie. Come prima cosa 
+il valore ritornato dalla funzione viene scalato di un fattore \textit{scale} pari a $100000$ e successivamente viene arrotondato all'intero 
+più vicino. In tale modo è stato possibile confrontare le matrici ottenute, nello specifico la \textit{Tai64c} e la \textit{Tai256c}, 
+con quelle messe a disposizione dal sito web \textit{QAPLIB} \cite{QAPLIB}, una libreria online contenente diverse tipologie di istanze 
+di prolemi di assegnamento quadratico tra cui la \textit{Tai*c}. Quest'operazione ha permesso in fase di costruzione dell'algoritmo di 
+garantirne la correttezza.
+
+Come si può notare sono state utilizzate due funzioni di cui non è stato riportato lo pseudocodice, \textit{max} e \textit{round}.
+Questo perchè sono due funzioni elementari messe a disposizione della libreria standard di \textit{Python} \cite{python} il cui 
+funzionamento è noto. La prima richiede due valori come parametri e ritorna il massimo tra questi mentre la seconda ritorna 
+l'arrotondamento all'intero più vicino del numero fornito come parametro.
 
 \section{Generazione delle istanze di problemi MIP}
 prova
