@@ -148,7 +148,7 @@ Come si può intuire osservando lo pseudocodice del primo algoritmo, nella sua c
 esprimere la densità $d$ in punti percentuali, ovvero $d \in \[0,100\]$. Da qui il perchè nel calcolo del valore di $m$ è necessaria 
 la divisione per $100$.
 
-Relativamente al secondo algoritmo invece, sono necessarie alcune puntualizzazioni. Alla riga n°10 si può notare come il valore della distanza 
+Relativamente al secondo algoritmo invece, sono necessarie alcune puntualizzazioni. Alla riga n°20 si può notare come il valore della distanza 
 calcolata tramite la funzione \textit{Force} non avviene direttamente ma vengono effettuate delle operazioni intermedie. Come prima cosa 
 il valore ritornato dalla funzione viene scalato di un fattore \textit{scale} pari a $100000$ e successivamente viene arrotondato all'intero 
 più vicino. In tale modo è stato possibile confrontare le matrici ottenute, nello specifico la \textit{Tai64c} e la \textit{Tai256c}, 
@@ -173,13 +173,13 @@ partire da ciascuna coppia di matrici $A$ e $B$ il corrispondente problema di pr
 inizialmente necessario ricavare una modellazione algebrica del problema stesso, definendo variabili, vincoli e funzione obiettivo con cui 
 rappresentarlo formalmente. Come sarà possibile vedere successivamente, a tale modello è stato necessario apportare diverse modifiche per renderlo
 prima corretto e poi anche ottimizzato. Solo in un secondo momento è stato quindi possibile procedere con l'implementazione del modello nel software 
-e la costruzione delle singole istanze, mediante l'ausilio di un'apposita libreria Python.
+e la costruzione delle singole istanze, facendo uso di un'apposita libreria Python.
 
 \subsection{Modellazione algebrica}
 Un \textit{modello algebrico} di un problema di programmazione lineare intera è un modello che descrive le caratteristiche della soluzione 
 ottima al problema mediante relazioni matematiche \cite{rop}. Un modello algebrico è composto dai seguenti elementi:
 \begin{itemize}
-\item \textsl{insiemi}, che racchiudono gli elementi del sistema permettendo l'indicizzazione delle grandezze trattate nel problema
+\item \textsl{insiemi}, i quali racchiudono gli elementi del sistema permettendo l'indicizzazione delle grandezze trattate nel problema
 \item \textsl{parametri}, ossia quantità costanti e definite nella formulazione del problema stesso, che solitamente sono delle proprietà relative agli insiemi definiti precedentemente
 \item \textsl{variabili}, ossia le grandezze incognite del sistema, su cui l'algoritmo può agire (nei limiti imposti dai vincoli dal loro dominio) per ottimizzare il valore della soluzione
 \item \textsl{vincoli}, ossia relazioni matematiche che permettono di verificare l'ammissibilità delle soluzioni e, di conseguenza, definire quali assegnazioni alle variabili sono accettabili nel contesto del problema e quali invece non lo sono
@@ -194,17 +194,25 @@ da percorrere per arrivare a quel risultato.
 Durante la fase di modellazione formale del problema viene persa parte della potenza descrittiva caratteristica del linguaggio naturale, a vantaggio però della 
 possibilità di utilizzare algoritmi particolarmente efficienti nella risoluzione dello stesso, che possono essere applicati solo quando il problema è definito in questa forma.
 
-//DA CAMBIARE !!
-
-La modellazione algebrica non è stata, nel caso del problema analizzato in questo lavoro, particolarmente onerosa.
+Come si vedrà nel prosieguo della trattazione, nel caso del problema analizzato in questo lavoro la modellazione algebrica non è stata di immediata risoluzione.
 
 \noindent
 Per prima cosa sono stati identificati gli insiemi del problema, ovvero
 \begin{align*}
-V \,  : \, \mbox{insieme dei vertici del grafo}\\
-E \, : \, \mbox{insieme degli archi del grafo}
+I \, &: \, \mbox{insieme delle unità (\textit{locations})}\\
+U \, &: \, \mbox{insieme delle posizioni (\textit{facilities})}
 \end{align*}
-Successivamente, è stato necessario identificare i parametri del problema. Avendo studiato la formulazione \textit{unweighted} del problema di vertex cover, in cui tutti i vertici hanno un peso associato $c_v=1$, non è stato necessario definire alcun parametro.  Infine sono state definite le variabili del problema, indicizzate dall'insieme dei vertici $V$
+Per quanto riguarda l'identificazione dei parametri, quest'operazione è già stata trattata nella sezione precedente e rappresenta le 
+fondamenta su cui l'istanze del problema vengono costruite. Facendo uso degli algoritmi appositamente costruiti è possibile ottenere 
+tutti i parametri necessari in forma matriciale del tipo:
+\begin{align*}
+A = \[a_{uv}\] \quad & \mbox{con} \; a_{uv} : \, \mbox{flusso dall'unità \textit{u} all'unità \textit{v}} \\
+B = \[b_{ij}\] \quad & \mbox{con} \; b_{ij} : \, \mbox{distanza dalla posizione \textit{i} alla posizione \textit{j}}
+\end{align*}
+
+CAMBIAREE
+
+Infine sono state definite le variabili del problema, indicizzate dall'insieme dei vertici $V$
 \begin{align*}
 x_v = \begin{cases}  1 & \mbox{se il vertice } v \in V \mbox{ è compreso nel vertex cover} \\ 0 & \mbox{altrimenti} \end{cases}
 \end{align*}
