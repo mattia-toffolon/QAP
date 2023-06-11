@@ -29,15 +29,16 @@ particolari da poter sfruttare.
 Uno dei casi particolari della formulazione generale di problema di ottimizzazione (\ref{eq:opt}) è quello della programmazione lineare intera.
 Un problema di programmazione lineare intera consiste nella minimizzazione (o massimizzazione) di una funzione lineare soggetta ad un 
 numero finito di vincoli lineari, con in aggiunta il vincolo che alcune delle variabili del problema debbano assumere valori interi. 
-In generale, il problema può quindi essere riformulato come:
-\begin{align*}
+In generale, il problema può quindi essere riformulato come: 
+\begin{align}
+    \label{eq:mip}
 	\begin{array}{l}
       \text{min} \, cx\\
       a_i x \sim b_i \qquad\qquad i=1,...,m \\
       l_j \leq x_j \leq u_j \qquad j=1,...,n =N \\
       x_j \in \mathbb{Z}  \;\,\qquad\qquad \forall j \in J \subseteq N = {1,...,n}	
 	\end{array}
-\end{align*}
+\end{align}
 \indent
 Se $J=N$ si parla di programmazione lineare intera pura, altrimenti di programmazione lineare intera mista (o MIP, dall'inglese 
 \textit{Mixed Integer Programming}).

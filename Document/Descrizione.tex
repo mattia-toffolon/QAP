@@ -210,33 +210,40 @@ A = \[a_{uv}\] \quad & \mbox{con} \; a_{uv} : \, \mbox{flusso dall'unità \texti
 B = \[b_{ij}\] \quad & \mbox{con} \; b_{ij} : \, \mbox{distanza dalla posizione \textit{i} alla posizione \textit{j}}
 \end{align*}
 
-CAMBIAREE
+Per quanto concerne le variabili del problema, queste sono indicizzate dall'insieme delle unità $I$ e da quello delle posizioni $U$ e la loro definizione è la seguente:
+\begin{align*}
+x_{iu} = \begin{cases}  1 & \mbox{se l'unità } i \in I \mbox{ è stata assegnata alla posizione } u \in U\\ 0 & \mbox{altrimenti} \end{cases}
+\end{align*}
+È stato inoltre necessario definire due vincoli per assicurare la correttezza della soluzione trovata. Il primo garantisce che ogni unità venga assagnata ad esattamente una posizione e il secondo invece, che ogni posizione sia asseganta ad esattamente un'unità.
+\begin{align*}
+    \sum_{i\in I} x_{iu} = 1 \quad & \forall u \in U \\
+    \sum_{u\in U} x_{iu} = 1 \quad & \forall i \in I
+\end{align*}
 
-Infine sono state definite le variabili del problema, indicizzate dall'insieme dei vertici $V$
+Infine, la funzione obiettivo $f(x)$, che dovrà essere minimizzata dal risolutore, viene definita come segue.
 \begin{align*}
-x_v = \begin{cases}  1 & \mbox{se il vertice } v \in V \mbox{ è compreso nel vertex cover} \\ 0 & \mbox{altrimenti} \end{cases}
+    f\(x\) \, = \, \min \, \sum_{i\in I} \sum_{u\in U} \sum_{j\in I} \sum_{v\in U} \, a_{uv}\cdot b_{ij}\cdot x_{iu}\cdot x_{jv}
 \end{align*}
-In questo caso il vincolo imposto dal problema è uno solo, ossia che almeno uno dei due vertici collegati da un arco sia presente nel vertex cover, per ognuno degli archi del grafo. Questo vincolo può essere rappresentato in forma dichiarativa mediante le variabili e gli insiemi precedentemente definiti come
-\begin{align*}
-x_u + x_v \geq 1 \quad \forall (u,v) \in E,  u \in V, v \in V
-\end{align*}
-La definizione della funzione obiettivo $f(x)$, che dovrà essere minimizzata dal risolutore,  viene a questo punto naturale
-\vspace{-0.5cm}
-\begin{align*}
-f(x) = \sum_{v \in V} x_v
-\end{align*}
-Il modello algebrico del problema di programmazione lineare del minimo vertex cover può quindi essere complessivamente definito come 
+
+Il modello algebrico del problema di assegnamento quadratico ricavato, può dunque essere complessivamente definito nel seguente modo: 
 \begin{align}
-    \label{eq:mipprob}
+    \label{eq:mipqap}
 	\begin{array}{l}
-      min\, (\sum_{v \in V} x_v)\\
-      x_u + x_v \geq 1  \qquad \forall (u,v) \in E,  u \in V, v \in V \\
-      x_v \in {0,1}  \qquad \forall v \in V 
+      \min \, \sum_{i\in I} \sum_{u\in U} \sum_{j\in I} \sum_{v\in U} \, a_{uv}\cdot b_{ij}\cdot x_{iu}\cdot x_{jv} \\
+      \sum_{i\in I} \; x_{iu} = 1  \qquad \forall u \in U \\
+      \sum_{u\in U} x_{iu} = 1     \qquad \forall i \in I \\
+      x_{iu} \in \{0,1\}
     \end{array}
 \end{align}
 
+
 \subsection{Linearizzazione del modello}
-prova
+Come è possibile notare, il modello algebrico ricavato precedentemente (\ref{eq:mipqap}) non rispetta completamente i canoni della 
+formulazione dei problemi di programmazione lineare intera (\ref{eq:mip}). Ai fini della risoluzione del problema, è necessario 
+ricondurre il modello in oggetto alla formulazione \textit{MIP} apportando le modifiche necessarie.
+
+Nello specifico il problema risiede nella funzione obiettivo. Come lascia intuire il nome, la programmazione lineare intera esige 
+un funzione obiettivo lineare, mentre nel modello in questione è presente un prodotto fra incognite.
 
 \subsection{Semplificazione del modello}
 prova
