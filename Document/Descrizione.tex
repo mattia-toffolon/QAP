@@ -239,11 +239,64 @@ Il modello algebrico del problema di assegnamento quadratico ricavato, può dunq
 
 \subsection{Linearizzazione del modello}
 Come è possibile notare, il modello algebrico ricavato precedentemente (\ref{eq:mipqap}) non rispetta completamente i canoni della 
-formulazione dei problemi di programmazione lineare intera (\ref{eq:mip}). Ai fini della risoluzione del problema, è necessario 
-ricondurre il modello in oggetto alla formulazione \textit{MIP} apportando le modifiche necessarie.
+formulazione dei problemi di programmazione lineare intera (\ref{eq:mip}). Ai fini della risoluzione del problema, è dunque necessario 
+ricondurre il modello in oggetto alla formulazione \textit{MIP} apportando alcune modifiche necessarie.
 
-Nello specifico il problema risiede nella funzione obiettivo. Come lascia intuire il nome, la programmazione lineare intera esige 
-un funzione obiettivo lineare, mentre nel modello in questione è presente un prodotto fra incognite.
+Nello specifico il problema risiede nella funzione obiettivo. Come lascia intuire il nome, la programmazione lineare 
+intera esige un funzione obiettivo lineare, mentre in quella del modello in questione è presente il prodotto fra incognite 
+$\(x_{iu}\cdot x_{jv}\)$ che la rende non lineare.
+
+Il problema è stato risolto effettuando un'operazione di linearizzazione. Tale processo consiste nell'introduzione di una variabile
+$y_{iujv}$ che vada a sostituire il prodotto fra variabili, rendendo così lineare la funzione obiettivo.
+
+\noindent
+Tale variabile è stata definita nel seguente modo:
+\begin{align*}
+    y_{iujv} \, = \, x_{iu}\cdot x_{jv}
+\end{align*}
+Tuttavia, affinchè questa variabile sia consistente con i valori delle variabili $x_{iu}$ e $x_{jv}$ che la definiscono è stato necessario 
+introdurre tre ulteriori vincoli.
+\begin{align*}
+    y_{iujv} \,& \leq \, x_{iu}   \;\;\;\qquad \forall \; i,j \in I ,\; u,v \in U \\ 
+    y_{iujv} \,& \leq \, x_{jv}   \;\;\;\qquad \forall \; i,j \in I ,\; u,v \in U \\
+    y_{iujv} \,& \geq \, x_{iu} + x_{jv} - 1 \qquad \forall \; i,j \in I ,\; u,v \in U 
+\end{align*}
+I vincoli sopra elencati garantiscono che la variabile $y_{iujv}$ assuma valore $1$ se e solamente se entrambe le variabili 
+$x_{iu}$ e $x_{jv}$ assumono valore $1$. Nel caso in cui anche solo una di esse dovesse assumere valore $0$, anche $y_{iujv}$ 
+assumerebbe valore $0$.
+
+Pragmaticamente, la variabile qui introdotta indica se l'unità $i$ è stata assegnata alla posizione $u$ e contemporaneamente 
+l'unità $j$ è stata assegnata alla posizione $v$ o meno.
+
+Tenendo conto delle nuove modifiche e l'aggiunta dei nuovi vincoli, il modello complessivo corrisponde al seguente.
+\begin{align}
+    \label{eq:mipqaplin}
+	\begin{array}{l}
+      \min \, \sum_{i\in I} \sum_{u\in U} \sum_{j\in I} \sum_{v\in U} \, a_{uv}\cdot b_{ij}\cdot y_{iujv} \\
+      \sum_{i\in I} \; x_{iu} = 1  \qquad \forall u \in U \\
+      \sum_{u\in U} x_{iu} = 1     \qquad \forall i \in I \\
+      y_{iujv} \, \leq \, x_{iu}   \;\;\;\qquad \forall \; i,j \in I ,\; u,v \in U \\ 
+      y_{iujv} \, \leq \, x_{jv}   \;\;\;\qquad \forall \; i,j \in I ,\; u,v \in U \\
+      y_{iujv} \, \geq \, x_{iu} + x_{jv} - 1      \qquad \forall \; i,j \in I ,\; u,v \in U  \\
+      x_{iu} ,\, y_{iujv} \in \{0,1\}   \;\,\,\quad\qquad \forall \; i,j \in I ,\; u,v \in U
+    \end{array}
+\end{align}
+A questo punto della trattazione è doveroso effettuare un'importante osservazione. Come si può notare la variabile principale 
+presente nella funzione obiettivo, ovvero quella introdotta in questa sezione, è indicizzata da quattro elementi tutti appartenenti 
+a insiemi caratterizzati dalla medesima cardinalità, che per praticità indicheremo con la lettera \textit{n}. 
+
+Ciò implica che dato \textit{n}, numero totale delle posizioni e delle unità, vanno prese in esame $n^4$ variabili differenti 
+e, come è facilmente intuibile, questo comporta pesanti conseguenze a livello di complessità computazionale nella risoluzione 
+del problema. Si riportano qui di seguito alcuni esempi che evidenziano la questione.
+\begin{align*}
+    n=4  \;\;&\Rightarrow\;\; \mbox{n° variabili} = 4^4 = 256 \\
+    n=9  \;\;&\Rightarrow\;\; \mbox{n° variabili} = 9^4 = 6561 \\
+    n=16 \;\;&\Rightarrow\;\; \mbox{n° variabili} = 16^4 = 65536
+\end{align*}
+Nonostate la potenza computazionale non indifferente dell'hardware che è stato messo a dispozione per effettuare gli esperimenti, 
+questo rapporto tra numero di variabili e cardinalità degli insiemi non permette di spingersi molto in avanti con la dimensione delle 
+istanze nelle sperimentazioni. Senza apportare alcuna semplificazione al modello, non sarebbe stato possibile raccogliere dati a 
+sufficienza per realizzare uno studio approfondito.
 
 \subsection{Semplificazione del modello}
 prova
