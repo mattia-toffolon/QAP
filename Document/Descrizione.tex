@@ -14,6 +14,7 @@ in quattro moduli tra loro indipendenti:
 %----------------------------------NEW SECTION
 
 \section{Generazione dei parametri}
+\label{sec:pargen}
 Il primo problema presentatosi è stato quello relativo all'individuamento dei parametri di flusso e distanza, in quanto 
 fondamentali per la creazione di istanze del problema e conseguentemente anche per la loro risoluzione.
 
@@ -34,6 +35,7 @@ e array multidimensionali insieme a una vasta collezione di funzioni matematiche
 su queste strutture dati.
 
 \subsection{Istanze Tai*c}
+\label{subsec:taic}
 Le istanze Tai*C, la cui denominazione deriva dal nome del loro ideatore, sono una particolare classe di problemi di assegnamento quadratico
 che si fondano sull'utilizzo del metodo di Densità di grigio, il quale può essere descritto nel seguente modo.
 
@@ -199,8 +201,8 @@ Come si vedrà nel prosieguo della trattazione, nel caso del problema analizzato
 \noindent
 Per prima cosa sono stati identificati gli insiemi del problema, ovvero
 \begin{align*}
-I \, &: \, \mbox{insieme delle unità (\textit{locations})}\\
-U \, &: \, \mbox{insieme delle posizioni (\textit{facilities})}
+I \, &: \, \mbox{insieme delle posizioni (\textit{locations})} \\
+U \, &: \, \mbox{insieme delle unità (\textit{facilities})}
 \end{align*}
 Per quanto riguarda l'identificazione dei parametri, quest'operazione è già stata trattata nella sezione precedente e rappresenta le 
 fondamenta su cui l'istanze del problema vengono costruite. Facendo uso degli algoritmi appositamente costruiti è possibile ottenere 
@@ -212,7 +214,7 @@ B = \[b_{ij}\] \quad & \mbox{con} \; b_{ij} : \, \mbox{distanza dalla posizione 
 
 Per quanto concerne le variabili del problema, queste sono indicizzate dall'insieme delle unità $I$ e da quello delle posizioni $U$ e la loro definizione è la seguente:
 \begin{align*}
-x_{iu} = \begin{cases}  1 & \mbox{se l'unità } i \in I \mbox{ è stata assegnata alla posizione } u \in U\\ 0 & \mbox{altrimenti} \end{cases}
+x_{iu} = \begin{cases}  1 & \mbox{se l'unità } u \in U \mbox{ è stata assegnata alla posizione } i \in I\\ 0 & \mbox{altrimenti} \end{cases}
 \end{align*}
 È stato inoltre necessario definire due vincoli per assicurare la correttezza della soluzione trovata. Il primo garantisce che ogni unità venga assagnata ad esattamente una posizione e il secondo invece, che ogni posizione sia asseganta ad esattamente un'unità.
 \begin{align*}
@@ -238,6 +240,7 @@ Il modello algebrico del problema di assegnamento quadratico ricavato, può dunq
 
 
 \subsection{Linearizzazione del modello}
+\label{subsec:lin}
 Come è possibile notare, il modello algebrico ricavato precedentemente (\ref{eq:mipqap}) non rispetta completamente i canoni della 
 formulazione dei problemi di programmazione lineare intera (\ref{eq:mip}). Ai fini della risoluzione del problema, è dunque necessario 
 ricondurre il modello in oggetto alla formulazione \textit{MIP} apportando alcune modifiche necessarie.
@@ -265,8 +268,8 @@ I vincoli sopra elencati garantiscono che la variabile $y_{iujv}$ assuma valore 
 $x_{iu}$ e $x_{jv}$ assumono valore $1$. Nel caso in cui anche solo una di esse dovesse assumere valore $0$, anche $y_{iujv}$ 
 assumerebbe valore $0$.
 
-Pragmaticamente, la variabile qui introdotta indica se l'unità $i$ è stata assegnata alla posizione $u$ e contemporaneamente 
-l'unità $j$ è stata assegnata alla posizione $v$ o meno.
+Pragmaticamente, la variabile qui introdotta indica se l'unità $u$ è stata assegnata alla posizione $i$ e contemporaneamente 
+l'unità $v$ è stata assegnata alla posizione $j$ o meno.
 
 Tenendo conto delle nuove modifiche e l'aggiunta dei nuovi vincoli, il modello complessivo corrisponde al seguente.
 \begin{align}
@@ -299,7 +302,111 @@ istanze nelle sperimentazioni. Senza apportare alcuna semplificazione al modello
 sufficienza per realizzare uno studio approfondito.
 
 \subsection{Semplificazione del modello}
-prova
+È possibile notare che l'ultima versione del modello (\ref{eq:mipqaplin}) è valida per qualunque problema di assegnamento quadratico. 
+Tuttavia, come è stato mostrato nella sezione \ref{sec:pargen}, per generare i valori dei parametri di flusso e distanza è stata presa 
+la decisione di considerare una classe di problemi \textit{QAP} specifica, la classe Tai*C.
+
+Un modo che potesse semplificare il modello, riducendo quindi il numero di variabili rispetto alla dimensione delle istanze, senza 
+alterarne la validità, è stato trovato sfruttando le caratteristiche della classe di istanze considerata. 
+
+Nello specifico, sono state utilizzate le proprietà della matrice dei flussi $A=\(a_{ij}\)$. \newline
+Si ricorda che il singolo parametro $a_{ij}$ è definito nel seguente modo:
+\begin{align*}
+    a_{ij} \, = \, \begin{cases} 1 & \mbox{if } i \leq n_1 \mbox{ and } j \leq n_1 \\ 0 & \mbox{otherwise} \end{cases}
+\end{align*}
+dove $\; n_1 =n\cdot d\leq n \;$ è il numero di caselle nere nella griglia di generazione.
+
+\noindent
+Di conseguenza, la struttura della matrice $A$ è la seguente.
+\begin{align*}
+    A \; = \;
+    \begin{bmatrix}
+        1 & 1 & . & 1 & 0 & . & 0 \\
+        1 & . & . & 1 & 0 & . & 0 \\
+        . & . & . & . & . & . & . \\
+        1 & 1 & . & 1 & 0 & . & . \\
+        0 & 0 & . & 0 & 0 & . & 0 \\
+        . & . & . & . & . & . & . \\
+        0 & 0 & . & . & 0 & . & 0
+    \end{bmatrix}
+\end{align*}
+Si nota che solo i valori appartenenti al quadrante $n_1\times n_1$ in alto a sinistra hanno valore unitario, mentre tutti gli altri 
+hanno valore nullo. È quindi possibile definire un nuovo metodo di indicizzazione delle unità sulla base del loro flusso. 
+Data l'unità $i \in I$:
+\begin{align*}
+        m_i \,=\, 
+        \begin{cases}
+            1 & \mbox{if } i \leq n_1 \\ 2 & \mbox{otherwise}
+        \end{cases}
+        \quad\qquad m_i \, \in \, M
+\end{align*}
+
+\newpage \noindent
+A questo punto esistono esclusivamente due tipologie di unità. Pertanto è possibile ridurre la matrice dei flussi alla seguente 
+matrice $2\times 2$:
+\begin{align*}
+    A \; = \;
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 0
+    \end{bmatrix}
+\end{align*}
+Conseguentemente, muta anche la definizione delle variabili del problema.
+\begin{align*}
+    x_{im} = \begin{cases}  1 & \mbox{se l'unità di categoria } m \mbox{ è stata assegnata alla posizione } i \in I\\ 0 & \mbox{altrimenti} \end{cases}
+\end{align*}
+Infine, per garantire la correttezza del modello è necessario aggiungere i seguenti vincoli che garantiscono la corrispondenza tra 
+la vecchia e la nuova matrice dei flussi.
+\begin{align*}
+    \begin{array}{l}
+        \sum_{i\in I} \, x_{im} = n_1    \qquad\qquad m=1\\
+        \sum_{i\in I} \, x_{im} = n-n_1  \,\qquad m=2
+    \end{array}
+\end{align*}
+È facilmente dimostrabile che il secondo vincolo è rindondante in quanto è garantito dal primo. Per questo motivo verrà omesso dalle 
+versione successive del modello algebrico.
+
+\noindent
+Trascurando momentaneamente la linearizzazione, il modello comprensivo delle ultime modifiche è il seguente.
+\begin{align*}
+	\begin{array}{l}
+      \min \, \sum_{i\in I} \sum_{m\in M} \sum_{j\in I} \sum_{p\in M} \, a_{mp}\cdot b_{ij}\cdot x_{im}\cdot x_{jp} \\
+      \sum_{i\in I} \, x_{im} = n_1    \qquad\qquad m=1\\
+      x_{im} \in \{0,1\}           \;\;\,\qquad \forall \; i \in I ,\; m \in M
+    \end{array}
+\end{align*}
+A questo punto si può notare come a dare un contributo non nullo alle sommatorie siano solamente i prodotti relativi alle 
+coppie di unità appartenenti entrambe alla categoria $m=1$, per le quali infatti si ha $a_{mp}=a[1,1]=1$. Negli altri casi il flusso 
+a valore nullo azzera il prodotto rendendo l'intero addendo nullo. 
+
+Per questo motivo è possibile semplificare ulteriormente il modello omettendo i valori di flusso e l'indicizzazione delle variabili 
+rispetto alle unità. In tal modo si ottiene il seguente risultato:
+\begin{align*}
+	\begin{array}{l}
+      \min \, \sum_{i\in I} \sum_{j\in I} \, b_{ij}\cdot x_{i}\cdot x_{j} \\
+      \sum_{i\in I} \, x_{i} = n_1 \\
+      x_{i} \in \{0,1\}           \;\;\,\qquad \forall \; i \in I
+    \end{array}
+\end{align*}
+Linearizzando il modello precedente con le stesse modalità illustrate nella sezione \ref{subsec:lin}, è possibile ottenere la versione 
+finale del modello algebrico del problema.
+\begin{align}
+    \label{eq:mipqapfinal}
+	\begin{array}{l}
+      \min \, \sum_{i\in I} \sum_{j\in I} \, b_{ij}\cdot y_{ij} \\
+      \sum_{i\in I} \, x_{i} = n_1 \\
+      y_{ij} \, \leq \, x_{i}   \;\;\;\qquad \forall \; i,j \in I \\ 
+      y_{ij} \, \leq \, x_{j}   \;\;\;\qquad \forall \; i,j \in I \\
+      y_{ij} \, \geq \, x_{i} + x_{j} - 1      \qquad \forall \; i,j \\
+      x_{i} ,\, y_{ij} \in \{0,1\}      \;\quad\qquad \forall \; i,j \in I
+    \end{array}
+\end{align}
+In questo caso, a differenza del modello nella versione precedente (\ref{eq:mipqaplin}), le variabili della funzione obiettivo $y_{ij}$ sono 
+indicizzate su soli due elementi, entrambi appartenti allo stesso insieme di cardinalità $n$. Ciò implica che dato il numero di possibili posizioni $n$, 
+cardinalità di $I$, verranno  prese in esame $n^2$ variabili differenti e non più $n^4$. È stato dunque ottenuto un guadagno di due ordini di grandezza sul numero 
+di variabili, garantendo così la possibilità di risolvere, tramite l'hardware e i software messi a disposizione, istanze del problema di grandezza 
+sufficientemente elevata da poterne realizzare uno studio.
+
 
 \subsection{Modellazione nel software}
 prova
