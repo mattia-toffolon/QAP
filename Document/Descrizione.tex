@@ -66,7 +66,7 @@ locate rispettivamente nelle posizioni della griglia di coordinate $\(r,s\)$ e $
 Per ottenere una densità di grigio pari a $m/n$ è possibile risolvere un problema di tipo $QAP$ (assegnamento quadratico) in cui 
 i parametri sono definiti nel seguente modo.
 \begin{align*}
-    a_{ij} \, = \, \begin{cases} 1 & \mbox{if } i \leq m \mbox{ and } j \leq m \\ 0 & \mbox{otherwise} \end{cases} 
+    a_{ij} \, = \, \begin{cases} 1 & \mbox{se } i \leq m \mbox{ e } j \leq m \\ 0 & \mbox{altrimenti} \end{cases} 
     \qquad \;\;
     b_{ij} \,=\, b_{\; n_2 \(r-1\)+s \;\; n_2\(t-1\)+u} \,=\, f_{rstu}
 \end{align*}
@@ -312,7 +312,7 @@ alterarne la validità, è stato trovato sfruttando le caratteristiche della cla
 Nello specifico, sono state utilizzate le proprietà della matrice dei flussi $A=\(a_{ij}\)$. \newline
 Si ricorda che il singolo parametro $a_{ij}$ è definito nel seguente modo:
 \begin{align*}
-    a_{ij} \, = \, \begin{cases} 1 & \mbox{if } i \leq n_1 \mbox{ and } j \leq n_1 \\ 0 & \mbox{otherwise} \end{cases}
+    a_{ij} \, = \, \begin{cases} 1 & \mbox{se } i \leq n_1 \mbox{ e } j \leq n_1 \\ 0 & \mbox{altrimenti} \end{cases}
 \end{align*}
 dove $\; n_1 =n\cdot d\leq n \;$ è il numero di caselle nere nella griglia di generazione.
 
@@ -336,7 +336,7 @@ Data l'unità $i \in I$:
 \begin{align*}
         m_i \,=\, 
         \begin{cases}
-            1 & \mbox{if } i \leq n_1 \\ 2 & \mbox{otherwise}
+            1 & \mbox{se } i \leq n_1 \\ 2 & \mbox{altrimenti}
         \end{cases}
         \quad\qquad m_i \, \in \, M
 \end{align*}
@@ -363,8 +363,8 @@ la vecchia e la nuova matrice dei flussi.
         \sum_{i\in I} \, x_{im} = n-n_1  \,\qquad m=2
     \end{array}
 \end{align*}
-È facilmente dimostrabile che il secondo vincolo è rindondante in quanto è garantito dal primo. Per questo motivo verrà omesso dalle 
-versione successive del modello algebrico.
+È facilmente dimostrabile che il secondo vincolo è rindondante in quanto è garantito dal primo. Per questo motivo verrà omesso nelle 
+versioni successive del modello algebrico.
 
 \noindent
 Trascurando momentaneamente la linearizzazione, il modello comprensivo delle ultime modifiche è il seguente.
