@@ -380,7 +380,14 @@ coppie di unità appartenenti entrambe alla categoria $m=1$, per le quali infatt
 a valore nullo azzera il prodotto rendendo l'intero addendo nullo. 
 
 Per questo motivo è possibile semplificare ulteriormente il modello omettendo i valori di flusso e l'indicizzazione delle variabili 
-rispetto alle unità. In tal modo si ottiene il seguente risultato:
+rispetto alle unità. 
+
+\newpage \noindent
+In tal modo si ottiene il seguente risultato:
+\begin{align*}
+    x_{i} = \begin{cases}  1 & \mbox{se un unità di categoria 1} \mbox{ è stata assegnata alla posizione } i \in I\\ 0 & \mbox{altrimenti} \end{cases}
+\end{align*}
+e per quanto riguarda il modello,
 \begin{align*}
 	\begin{array}{l}
       \min \, \sum_{i\in I} \sum_{j\in I} \, b_{ij}\cdot x_{i}\cdot x_{j} \\
@@ -401,7 +408,7 @@ finale del modello algebrico del problema.
       x_{i} ,\, y_{ij} \in \{0,1\}      \;\quad\qquad \forall \; i,j \in I
     \end{array}
 \end{align}
-In questo caso, a differenza del modello nella versione precedente (\ref{eq:mipqaplin}), le variabili della funzione obiettivo $y_{ij}$ sono 
+In questo caso, a differenza del modello nella versione (\ref{eq:mipqaplin}), le variabili della funzione obiettivo $y_{ij}$ sono 
 indicizzate su soli due elementi, entrambi appartenti allo stesso insieme di cardinalità $n$. Ciò implica che dato il numero di possibili posizioni $n$, 
 cardinalità di $I$, verranno  prese in esame $n^2$ variabili differenti e non più $n^4$. È stato dunque ottenuto un guadagno di due ordini di grandezza sul numero 
 di variabili, garantendo così la possibilità di risolvere, tramite l'hardware e i software messi a disposizione, istanze del problema di grandezza 
