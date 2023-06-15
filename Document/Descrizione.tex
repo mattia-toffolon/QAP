@@ -385,7 +385,7 @@ rispetto alle unità.
 \newpage \noindent
 In tal modo si ottiene il seguente risultato:
 \begin{align*}
-    x_{i} = \begin{cases}  1 & \mbox{se un unità di categoria 1} \mbox{ è stata assegnata alla posizione } i \in I\\ 0 & \mbox{altrimenti} \end{cases}
+    x_{i} = \begin{cases}  1 & \mbox{se un'unità di categoria 1} \mbox{ è stata assegnata alla posizione } i \in I\\ 0 & \mbox{altrimenti} \end{cases}
 \end{align*}
 e per quanto riguarda il modello,
 \begin{align*}
@@ -416,8 +416,21 @@ sufficientemente elevata da poterne realizzare uno studio.
 
 
 \subsection{Modellazione nel software}
-prova
+Affinchè le istanze generate tramite gli algoritmi presentati nella sezione \ref{subsec:taic} potessero essere tradotte in istanze di 
+problemi MIP nella forma (\ref{eq:mipqapfinal}) risolvibili dal software CPLEX, è stato fatto uso di un'ulteriore libreria Python, 
+Pyomo \cite{bynum2021pyomo}\cite{hart2011pyomo}. Si tratta anche in questo caso di una libreria open-source, stabile e largamente utilizzata 
+per formulare, risolvere ed analizzare modelli per problemi di ottimizzazione.
 
+Per la definizione del modello, questa libreria mette a disposizione due alternative. La prima consiste nel realizzare un modello astratto 
+(\texttt{AbstractModel}) che separa modello e dati, rispecchiando così maggiormente il modello algebrico, al fine di poter fornire i dati 
+per la creazione delle istanze in un secondo momento. La seconda invece, consiste in un modello concreto (\texttt{ConcreteModel}) che, a differenza del primo, 
+richiede immediatamente i dati poichè necessari alla creazione del modello stesso. Per questo lavoro si è optato per l'utilizzo di \texttt{ConcreteModel} poichè la generazione dei parametri 
+non è particolarmente onerosa dal punto di vista computazionale, soprattutto se messa a confronto con la risoluzione delle istanze vera e 
+propria. La scelta presa prevede dunque di generare i parametri richiesti ad ogni esecuzione di codice e pertanto ad ogni risoluzione di istanza. 
+
+Questo procedimento è stato realizzato implementando gli algoritmi di generazione dei parametri come funzioni all'interno di uno script 
+Python apposito. Tale file è stato poi importato nello script principale, che si occupa della generazione delle istanze e della loro risoluzione 
+tramite CPLEX, e le sue funzioni sono state utilizzate nella definizione dei parametri del problema.
 
 
 
