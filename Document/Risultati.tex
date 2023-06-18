@@ -1,17 +1,25 @@
-Conclusa la presentazione dell'approccio adottato nelle sperimentazioni, si procede in questo capitolo con l'esposizione dei risultati ottenuti. 
+Conclusa la presentazione delle scelte adottate in fase di impostazione delle sperimentazioni, 
+si procede in questo capitolo con l'esposizione dei risultati ottenuti. 
 
-La macchina utilizzata nella risoluzione delle diverse istanze in questi esperimenti presenta le seguenti specifiche tecniche:
+Per effettuare la risoluzione delle diverse istanze, è stato utilizzato un cluster messo a disposizione dal Dipartimeto di Ingegneria dell'Informazione 
+dell'università. Nello specifico, la macchina in questione presenta le seguenti specifiche tecniche:
 \begin{itemize}
 \item Intel(R) Xeon(R) CPU E5-2623 v3 @ 3.00GHz quad-core
 \item 16GB RAM
-\item Python 3.6.8
-\item IBM ILOG CPLEX Optimization Studio versione 12.9
+\item Linux Fedora 37
+\item Python 3.10.6
+\item IBM ILOG CPLEX Optimization Studio versione 22.1
 \end{itemize}
+Per garantire la compatibilità tra l'ultima versione del software CPLEX installata (22.1) e quella di Python, è stato fatto uso di \textit{pyenv} \cite{pyenv}, 
+un'utility per Linux e MacOS che ci permette di tenere all'interno dello stesso sistema operativo differenti versioni dell'interprete Python. In questo modo 
+è stato possibile utilizzare la versione Python richiesta da CPLEX (3.10) e non quella predefita del cluster (3.11).
 
+Inoltre, sono state installate localmente tutte le librerie che vengono utilizzate all'interno dei vari script, che si ricordano 
+essere: \textit{Numpy}, \textit{Pyomo}, \textit{Matplotlib} e \textit{Seaborn}.
 
 \newpage
 \section{Tempi medi di risoluzione}
-
+I tempi medi ricavati come illustrato nelle sezioni precedenti possono essere riportati in una tabella
 
 
 \section{Soluzioni trovate}
