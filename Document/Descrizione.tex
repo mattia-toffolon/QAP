@@ -426,7 +426,7 @@ Per la definizione del modello, questa libreria mette a disposizione due alterna
 per la creazione delle istanze in un secondo momento. La seconda invece, consiste in un modello concreto (\texttt{ConcreteModel}) che, a differenza del primo, 
 richiede immediatamente i dati poichè necessari alla creazione del modello stesso. Per questo lavoro si è optato per l'utilizzo di \texttt{ConcreteModel} poichè la generazione dei parametri 
 non è particolarmente onerosa dal punto di vista computazionale, soprattutto se messa a confronto con la risoluzione delle istanze vera e 
-propria. La scelta presa prevede dunque di generare i parametri richiesti ad ogni esecuzione di codice e pertanto ad ogni risoluzione di istanza. 
+propria. La scelta presa prevede dunque di generare i parametri richiesti ad ogni esecuzione di codice. 
 
 Questo procedimento è stato realizzato implementando gli algoritmi di generazione dei parametri come funzioni all'interno di uno script 
 Python apposito. Tale file è stato poi importato nello script principale, che si occupa della generazione delle istanze e della loro risoluzione 
@@ -437,12 +437,72 @@ tramite CPLEX, e le sue funzioni sono state utilizzate nella definizione dei par
 %----------------------------------NEW SECTION
 
 \section{Risoluzione delle istanze di problemi}
-prova
+La risoluzione delle istanze di problemi di assegnamento quadratico generate come illustrato precedentemente, è stata effettuata facendo uso del software IBM ILOG CPLEX 
+Optimization Studio \cite{cplex}. Si tratta di una suite sviluppata dall'azienda francese ILOG, acquisita da IBM nel 2009, che fornisce strumenti 
+per la modellazione e la risoluzione di problemi di ottimizzazione e che rappresenta di fatto lo stato dell'arte nell'ambito della 
+programmazione lineare. CPLEX prende il nome dal metodo del simplesso (\textit{simplex method}) implementato in C, sebbene al giorno d'oggi 
+la suite sia arrivata a comprendere diverse altre interfacce verso altri ambienti e linguaggi diversi dal C e diversi algoritmi addizionali 
+utilizzati nel campo della programmazione matematica.
 
+Nella risoluzione delle istanze è stato necessario interagire con il software risolutore. Tuttavia per effettuare ciò si è deciso di non utilizzare 
+l'interfaccia Python offerta dalla suite CPLEX ma quella fornita dalla libreria Pyomo, ottimizzando così l'uso dei pacchetti importati.
+
+L'interazione con il risolutore non è stata necessaria solo per avviare la risoluzione e successivamente acquisirne i risultati, ma anche per 
+modificarne gli attributi. Dato che lo studio delle istanze è basato sull'osservazione dei tempi medi di ricerca della soluzione ottima, è stato necessario risolvere 
+le stesse istanze più volte. Per come però sono strutturati gli algoritmi di risoluzione, senza variare alcun parametro il software produce la stessa
+soluzione in tempi pressoché identici, poichè questi hanno inizio sempre dallo stesso punto di partenza ed effettuano poi le stesse scelte 
+lungo il precorso di ricerca. Per ovviare a questo problema, tramite l'interfaccia offerta da Pyomo è stato modificato ad ogni risoluzione di istanza 
+il parametro di CPLEX chiamato \textit{RandomSeed}. 
+Tale parametro, a cui può essere assegnato un valore non negativo qualunque compreso nell'intervallo [0,BIGINT], determina le prime scelte nella 
+ricerca della soluzione ed in tal modo fa sì che ci sia diversità nei tempi di risoluzione e occasionalmente nella soluzione trovata, qualora l'istanza del problema 
+presa in esame dovesse ammettere più soluzioni ottime.
+
+Come visto nelle sezioni precedenti, la generazione di un'istanza Tai*C è basata su una coppia di valori $\(n,d\)$ dove \textit{n} è la 
+dimensione dell'istanza e \textit{d} la densità di grigio utilizzata. Nella realizzazione di questo studio i parametri delle istanze prese in 
+esame appartengono ai seguenti insiemi.
+\begin{align*}
+    n \, &\in \, \{9, \,16, \,25, \,36, \,42, \,45, \,49 \} \\
+    d \, &\in \, \{10, \,20, \,30, \,40, \,50, \,60, \,70, \,80, \,90\}
+\end{align*}
+Per ogni possibile coppia di valori, i tempi medi di risoluzione sono stati calcolati su 10 risoluzioni diverse relative a 10 valori del parametro \textit{RandomSeed} 
+differenti.
+
+Gli output prodotti dal risolutore e le soluzioni da esso trovate sono stati memorizzati in appositi file. In tal modo è stato poi possibile 
+analizzare le performance del risolutore e dare una rappresentazione grafica alle soluzioni.
 
 
 
 %----------------------------------NEW SECTION
 
 \section{Estrazione ed analisi dei risultati}
-prova
+Lo script Python che gestisce la creazione delle istanze ammette anche la loro risoluzione multipla secondo diversi \textit{RandomSeed}. 
+Questo ha permesso di ricavare i tempi medi risoluzione per istanza già in fase di esecuzione, dovendo così estrapolare un solo valore 
+dagli output del risolutore. 
+
+Come però si vedrà in seguito, l'andamento dei tempi ha andamento esponenziale rispetto alla dimensione delle istanze. A causa di ciò, oltrepassata 
+una certa soglia non è più stato possibile effettuare risoluzioni multiple ma si è dovuto effettuare risoluzioni singole, estrapolarne i dati 
+e calcolare le medie solo successivamente.
+
+Tutto ciò ammesso che la soluzione ottime all'istanza considerate sia ottenibile dal risolutore. A causa della potenza computazionale dell'hardware 
+che è pur sempre finita, è stato possibile ottenere soluzioni entro certi valori. Per quelli maggiori, è stato invece estrapolato l'\textit{optimality gap} 
+del risolutore al \textit{time limit} di due ore impostato per l'esecuzione. Il gap di ottimalità, in inglese \textit{optimality gap}, indica la differenza 
+in percentuale tra la miglior soluzione conosciuta in dato istante e il \textit{lower bound} del problema. Rappresenta pertanto un indice di vicinanza 
+alla soluzione ottima.
+
+\noindent
+Per quanto riguarda invece le soluzioni trovate, queste sono state salvate nel formato 
+\begin{align*}
+    i   &\qquad x_i \\
+    i+1 &\qquad x_{i+1} \\
+    .\, .\, . &\qquad .\, .\, .
+\end{align*}
+dove $i$ è l'indice della posizione e $x_i$ indica nella posizione specificata è stata posizionata un'unità a flusso unitario, 
+in file con estensione \textit{.txt} dal nome
+\begin{align*}
+    n\{\text{n}\}\_\{\text{n}_1\}\_\{\text{n}_2\}\_d\{\text{d}\}.txt
+\end{align*}
+dove $n_1$ e $n_2$ sono le dimensioni della matrice generatrice dei valori di distanza fra posizioni (si ricorda che $n=n_1\times n_2$).
+
+È stato poi realizzato un terzo script ad-hoc per ricevere questi file come argomento, effettuarne il parsing ed utilizzare i dati relativi alle 
+soluzioni ottime per realizzare delle rappresentazioni grafiche tramite la libreria Python open-source \textit{Matplotlib} \cite{matplotlib} 
+che permette di creare visualizzazioni dati statiche, dinamiche e interattive.
