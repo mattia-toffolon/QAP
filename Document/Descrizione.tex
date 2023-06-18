@@ -483,11 +483,15 @@ Come però si vedrà in seguito, l'andamento dei tempi ha andamento esponenziale
 una certa soglia non è più stato possibile effettuare risoluzioni multiple ma si è dovuto effettuare risoluzioni singole, estrapolarne i dati 
 e calcolare le medie solo successivamente.
 
-Tutto ciò ammesso che la soluzione ottime all'istanza considerate sia ottenibile dal risolutore. A causa delle limiti fisici dell'hardware 
-, la potenza computazionale offerta ha permesso di ottenere soluzioni solo entro certi valori. Per quelli maggiori, è stato invece estrapolato l'\textit{optimality gap} 
+Tutto ciò ammesso che la soluzione ottima all'istanza considerata sia ottenibile dal risolutore. A causa delle limiti fisici dell'hardware, 
+la potenza computazionale offerta ha permesso di ottenere soluzioni solo entro certi valori del parametro $n$. Per quelli maggiori, è stato invece estrapolato l'\textit{optimality gap} 
 del risolutore al \textit{time limit} di due ore impostato per l'esecuzione. Il gap di ottimalità, in inglese \textit{optimality gap}, indica la differenza 
 in percentuale tra la miglior soluzione conosciuta e il \textit{lower bound} del problema in un dato istante. Rappresenta pertanto un indice di vicinanza 
 alla soluzione ottima.
+
+Quest'insieme di dati è stato ricavato manualmente a partire dagli output dello script principale che come visto, 
+si occupa dell'interazione con CPLEX e del calcolo dei tempi medi. Tali dati sono stati poi salvati in foglio di calcolo \textit{Google Sheets} 
+\cite{conner2008google} dedicato.
 
 \noindent
 Per quanto riguarda invece le soluzioni trovate, queste sono state salvate nel formato 
