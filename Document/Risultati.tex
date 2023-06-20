@@ -11,7 +11,7 @@ dell'università. Nello specifico, la macchina in questione presenta le seguenti
 \item IBM ILOG CPLEX Optimization Studio versione 22.1
 \end{itemize}
 Per garantire la compatibilità tra l'ultima versione del software CPLEX installata (22.1) e quella di Python, è stato fatto uso di \textit{pyenv} \cite{pyenv}, 
-un'utility per Linux e MacOS che ci permette di tenere all'interno dello stesso sistema operativo differenti versioni dell'interprete Python. In questo modo 
+un'utility per Linux e MacOS che permette di tenere all'interno dello stesso sistema operativo differenti versioni dell'interprete Python. In questo modo 
 è stato possibile utilizzare la versione Python richiesta da CPLEX (3.10) e non quella predefita del cluster (3.11).
 
 Inoltre, sono state installate localmente tutte le librerie che vengono utilizzate all'interno dei vari script, che si ricordano 
@@ -47,6 +47,7 @@ alla seconda cifra dopo la virgola. \\
     \multicolumn{1}{ |c| }{80\%} & 00:00:00.05 & 00:00:00.12 & 00:00:00.48 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
     \multicolumn{1}{ |c| }{90\%} & 00:00:00.03 & 00:00:00.13 & 00:00:00.32 &    \\ \cline{2-5}
+    \medskip
 \end{tabular}
 
 \begin{tabular}{cc c|c|c|c l}
@@ -73,16 +74,59 @@ alla seconda cifra dopo la virgola. \\
 \end{tabular}
 
 \newpage \noindent
-Questi dati sono stati utilizzati per creare un grafico 3D tramite uno script \textit{Python} che fa uso di alcuni comandi delle 
-librerie \textit{NumPy} e \textit{Matplotlib}. Tale grafico è stato realizzato per permettere di comprendere al meglio i risultati 
-degli esperimenti e di notare fin da subito l'andamento del tempo di risoluzione delle istanze rispetto ai valori assunti dai 
+Tramite uno script \textit{Python} che fa uso di alcuni comandi delle librerie \textit{NumPy} e \textit{Matplotlib}, questi dati 
+sono stati utilizzati per creare un grafico 3D ed uno 2D. Tali grafici sono stati realizzati per permettere di comprendere al meglio i risultati 
+degli esperimenti ottenuti e di notare facilmente qual'è l'andamento del tempo di risoluzione delle istanze rispetto ai valori assunti dai 
 parametri di generazione \textit{n} e \textit{d}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.4]{images/resolution_times.png}
-    \caption{Grafico dei tempi di risoluzione delle istanze Tai*c}
+    \includegraphics[scale=0.9]{images/resolution_times.eps}
+    \caption{Grafico 3D dei tempi di risoluzione delle istanze Tai*c testate}
     \label{fig:times}
 \end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.59]{images/resolution_times2.eps}
+    \caption{Grafico 2D dei tempi di risoluzione delle istanze Tai*c testate}
+    \label{fig:times2}
+\end{figure}
+
+Come si evince dai grafici, il comportamento assunto dei tempi di risoluzione rispetto alla dimensione dell'istanza è generalmente 
+esponenziale, indipendentemente dal valore di densità di grigio considerato. Ciò che muta da una curva dei tempi rispetto all'altra è la 
+velocità con cui i valori divergono. Nello specifico si nota come la crescita dei tempi per le densità intermedie $40\%$, $60\%$ e $70\%$ 
+è maggiore rispetto a quella per $d=50\%$, che a sua volta è notevolmente maggiore rispetto a quella per le densità $10\%$ e $90\%$.
+
+È possibile dunque affermare che a parità di dimensione \textit{n}, le istanze Tai*c che richiedono un maggior tempo 
+di risoluzione sono quelle generate da un valore di densità di grigio \textit{d} prossimo, ma non corrispondente, al $50\%$, mentre quelle 
+che ne richiedono meno sono quelle generate da valori di \textit{d} prossimi allo $0\%$ o al $100\%$.
+
+Questo risultato corrisponde con quello ipotizzabile limitandosi ad osservare la teoria. Infatti, per densità prossime allo $0\%$ il numero 
+di unità da assegnare alle posizioni è ridotto ed invece per densità prossime al $100\%$, il numero di posizioni in cui non deve essere asseganta un'unità 
+è esiguo. Per questo motivo si suppone che in ambo i casi il costo computazionale richiesto per trovare la soluzione ottima sia ridotto. 
+Diversamente accade per densità vicine al $50\%$, valore per il quale il numero di posizioni essegnate ad un'unità è simile a quello delle 
+posizioni libere. È pertanto comprensibile che si abbia il picco di complessità per tali valori.
+
+La dimensione $45\,(9\times 5)$ è stata l'ultima per la quale è stato possibile ricavare, al time limit di 2 ore, un tempo di risoluzione medio per 
+ogni valore di densità di grigio. Difatti, per le istanze di dimensione $49\,(7\times 7)$ sono stati ottenuti i seguenti dati:
+
+\begin{tabular}{cc c|c|c|c|c| l}
+    & & \multicolumn{5}{ c }{Densità di grigio \textit{d}} \\ \cline{3-7}
+    & & \multicolumn{1}{ |c| }{10\%} & 20\% & 30\% & 40\% & 50\% &  \\ \cline{2-7}
+    \multicolumn{1}{  c  }{\multirow{1}{*}{\textit{n}}}  &
+    \multicolumn{1}{ |c| }{49(7x7)} & 00:00:01.19 & 00:00:43.57 & 00:51:50.19 & 12.04\% & 1.17\% \\ \cline{2-7}
+\end{tabular}
+
+\begin{tabular}{cc c|c|c|c| l}
+    & & \multicolumn{4}{ c }{Densità di grigio \textit{d}} \\ \cline{3-6}
+    & & \multicolumn{1}{ |c| }{60\%} & 70\% & 80\% & 90\% & \\ \cline{2-6}
+    \multicolumn{1}{  c  }{\multirow{1}{*}{\textit{n}}}  &
+    \multicolumn{1}{ |c| }{49(7x7)} & 6.39\% & 3.02\% & 00:17:24.36 & 00:00:08.39 \\ \cline{2-6}
+    \medskip
+\end{tabular}
+
+In queste tabelle compaiono valori di tipo diverso. Dato un valore di densità \textit{d}, se nella relativa cella compare un tempo, esso corrisponde al tempo medio di esecuzione per \textit{d}, mentre dove 
+compare una percentuale significa che per quel \textit{d} non è stato possibile calcolare il tempo cercato e pertanto è stato riportato il valore dell'\textit{optimality gap} al \textit{time limit} impostato di due ore.
+
 
 \newpage
 \section{Soluzioni trovate}
