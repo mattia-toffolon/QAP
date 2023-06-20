@@ -19,7 +19,7 @@ essere: \textit{Numpy}, \textit{Pyomo}, \textit{Matplotlib} e \textit{Seaborn}.
 
 \newpage
 \section{Tempi medi di risoluzione}
-I tempi medi, estrapolati e memorizzati come illustrato nelle sezioni precedenti, sono riportati nella seguente tabella indicizzata sulla dimensione delle istanze 
+I tempi medi, estrapolati e memorizzati come illustrato nelle sezioni precedenti, sono riportati nelle seguenti tabelle indicizzate sulla dimensione delle istanze 
 e sui valori di densità di grigio utilizzati.per generare quest'ultime.
 
 I tempi sono riportati nel formato \textit{hh:mm:ss.00}, dove \textit{hh} indica il numero di ore impiegate, \textit{mm} i minuti e \textit{ss.00} i secondi arrotondati 
@@ -72,6 +72,17 @@ alla seconda cifra dopo la virgola. \\
     \multicolumn{1}{ |c| }{90\%} & 00:00:00.77 & 00:00:01.30 & 00:00:05.66 &    \\ \cline{2-5}
 \end{tabular}
 
+\newpage \noindent
+Questi dati sono stati utilizzati per creare un grafico 3D tramite uno script \textit{Python} che fa uso di alcuni comandi delle 
+librerie \textit{NumPy} e \textit{Matplotlib}. Tale grafico è stato realizzato per permettere di comprendere al meglio i risultati 
+degli esperimenti e di notare fin da subito l'andamento del tempo di risoluzione delle istanze rispetto ai valori assunti dai 
+parametri di generazione \textit{n} e \textit{d}.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{images/resolution_times.png}
+    \caption{Grafico dei tempi di risoluzione delle istanze Tai*c}
+    \label{fig:times}
+\end{figure}
 
-
+\newpage
 \section{Soluzioni trovate}
