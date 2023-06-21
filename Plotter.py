@@ -27,6 +27,6 @@ if __name__=='__main__':
 
     f.close()
     
-    sns.heatmap(S, linewidths=.5, linecolor='#d9d9d9', cmap='Greys', cbar=False, square=True, annot=np.arange(n).reshape((n1,n2)), xticklabels=False, yticklabels=False)
-    plt.title(f"Tai{n}c_{n1}x{n2}_{d} Solution", fontsize=18)
+    sns.heatmap(S, linewidths=.5, linecolor='#bcbcbc', cmap='Greys', cbar=False, square=True, annot=np.arange(n).reshape((n1,n2)), xticklabels=False, yticklabels=False)
+    plt.savefig(f'/home/mattiatoffolon/UniPd/Tesi/QAP/Document/images/Tai{n}c_{n1}x{n2}_{d}.eps', format='eps', bbox_inches='tight')
     plt.show()
