@@ -44,19 +44,20 @@ rettangolare contenente $n = n_1 \times n_2$ caselle quadrate, $m$ delle quali s
 Giustapponendo molte di queste griglie è possibile ottenere una superficie grigia di gradazione pari a $m/n$.
 Per ottenere la miglior qualità di colore, è necessario che le caselle nere, o quelle bianche, siano sparse uniformemente nella griglia.
 
-A prova di ciò viene qui riportata un'applicazione del metodo realizzata con una delle soluzioni ottenute.
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.21]{images/Density_of_Grey.png}
-    \caption{a sinistra la griglia relativa ad una soluzione ottima di un'istanza \textit{Tai36c} a densità $d=30\%$, 
-             \newline a destra quella ottenuta accostando $1600$ griglie del tipo a sinistra}
-    \label{fig:dnsgry}
-\end{figure}
+%A prova di ciò viene qui riportata un'applicazione del metodo realizzata con una delle soluzioni ottenute.
+%\begin{figure}[h!]
+%    \centering
+%    \includegraphics[scale=0.21]{images/Density_of_Grey.png}
+%    \caption{a sinistra la griglia relativa ad una soluzione ottima di un'istanza \textit{Tai36c} a densità $d=30\%$, 
+%             \newline a destra quella ottenuta accostando $1600$ griglie del tipo a sinistra}
+%    \label{fig:dnsgry}
+%\end{figure}
 
 Per rendere al meglio l'idea che sta alla base del metodo, è possibile paragonare le caselle nere a degli elettroni e la griglia 
 allo spazio accessibile agli elettroni. Il posizionamente di quest'ultimi deve essere effettuato in modo tale che la somma delle 
 intensità delle forze di repulsione elettrostatica è minimizzata.
 
+\newpage
 Nei problemi considerati, le forze $f_{rstu}$ $\(r,t \in \[1,n_1\] \; s,u \in \[1,n_2\]\)$ presenti tra le caselle $i$ e $j$
 locate rispettivamente nelle posizioni della griglia di coordinate $\(r,s\)$ e $\(t,u\)$ sono definite come segue:
 \begin{align*}
@@ -88,7 +89,7 @@ che generino la matrice dei flussi $A$ e quella delle distanze $B$ sulla base de
 (si ricorda queste sono in relazione con la dimensione dell'istanza $n$ nel seguente modo: $n=n_1\times n_2$) e la densità di grigio 
 utilizzata $d$. 
 
-Qui di seguito sono riportati gli pseudocodici degli algoritmi in questione insieme a quello delle eventuali funzioni che sono state 
+Nella pagina seguente sono riportati gli pseudocodici degli algoritmi in questione insieme a quello delle eventuali funzioni che sono state 
 utilizzate all'intero di essi.
 
 \begin{algorithm}
@@ -146,6 +147,7 @@ utilizzate all'intero di essi.
     \end{algorithmic}
 \end{algorithm}
 
+\newpage
 Come si può intuire osservando lo pseudocodice del primo algoritmo, nella sua costruzione è stata presa la decisione di 
 esprimere la densità $d$ in punti percentuali, ovvero $d \in \[0,100\]$. Da qui il perchè nel calcolo del valore di $m$ è necessaria 
 la divisione per $100$.

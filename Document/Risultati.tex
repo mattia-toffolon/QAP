@@ -169,7 +169,7 @@ Vengono qui di seguito riportati i grafici relativi ad alcune delle soluzioni tr
             \includegraphics[width=\columnwidth]{images/Tai16c_4x4_80.eps}
         \end{subfigure}
      \end{subfigure}
-     \caption{ISoluzioni delle istanze Tai16c a densità 30\%, 50\% e 80\%}
+     \caption{Soluzioni delle istanze Tai16c a densità 30\%, 50\% e 80\%}
      \vspace*{1.5cm}
      \begin{subfigure}[b]{\textwidth}
         \centering
@@ -185,7 +185,7 @@ Vengono qui di seguito riportati i grafici relativi ad alcune delle soluzioni tr
             \includegraphics[width=\columnwidth]{images/Tai25c_5x5_90.eps}
         \end{subfigure}
      \end{subfigure}
-     \caption{ISoluzioni delle istanze Tai25c a densità 10\%, 40\% e 90\%}
+     \caption{Soluzioni delle istanze Tai25c a densità 10\%, 40\% e 90\%}
 \end{figure}
 
 \newpage
@@ -258,7 +258,41 @@ Vengono qui di seguito riportati i grafici relativi ad alcune delle soluzioni tr
 \end{figure}
 
 
-\newpage
-Le caselle nere sono spaziate fra loro quindi -> A prova di validità del metodo di generazione di istanze Tai*c...
+\newpage \noindent
+I grafici ottenuti rispettano la teoria esposta nelle sezione relativa alle istanze Tai*c. Infatti, in ogni griglia le caselle 
+nere sono uniformemente distribuite. Questo ci permette allora di testare la validità del metodo di generazione di tonalità di 
+grigio alle densità desiderata. È possibile effettuare ciò accostando molte delle griglie associate alla stessa soluzione di istanza tra di loro, 
+ottenendo una griglia molto più grande e fitta. Chiaramente, maggiore é il numero di griglie utilizzate, migliore è la definizione 
+della immagine grigia risultante.
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \begin{subfigure}[b]{0.7\textwidth}
+            \includegraphics[width=\columnwidth]{images/gray_42_20.png}
+            \caption{a sinistra la griglia relativa ad una soluzione ottima di un'istanza \textit{Tai42c} a densità $d=20\%$, 
+                \newline a destra quella ottenuta accostando $1600$ griglie del tipo a sinistra}
+        \end{subfigure}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \begin{subfigure}[b]{0.7\textwidth}
+            \includegraphics[width=\columnwidth]{images/gray_36_40.png}
+            \caption{a sinistra la griglia relativa ad una soluzione ottima di un'istanza \textit{Tai36c} a densità $d=40\%$, 
+                \newline a destra quella ottenuta accostando $1600$ griglie del tipo a sinistra}
+        \end{subfigure}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \centering
+        \begin{subfigure}[b]{0.7\textwidth}
+            \includegraphics[width=\columnwidth]{images/gray_25_80.png}
+            \caption{a sinistra la griglia relativa ad una soluzione ottima di un'istanza \textit{Tai25c} a densità $d=80\%$, 
+                \newline a destra quella ottenuta accostando $1600$ griglie del tipo a sinistra}
+        \end{subfigure}
+    \end{subfigure}
+\end{figure}
 
-(GRAFICI PLOTTER2)
+\noindent
+Come si può osservare, le tonalità di grigio desiderate vengono correttamente generate.

@@ -38,4 +38,5 @@ if __name__=='__main__':
     plt.subplot(1,2,2)
     sns.heatmap(R, linewidths=.5, linecolor='#ffffff', cmap='Greys', cbar=False, square=True, xticklabels=False, yticklabels=False)
     plt.subplots_adjust(wspace=0.75)
+    plt.savefig(f'/home/mattiatoffolon/UniPd/Tesi/QAP/Document/images/grey_{n}_{d}.eps', format='eps', bbox_inches='tight')
     plt.show()
