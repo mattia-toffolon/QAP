@@ -19,8 +19,8 @@ essere: \textit{Numpy}, \textit{Pyomo}, \textit{Matplotlib} e \textit{Seaborn}.
 
 \newpage
 \section{Tempi medi di risoluzione}
-I tempi medi, estrapolati e memorizzati come illustrato nelle sezioni precedenti, sono riportati nelle seguenti tabelle indicizzate sulla dimensione delle istanze 
-e sui valori di densità di grigio utilizzati.per generare quest'ultime.
+I tempi medi, estrapolati e memorizzati come illustrato precedentemente, sono riportati nelle seguenti tabelle indicizzate sulla dimensione delle istanze 
+e sui valori di densità di grigio utilizzati per generare quest'ultime.
 
 I tempi sono riportati nel formato \textit{hh:mm:ss.00}, dove \textit{hh} indica il numero di ore impiegate, \textit{mm} i minuti e \textit{ss.00} i secondi arrotondati 
 alla seconda cifra dopo la virgola. \\
@@ -76,18 +76,18 @@ alla seconda cifra dopo la virgola. \\
 \newpage \noindent
 Tramite uno script \textit{Python} che fa uso di alcuni comandi delle librerie \textit{NumPy} e \textit{Matplotlib}, questi dati 
 sono stati utilizzati per creare un grafico 3D ed uno 2D. Tali grafici sono stati realizzati per permettere di comprendere al meglio i risultati 
-degli esperimenti ottenuti e di notare facilmente qual'è l'andamento del tempo di risoluzione delle istanze rispetto ai valori assunti dai 
+ottenuti dagli esperimenti e di notare facilmente qual'è l'andamento del tempo di risoluzione delle istanze rispetto ai valori assunti dai 
 parametri di generazione \textit{n} e \textit{d}.
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.9]{images/resolution_times.eps}
-    \caption{Grafico 3D dei tempi di risoluzione delle istanze Tai*c testate}
+    \caption{Grafico 3D dei tempi medi di risoluzione delle istanze Tai*c testate}
     \label{fig:times}
 \end{figure}
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.59]{images/resolution_times2.eps}
-    \caption{Grafico 2D dei tempi di risoluzione delle istanze Tai*c testate}
+    \caption{Grafico 2D dei tempi medi di risoluzione delle istanze Tai*c testate}
     \label{fig:times2}
 \end{figure}
 
@@ -101,7 +101,7 @@ di risoluzione sono quelle generate da un valore di densità di grigio \textit{d
 che ne richiedono meno sono quelle generate da valori di \textit{d} prossimi allo $0\%$ o al $100\%$.
 
 Questo risultato corrisponde con quello ipotizzabile limitandosi ad osservare la teoria. Infatti, per densità prossime allo $0\%$ il numero 
-di unità da assegnare alle posizioni è ridotto ed invece per densità prossime al $100\%$, il numero di posizioni in cui non deve essere asseganta un'unità 
+di unità da assegnare alle posizioni è ridotto ed invece per densità prossime al $100\%$, il numero di posizioni in cui non deve essere assegnata un'unità 
 è esiguo. Per questo motivo si suppone che in ambo i casi il costo computazionale richiesto per trovare la soluzione ottima sia ridotto. 
 Diversamente accade per densità vicine al $50\%$, valore per il quale il numero di posizioni essegnate ad un'unità è simile a quello delle 
 posizioni libere. È pertanto comprensibile che si abbia il picco di complessità per tali valori.
@@ -261,7 +261,7 @@ Vengono qui di seguito riportati i grafici relativi ad alcune delle soluzioni tr
 \newpage \noindent
 I grafici ottenuti rispettano la teoria esposta nelle sezione relativa alle istanze Tai*c. Infatti, in ogni griglia le caselle 
 nere sono uniformemente distribuite. Questo ci permette allora di testare la validità del metodo di generazione di tonalità di 
-grigio alle densità desiderata. È possibile effettuare ciò accostando molte delle griglie associate alla stessa soluzione di istanza tra di loro, 
+grigio alla densità desiderata. È possibile effettuare ciò accostando molte delle griglie associate alla stessa soluzione di istanza tra di loro, 
 ottenendo una griglia molto più grande e fitta. Chiaramente, maggiore é il numero di griglie utilizzate, migliore è la definizione 
 della immagine grigia risultante.
 \begin{figure}[h!]

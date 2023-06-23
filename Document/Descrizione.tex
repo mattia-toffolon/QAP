@@ -21,7 +21,7 @@ fondamentali per la creazione di istanze del problema e conseguentemente anche p
 La prima possibilità valutata è stata la generazione di valori casuali per comporre le matrici dei parametri $A$ e $B$. 
 Questa però è stato scartata fin da subito poichè utilizzare valori di tale tipologia non permette di fornire una versione 
 pseudo-realistica di istanze del problema ed inoltre, non garantisce alcun tipo di uniformità nella generazione delle istanze, 
-il che non ci permette di effettuare successivamente uno studio approfondito sulla loro complessità di risoluzione.
+il che non permette di individuare un andamento specifico della complessità di risoluzione rispetto alla loro dimensione.
 
 La soluzione a questo problema è stata individuata in un metodo illustrato in un articolo del professor Éric D. Taillard del 1995
 \cite{TAILLARD}. Come verrà illustrato più nello specifico nella prossima sezione, il metodo utilizzato è detto Densità di
@@ -44,7 +44,7 @@ che si fondano sull'utilizzo del metodo di Densità di grigio, il quale può ess
 Al fine di ottenere una tonalità di grigio di densità pari a $m/n$ , il metodo in questione consiste nel generare una griglia 
 rettangolare contenente $n = n_1 \times n_2$ caselle quadrate, $m$ delle quali sono nere e $n-m$ sono bianche. 
 Giustapponendo molte di queste griglie è possibile ottenere una superficie grigia di gradazione pari a $m/n$.
-Per ottenere la miglior qualità di colore, è necessario che le caselle nere, o quelle bianche, siano sparse uniformemente nella griglia.
+Per ottenere la miglior qualità di colore, è necessario che le caselle nere, e conseguentemente anche quelle bianche, siano sparse uniformemente nella griglia.
 
 %A prova di ciò viene qui riportata un'applicazione del metodo realizzata con una delle soluzioni ottenute.
 %\begin{figure}[h!]
@@ -56,12 +56,12 @@ Per ottenere la miglior qualità di colore, è necessario che le caselle nere, o
 %\end{figure}
 
 Per rendere al meglio l'idea che sta alla base del metodo, è possibile paragonare le caselle nere a degli elettroni e la griglia 
-allo spazio accessibile agli elettroni. Il posizionamente di quest'ultimi deve essere effettuato in modo tale che la somma delle 
+allo spazio ad essi accessibile. Il posizionamento di questi deve essere effettuato in modo tale che la somma delle 
 intensità delle forze di repulsione elettrostatica è minimizzata.
 
 \newpage
-Nei problemi considerati, le forze $f_{rstu}$ $\(r,t \in \[1,n_1\] \; s,u \in \[1,n_2\]\)$ presenti tra le caselle $i$ e $j$
-locate rispettivamente nelle posizioni della griglia di coordinate $\(r,s\)$ e $\(t,u\)$ sono definite come segue:
+Nei problemi considerati, il modulo della forza $f_{rstu}$ $\(r,t \in \[1,n_1\] \; s,u \in \[1,n_2\]\)$ presente tra le caselle $i$ e $j$
+locate rispettivamente nelle posizioni della griglia di coordinate $\(r,s\)$ e $\(t,u\)$ è definita come segue:
 \begin{align*}
     f_{rstu} \, = \, \max_{v,w \,\in\, \{-1,0,1\}} \frac{1}{\(r-t+n_1 v\)^2 + \(s-u+n_2 w\)^2}
 \end{align*}
@@ -175,7 +175,7 @@ l'arrotondamento all'intero più vicino del numero fornito come parametro.
 \newpage
 \section{Generazione delle istanze di problemi MIP}
 Terminata la generazione delle matrici dei parametri, costituenti il \textit{dataset} grezzo alla base di questo lavoro, è stato necessario ricavare a 
-partire da ciascuna coppia di matrici $A$ e $B$ il corrispondente problema di programmazione lineare intera di assegnamento quadratico. Per fare questo è stato 
+partire da ciascuna coppia di matrici $A$ e $B$ il corrispondente problema di programmazione lineare intera di assegnamento quadratico. Per fare ciò è stato 
 inizialmente necessario ricavare una modellazione algebrica del problema stesso, definendo variabili, vincoli e funzione obiettivo con cui 
 rappresentarlo formalmente. Come sarà possibile vedere successivamente, a tale modello è stato necessario apportare diverse modifiche per renderlo
 prima corretto e poi anche ottimizzato. Solo in un secondo momento è stato quindi possibile procedere con l'implementazione del modello nel software 
@@ -220,7 +220,7 @@ Per quanto concerne le variabili del problema, queste sono indicizzate dall'insi
 \begin{align*}
 x_{iu} = \begin{cases}  1 & \mbox{se l'unità } u \in U \mbox{ è stata assegnata alla posizione } i \in I\\ 0 & \mbox{altrimenti} \end{cases}
 \end{align*}
-È stato inoltre necessario definire due vincoli per assicurare la correttezza della soluzione trovata. Il primo garantisce che ogni unità venga assagnata ad esattamente una posizione e il secondo invece, che ogni posizione sia asseganta ad esattamente un'unità.
+È stato inoltre necessario definire due vincoli per assicurare la correttezza della soluzione trovata. Il primo garantisce che ogni unità venga assegnata ad esattamente una posizione e il secondo invece, che ogni posizione sia assegnata ad esattamente un'unità.
 \begin{align*}
     \sum_{i\in I} x_{iu} = 1 \quad & \forall u \in U \\
     \sum_{u\in U} x_{iu} = 1 \quad & \forall i \in I
@@ -253,7 +253,7 @@ Nello specifico il problema risiede nella funzione obiettivo. Come lascia intuir
 intera esige un funzione obiettivo lineare, mentre in quella del modello in questione è presente il prodotto fra incognite 
 $\(x_{iu}\cdot x_{jv}\)$ che la rende non lineare.
 
-Il problema è stato risolto effettuando un'operazione di linearizzazione. Tale processo consiste nell'introduzione di una variabile
+La questione è stata risolta effettuando un'operazione di linearizzazione. Tale processo consiste nell'introduzione di una variabile
 $y_{iujv}$ che vada a sostituire il prodotto fra variabili, rendendo così lineare la funzione obiettivo.
 
 \noindent
@@ -261,7 +261,7 @@ Tale variabile è stata definita nel seguente modo:
 \begin{align*}
     y_{iujv} \, = \, x_{iu}\cdot x_{jv}
 \end{align*}
-Tuttavia, affinchè questa variabile sia consistente con i valori delle variabili $x_{iu}$ e $x_{jv}$ che la definiscono è stato necessario 
+Tuttavia, affinchè questa variabile sia consistente con i valori delle variabili $x_{iu}$ e $x_{jv}$ che la definiscono, è stato necessario 
 introdurre tre ulteriori vincoli.
 \begin{align*}
     y_{iujv} \,& \leq \, x_{iu}   \;\;\;\qquad \forall \; i,j \in I ,\; u,v \in U \\ 
@@ -329,9 +329,9 @@ Di conseguenza, la struttura della matrice $A$ è la seguente.
         1 & . & . & 1 & 0 & . & 0 \\
         . & . & . & . & . & . & . \\
         1 & 1 & . & 1 & 0 & . & . \\
-        0 & 0 & . & 0 & 0 & . & 0 \\
-        . & . & . & . & . & . & . \\
-        0 & 0 & . & . & 0 & . & 0
+        0 & 0 & . & 0 & 0 & . & . \\
+        . & . & . & . & . & . & 0 \\
+        0 & 0 & . & . & . & 0 & 0
     \end{bmatrix}
 \end{align*}
 Si nota che solo i valori appartenenti al quadrante $n_1\times n_1$ in alto a sinistra hanno valore unitario, mentre tutti gli altri 
@@ -367,7 +367,7 @@ la vecchia e la nuova matrice dei flussi.
         \sum_{i\in I} \, x_{im} = n-n_1  \,\qquad m=2
     \end{array}
 \end{align*}
-È facilmente dimostrabile che il secondo vincolo è rindondante in quanto è garantito dal primo. Per questo motivo verrà omesso nelle 
+È facilmente dimostrabile che il secondo vincolo è ridondante in quanto è garantito dal primo. Per questo motivo verrà omesso nelle 
 versioni successive del modello algebrico.
 
 \noindent
@@ -415,8 +415,8 @@ finale del modello algebrico del problema.
 In questo caso, a differenza del modello nella versione (\ref{eq:mipqaplin}), le variabili della funzione obiettivo $y_{ij}$ sono 
 indicizzate su soli due elementi, entrambi appartenti allo stesso insieme di cardinalità $n$. Ciò implica che dato il numero di possibili posizioni $n$, 
 cardinalità di $I$, verranno  prese in esame $n^2$ variabili differenti e non più $n^4$. È stato dunque ottenuto un guadagno di due ordini di grandezza sul numero 
-di variabili, garantendo così la possibilità di risolvere, tramite l'hardware e i software messi a disposizione, istanze del problema di grandezza 
-sufficientemente elevata da poterne realizzare uno studio.
+di variabili, garantendo così la possibilità di risolvere, tramite l'hardware e i software messi a disposizione, istanze del problema di dimensione di varia gamma
+e quindi anche di realizzarne uno studio.
 
 
 \subsection{Modellazione nel software}
@@ -451,17 +451,17 @@ utilizzati nel campo della programmazione matematica.
 Nella risoluzione delle istanze è stato necessario interagire con il software risolutore. Tuttavia per effettuare ciò si è deciso di non utilizzare 
 l'interfaccia Python offerta dalla suite CPLEX ma quella fornita dalla libreria Pyomo, ottimizzando così l'uso dei pacchetti importati.
 
-L'interazione con il risolutore non è stata necessaria solo per avviare la risoluzione e successivamente acquisirne i risultati, ma anche per 
+L'interazione con il risolutore non è stata necessaria solo per avviare la risoluzione e successivamente acquisire i risultati, ma anche per 
 modificarne gli attributi. Dato che lo studio delle istanze è basato sull'osservazione dei tempi medi di ricerca della soluzione ottima, è stato necessario risolvere 
 le stesse istanze più volte. Per come però sono strutturati gli algoritmi di risoluzione, senza variare alcun parametro il software produce la stessa
 soluzione in tempi pressoché identici, poichè questi hanno inizio sempre dallo stesso punto di partenza ed effettuano poi le stesse scelte 
 lungo il precorso di ricerca. Per ovviare a questo problema, tramite l'interfaccia offerta da Pyomo è stato modificato ad ogni risoluzione di istanza 
 il parametro di CPLEX chiamato \textit{RandomSeed}. 
-Tale parametro, a cui può essere assegnato un valore non negativo qualunque compreso nell'intervallo [0,BIGINT], determina le prime scelte nella 
+Tale parametro, a cui può essere assegnato un valore intero non negativo qualunque compreso nell'intervallo [0,BIGINT], determina le prime scelte nella 
 ricerca della soluzione ed in tal modo fa sì che ci sia diversità nei tempi di risoluzione e occasionalmente nella soluzione trovata, qualora l'istanza del problema 
 presa in esame dovesse ammettere più soluzioni ottime.
 
-Come visto nelle sezioni precedenti, la generazione di un'istanza Tai*C è basata su una coppia di valori $\(n,d\)$ dove \textit{n} è la 
+Come visto nelle sezioni precedenti, la generazione di un'istanza Tai*c è basata su una coppia di valori $\(n,d\)$ dove \textit{n} è la 
 dimensione dell'istanza e \textit{d} la densità di grigio utilizzata. Nella realizzazione di questo studio i parametri delle istanze prese in 
 esame appartengono ai seguenti insiemi.
 \begin{align*}
@@ -480,14 +480,14 @@ analizzare le performance del risolutore e dare una rappresentazione grafica all
 
 \section{Estrazione ed analisi dei risultati}
 Lo script Python che gestisce la creazione delle istanze ammette anche la loro risoluzione multipla secondo diversi \textit{RandomSeed}. 
-Questo ha permesso di ricavare i tempi medi risoluzione per istanza già in fase di esecuzione, dovendo così estrapolare un solo valore 
+Questo ha permesso di ricavare i tempi medi di risoluzione per istanza già in fase di esecuzione, dovendo così estrapolare un solo valore 
 dagli output del risolutore. 
 
 Come però si vedrà in seguito, l'andamento dei tempi ha andamento esponenziale rispetto alla dimensione delle istanze. A causa di ciò, oltrepassata 
 una certa soglia non è più stato possibile effettuare risoluzioni multiple ma si è dovuto effettuare risoluzioni singole, estrapolarne i dati 
-e calcolare le medie solo successivamente.
+e calcolare le medie solo in un secondo momento.
 
-Tutto ciò ammesso che la soluzione ottima all'istanza considerata sia ottenibile dal risolutore. A causa delle limiti fisici dell'hardware, 
+Tutto ciò ammesso che la soluzione ottima all'istanza considerata sia ottenibile dal risolutore. A causa dei limiti fisici dell'hardware, 
 la potenza computazionale offerta ha permesso di ottenere soluzioni solo entro certi valori del parametro $n$. Per quelli maggiori, è stato invece estrapolato l'\textit{optimality gap} 
 del risolutore al \textit{time limit} di due ore impostato per l'esecuzione. Il gap di ottimalità, in inglese \textit{optimality gap}, indica la differenza 
 in percentuale tra la miglior soluzione conosciuta e il \textit{lower bound} del problema in un dato istante. Rappresenta pertanto un indice di vicinanza 
@@ -504,7 +504,7 @@ Per quanto riguarda invece le soluzioni trovate, queste sono state salvate nel f
     i+1 &\qquad x_{i+1} \\
     .\, .\, . &\qquad .\, .\, .
 \end{align*}
-dove $i$ è l'indice della posizione e $x_i$ indica nella posizione specificata è stata posizionata un'unità a flusso unitario, 
+dove $i$ è l'indice della posizione e $x_i$ indica se nella posizione specificata è stata posizionata un'unità a flusso unitario, 
 in file con estensione \textit{.txt} dal nome
 \begin{align*}
     n\{\text{n}\}\_\{\text{n}_1\}\_\{\text{n}_2\}\_d\{\text{d}\}.txt

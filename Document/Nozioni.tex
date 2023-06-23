@@ -49,7 +49,7 @@ Tuttavia, nel caso della MIP, questa restrizione non comporta un'eccessiva limit
 problemi formulabili secondo questo paradigma. Alcuni esempi classici di problemi risolvibili mediante MIP sono \textit{knapsack}, problemi di 
 \textit{scheduling}, \textit{minimum vertex cover} e, naturalmente, \textit{quadratic assignment problem}.
 Inoltre, l'introduzione dei vincoli di linearità ed interezza comporta notevoli vantaggi nella definizione ed
-implementazione di algoritmi di risoluzione, due dei quali sono stati descritti più nel dettaglio nelle seguenti sezioni.
+implementazione di algoritmi di risoluzione, due dei quali sono stati descritti più nel dettaglio nelle sezioni successive.
 
 \subsection{Algoritmo Branch and Bound}
 L'algoritmo branch-and-bound (B\&B) è un algoritmo di ottimizzazione generica basato sull'enumerazione dell'insieme delle soluzioni
@@ -113,8 +113,8 @@ x_j \leq \floor*{x_j^*} \vee x_j \geq \ceil*{x_j^*}
 Infine, è importante notare come, per costruzione, ogni soluzione trovata dall'algoritmo è migliore dell'incumbent e, di conseguenza, 
 l'andamento dell'upper bound del problema decresce fino al raggiungimento della soluzione ottima. A differenza degli upper bound, i lower bound 
 dei singoli sottoproblemi non hanno invece valenza globale. Nonostante ciò, è comunque possibile derivare un lower bound globale considerando il minimo 
-tra tutti i lower bound dei sottoproblemi ancora aperti. Avere a disposizione in qualsiasi momento entrambi i bound del problema, 
-permetta quindi di valutare la bontà della soluzione provvisoria in ogni momento. 
+tra tutti i lower bound dei sottoproblemi ancora aperti. Avere sempre a disposizione entrambi i bound del problema, 
+permette quindi di valutare la bontà della soluzione provvisoria in ogni momento. 
 
 \subsection{Algoritmo Branch and Cut}
 L'algoritmo \textit{branch-and-cut} (B\&C) rappresenta una versione migliorata dell'algoritmo branch-and-bound, introdotta nel 1987
@@ -122,7 +122,7 @@ da M. Padberg e G. Rinaldi \cite{PADBERG19871} e ideata appositamente per la ris
 
 L'algoritmo branch-and-cut è un ibrido tra branch-and-bound, trattato nella sezione precedente, e un algoritmo
 a piani di taglio puro, in cui la soluzione è viene ottenuta mediante raffinazioni progressive dello spazio delle soluzioni attraverso la
-progressiva aggiunti di vincoli.
+progressiva aggiunta di vincoli.
 Queste due tecniche si rafforzano a vicenda, contribuendo al raggiungimento di prestazioni complessive superiori a quelle
 che otterrebbe ciascuna di esse singolarmente.
 
@@ -137,7 +137,7 @@ soluzione frazionaria {$x^*$}, trovare una diseguaglianza valida $\alpha^Tx\leq 
 tale che $\alpha^Tx^*>\alpha_0$.
 
 \section{Quadratic assignment problem}
-I QAP (Quadratic assignment problem), conosciuti anche come \textit{problemi di assegnamento quadratico}, si fondano sulla ricerca
+I QAP (quadratic assignment problem), conosciuti anche come \textit{problemi di assegnamento quadratico}, si fondano sulla ricerca
 di un posizionamento ottimale di un dato insieme di unità anche dette \textit{facilities}, in riferimento ai \textit{facility location problems}
 di cui i QAP sono una branca, in un dato insieme di posizioni anche dette \textit{locations}. 
 Come provato da S. Sahni e T. Gonzalez nel 1976 \cite{SAHNI1976}, un problema di assegnamento quadratico è di tipo NP-difficile, 
@@ -147,7 +147,7 @@ Inoltre, può essere risolto all'ottimo solo per instanze particolarmente piccol
 Nello specifico, il problema può essere presentato come segue: $n$ unità devono essere assegnate ad $n$ posizioni differenti, sapendo che
 $a_{ij}$ è il flusso di informazioni che deve essere trasferito dall'unità $i$ all'unità $j$ e che la distanza tra le posizioni
 $r$ ed $s$ è pari a $b_{rs}$, si vuole trovare l'assegnamento delle unità nelle posizioni ottimo, ovvero quello che minimizza la somma dei prodotti
-flusso $\times$ distanza. 
+$flusso\times distanza$. 
 
 \newpage \noindent
 Matematicamente, il problema si può formulare nel seguente modo:
@@ -155,4 +155,4 @@ Matematicamente, il problema si può formulare nel seguente modo:
     \min_{\pi \, \in \, P(n)} \sum_{i\,=\,1}^{n} \sum_{j=1}^{n} a_{ij} b_{\pi_{i} \pi_{j}}
 \end{align*}
 dove $A=\( a_{ij} \)$ e $B=\( b_{rs} \)$ sone due matrici $n \times n$, $P(n)$ è l'insieme di tutte le possibili permutazioni di
-$\{ 1, 2, ..., n\}$ e $\pi_{i}$ indica la posizione dell'unità $i$ nella permutazione $\pi \in P(n)$.
+$\{ 1, 2, ..., n\}$ e $\pi_{i}$ indica la posizione dell'unità $i$ nella permutazione \newline $\pi \in P(n)$.
