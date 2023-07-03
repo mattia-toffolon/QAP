@@ -22,31 +22,32 @@ essere: \textit{Numpy}, \textit{Pyomo}, \textit{Matplotlib} e \textit{Seaborn}.
 I tempi medi, estrapolati e memorizzati come illustrato precedentemente, sono riportati nelle seguenti tabelle indicizzate sulla dimensione delle istanze 
 e sui valori di densità di grigio utilizzati per generare quest'ultime.
 
-I tempi sono riportati nel formato \textit{hh:mm:ss.00}, dove \textit{hh} indica il numero di ore impiegate, \textit{mm} i minuti e \textit{ss.00} i secondi arrotondati 
-alla seconda cifra dopo la virgola. \\
+L'unità di misura scelta per riportare i tempi è quella del secondo (\textit{s}). Inoltre, per facilitare la comprensione dei dati, questi 
+sono stati arrotondati alla prima cifra decimale.
+\\
 
 \begin{tabular}{cc c|c|c|c l}
     \centering
     & & \multicolumn{3}{ c }{Dimensione dell'istanza \textit{n}} \\ \cline{3-5}
     & & \multicolumn{1}{ |c| }{9 (3x3)} & 16 (4x4) & 25 (5x5) & \\ \cline{2-5}
     \multicolumn{1}{  c  }{\multirow{8}{*}{Densità di} } &
-    \multicolumn{1}{ |c| }{10\%} & 00:00:00.17 & 00:00:00.12 & 00:00:00.28 &   \\ \cline{2-5}
-    \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{20\%} & 00:00:00.14 & 00:00:00.10 & 00:00:00.27 &    \\ \cline{2-5}
-    \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{30\%} & 00:00:00.05 & 00:00:00.12 & 00:00:00.34 &    \\ \cline{2-5}
-    \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{40\%} & 00:00:00.04 & 00:00:00.21 & 00:00:01.59 &    \\ \cline{2-5}
-    \multicolumn{1}{  c  }{\multirow{1}{*}{grigio \textit{d}}}                        &
-    \multicolumn{1}{ |c| }{50\%} & 00:00:00.04 & 00:00:00.23 & 00:00:02.59 &    \\ \cline{2-5}
-    \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{60\%} & 00:00:00.06 & 00:00:00.22 & 00:00:02.46 &    \\ \cline{2-5}
-    \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{70\%} & 00:00:00.05 & 00:00:00.13 & 00:00:00.68 &    \\ \cline{2-5}
-    \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{80\%} & 00:00:00.05 & 00:00:00.12 & 00:00:00.48 &    \\ \cline{2-5}
-    \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{90\%} & 00:00:00.03 & 00:00:00.13 & 00:00:00.32 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{10\%} & \hphantom{mm}0.2\hphantom{mm} & \hphantom{mm}0.1\hphantom{mm} & \hphantom{mm}0.3\hphantom{mm} &   \\ \cline{2-5}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{20\%} & 0.1 & 0.1 & 0.3 &    \\ \cline{2-5}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{30\%} & 0.1 & 0.1 & 0.3 &    \\ \cline{2-5}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{40\%} & 0.1 & 0.2 & 1.6 &    \\ \cline{2-5}
+    \multicolumn{1}{  c  }{\multirow{1}{*}{grigio \textit{d}}} &
+    \multicolumn{1}{ |c| }{50\%} & 0.1 & 0.2 & 2.6 &    \\ \cline{2-5}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{60\%} & 0.1 & 0.2 & 2.5 &    \\ \cline{2-5}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{70\%} & 0.1 & 0.1 & 0.7 &    \\ \cline{2-5}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{80\%} & 0.1 & 0.1 & 0.5 &    \\ \cline{2-5}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{90\%} & 0.1 & 0.1 & 0.3 &    \\ \cline{2-5}
     \medskip
 \end{tabular}
 
@@ -54,23 +55,23 @@ alla seconda cifra dopo la virgola. \\
     & & \multicolumn{3}{ c }{Dimensione dell'istanza \textit{n}} \\ \cline{3-5}
     & & \multicolumn{1}{ |c| }{36 (6x6)} & 42 (7x6) & 45 (9x5) & \\ \cline{2-5}
     \multicolumn{1}{  c  }{\multirow{8}{*}{Densità di} } &
-    \multicolumn{1}{ |c| }{10\%} & 00:00:00.59 & 00:00:00.84 & 00:00:01.08 &   \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{10\%} & \hphantom{mm}0.6\hphantom{mm} & \hphantom{mm}0.8\hphantom{mm} & \hphantom{mm}1.1\hphantom{mm} &   \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{20\%} & 00:00:00.85 & 00:00:05.03 & 00:00:12.99 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{20\%} & 0.9 & 5.0 & 13.0 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{30\%} & 00:00:13.00 & 00:04:56.35 & 00:15:13.03 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{30\%} & 13.0 & 296.4 & 913.0 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{40\%} & 00:01:06.86 & 00:26:51.01 & 01:21:36.74 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{40\%} & 66.9 & 1611.0 & 4896.7 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{\multirow{1}{*}{grigio \textit{d}}}                        &
-    \multicolumn{1}{ |c| }{50\%} & 00:00:18.40 & 00:06:13.01 & 00:49:02.35 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{50\%} & 18.4 & 373.0 & 2942.4 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{60\%} & 00:01:37.72 & 00:36:49.48 & 01:51:47.95 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{60\%} & 97.7 & 2209.5 & 6708.0 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{70\%} & 00:01:10.83 & 00:27:21.45 & 01:37:33.22 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{70\%} & 70.8 & 1641.5 & 5853.2 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{80\%} & 00:00:06.37 & 00:00:36.44 & 00:02:38.68 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{80\%} & 6.4 & 36.4 & 158.7 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
-    \multicolumn{1}{ |c| }{90\%} & 00:00:00.77 & 00:00:01.30 & 00:00:05.66 &    \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{90\%} & 0.8 & 1.3 & 5.7 &    \\ \cline{2-5}
 \end{tabular}
 
 \newpage \noindent
@@ -113,19 +114,19 @@ ogni valore di densità di grigio. Difatti, per le istanze di dimensione $49\,(7
     & & \multicolumn{5}{ c }{Densità di grigio \textit{d}} \\ \cline{3-7}
     & & \multicolumn{1}{ |c| }{10\%} & 20\% & 30\% & 40\% & 50\% &  \\ \cline{2-7}
     \multicolumn{1}{  c  }{\multirow{1}{*}{\textit{n}}}  &
-    \multicolumn{1}{ |c| }{49 (7x7)} & 00:00:01.19 & 00:00:43.57 & 00:51:50.19 & 12.04\% & 1.17\% \\ \cline{2-7}
+    \multicolumn{1}{ |c| }{49 (7x7)} & \hphantom{n}1.2\textit{s}\hphantom{n} & \hphantom{n}43.6\textit{s}\hphantom{n} & \hphantom{n}3110.2\textit{s}\hphantom{n} & \hphantom{n}12.04\%\hphantom{n} & \hphantom{n}1.17\%\hphantom{n} \\ \cline{2-7}
 \end{tabular}
 
 \begin{tabular}{cc c|c|c|c| l}
     & & \multicolumn{4}{ c }{Densità di grigio \textit{d}} \\ \cline{3-6}
     & & \multicolumn{1}{ |c| }{60\%} & 70\% & 80\% & 90\% & \\ \cline{2-6}
     \multicolumn{1}{  c  }{\multirow{1}{*}{\textit{n}}}  &
-    \multicolumn{1}{ |c| }{49 (7x7)} & \hphantom{mn}6.39\%\hphantom{mn} & \hphantom{mn}3.02\%\hphantom{mn} & \hphantom{i}00:17:24.36\ & \hphantom{i}00:00:08.39 \\ \cline{2-6}
+    \multicolumn{1}{ |c| }{49 (7x7)} & \hphantom{mi}6.39\%\hphantom{mi} & \hphantom{mi}3.02\%\hphantom{mi} & \hphantom{mii}1044.4\textit{s}\hphantom{mii} & \hphantom{mi}8.4\textit{s}\hphantom{mi} \\ \cline{2-6}
     \medskip
 \end{tabular}
 
 In queste tabelle compaiono dati di tipologia diversa. Dato un valore di densità \textit{d}, se nella relativa cella compare un tempo, esso corrisponde al tempo medio di risoluzione per \textit{d}, mentre se 
-compare una percentuale significa che per quel \textit{d} non è stato possibile calcolare il tempo cercato e pertanto il dato corrisponde all'\textit{optimality gap} al \textit{time limit}.
+compare una percentuale significa che in tal caso non è stato possibile calcolare il tempo cercato e pertanto il dato corrisponde all'\textit{optimality gap} al \textit{time limit}.
 
 
 \newpage
