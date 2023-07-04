@@ -22,16 +22,16 @@ essere: \textit{Numpy}, \textit{Pyomo}, \textit{Matplotlib} e \textit{Seaborn}.
 I tempi medi, estrapolati e memorizzati come illustrato precedentemente, sono riportati nelle seguenti tabelle indicizzate sulla dimensione delle istanze 
 e sui valori di densità di grigio utilizzati per generare quest'ultime.
 
-L'unità di misura scelta per riportare i tempi è quella del secondo (\textit{s}). Inoltre, per facilitare la comprensione dei dati, questi 
-sono stati arrotondati alla prima cifra decimale.
+L'unità di misura scelta per riportare i tempi è quella del secondo (\textit{s}). Inoltre, per facilitarne la comprensione, i dati 
+sono stati arrotondati per eccesso alla prima cifra decimale.
 \\
 
-\begin{tabular}{cc c|c|c|c l}
+\begin{tabular}{cc R{2cm}|R{2cm}|R{2cm}|c l}
     \centering
     & & \multicolumn{3}{ c }{Dimensione dell'istanza \textit{n}} \\ \cline{3-5}
-    & & \multicolumn{1}{ |c| }{9 (3x3)} & 16 (4x4) & 25 (5x5) & \\ \cline{2-5}
+    & & \multicolumn{1}{ |c| }{9 (3x3)} & 16 (4x4)\hphantom{n} & 25 (5x5)\hphantom{n} & \\ \cline{2-5}
     \multicolumn{1}{  c  }{\multirow{8}{*}{Densità di} } &
-    \multicolumn{1}{ |c| }{10\%} & \hphantom{mm}0.2\hphantom{mm} & \hphantom{mm}0.1\hphantom{mm} & \hphantom{mm}0.3\hphantom{mm} &   \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{10\%} & 0.2 & 0.1 & 0.3 &   \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                       &
     \multicolumn{1}{ |c| }{20\%} & 0.1 & 0.1 & 0.3 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                       &
@@ -51,11 +51,11 @@ sono stati arrotondati alla prima cifra decimale.
     \medskip
 \end{tabular}
 
-\begin{tabular}{cc c|c|c|c l}
+\begin{tabular}{cc R{2cm}|R{2cm}|R{2cm}|c l}
     & & \multicolumn{3}{ c }{Dimensione dell'istanza \textit{n}} \\ \cline{3-5}
-    & & \multicolumn{1}{ |c| }{36 (6x6)} & 42 (7x6) & 45 (9x5) & \\ \cline{2-5}
+    & & \multicolumn{1}{ |c| }{36 (6x6)} & 42 (7x6)\hphantom{n} & 45 (9x5)\hphantom{n} & \\ \cline{2-5}
     \multicolumn{1}{  c  }{\multirow{8}{*}{Densità di} } &
-    \multicolumn{1}{ |c| }{10\%} & \hphantom{mm}0.6\hphantom{mm} & \hphantom{mm}0.8\hphantom{mm} & \hphantom{mm}1.1\hphantom{mm} &   \\ \cline{2-5}
+    \multicolumn{1}{ |c| }{10\%} & 0.6 & 0.8 & 1.1  &   \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
     \multicolumn{1}{ |c| }{20\%} & 0.9 & 5.0 & 13.0 &    \\ \cline{2-5}
     \multicolumn{1}{  c  }{}                        &
