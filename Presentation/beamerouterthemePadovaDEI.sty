@@ -1,0 +1,74 @@
+\mode<presentation>
+
+% Image definitions
+% ==============================================================================
+\pgfdeclareimage[height= 0.9cm]{logoUnipdWhite}{images/logo_unipd}
+\pgfdeclareimage[height= 1.5cm]{logoUnipdWhiteBig}{images/logo_unipd}
+\pgfdeclareimage[height= 1.5cm]{logoDeiWhiteBig}{images/logo_dei}
+\pgfdeclareimage[height= 0.9cm]{logoDeiWhite}{images/logo_dei}
+
+% Actual beamer definitions
+% ==============================================================================
+\defbeamertemplate*{frametitle}{pd theme}
+{%
+	\nointerlineskip%
+	\begin{beamercolorbox}[ht=2.4em,wd=\paperwidth]{frametitle}%
+		\raisebox{0.45em}{\hspace{0.45em}\makebox[0.4\paperheight][l]{\strut\insertframetitle\strut}}%
+		\hfill%
+		\raisebox{0.35em}{\makebox[0.3\paperheight][r]{\includegraphics[height=1.7em]{images/logo_dei}~\hspace{0.02\paperheight}}}%
+	\end{beamercolorbox}%
+}
+
+\defbeamertemplate*{title page}{pd theme} {%
+	\vskip19ex%
+	\centering\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par%
+	\ifx\insertsubtitle\@empty%
+	\else%
+		{\centering\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+	\fi%
+	\ifx\insertauthor\@empty%
+	\else%
+		\vskip4ex%
+		{\centering\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
+	\fi%
+	\ifx\insertdate\@empty%
+	\else%
+		\vskip5ex
+		%
+		{\centering\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
+	\fi%
+	\vfill%
+}
+
+
+\defbeamertemplate*{background canvas}{pd theme} {%
+	\ifnum\c@framenumber=1%
+		\color{rossoPantano}\rule{\paperwidth}{\paperheight}%
+	\fi%
+	\ifnum\c@framenumber=\inserttotalframenumber%
+        % Last frame
+		\color{rossoPantano}\rule{\paperwidth}{\paperheight}%
+	\fi%
+}
+
+
+\defbeamertemplate*{footline}{pd theme} {%
+	\ifnum\c@framenumber=\inserttotalframenumber%
+		\ifbeamerpadovanologos%
+			\pgftext[right,bottom,at=\pgfpoint{0.95\paperwidth}{0.77\paperheight}]{\pgfuseimage{logoDeiWhiteBig}}%
+			\pgftext[left,bottom,at=\pgfpoint{0.05\paperwidth}{0.77\paperheight}]{\pgfuseimage{logoUnipdWhiteBig}}%
+		\fi%
+	\fi%
+%
+	\ifnum\c@framenumber=1%
+		\ifbeamerpadovanologos%
+			\pgftext[right,bottom,at=\pgfpoint{0.95\paperwidth}{0.77\paperheight}]{\pgfuseimage{logoDeiWhiteBig}}%
+			\pgftext[left,bottom,at=\pgfpoint{0.05\paperwidth}{0.77\paperheight}]{\pgfuseimage{logoUnipdWhiteBig}}%
+		\fi%
+	\else%
+		
+	\fi%
+}
+
+\mode
+<all>
