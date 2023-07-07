@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.3)  6 JUL 2023 18:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.3)  7 JUL 2023 12:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -797,11 +797,87 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
 <images/logo_dei.pdf, id=38, 240.9pt x 147.1899pt>
 File: images/logo_dei.pdf Graphic file (type pdf)
 <use images/logo_dei.pdf>
-Package pdftex.def Info: images/logo_dei.pdf  used on input line 28.
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 37.
 (pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
  [2
 
- <./images/logo_dei.pdf>] [3
+ <./images/logo_dei.pdf>]
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 50.
+LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 50.
+ (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 50.
+ (/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 50.
+ (/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 50.
+ (/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 50.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 50.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 50.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 50.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 50.
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 50.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [3
+
+]
+<images/gray_36_40.png, id=58, 1565.85pt x 617.30624pt>
+File: images/gray_36_40.png Graphic file (type png)
+<use images/gray_36_40.png>
+Package pdftex.def Info: images/gray_36_40.png  used on input line 63.
+(pdftex.def)             Requested size: 187.89389pt x 74.07355pt.
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 63.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [4
+
+ <./images/gray_36_40.png>]
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 78.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [5
+
+]
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 96.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [6
+
+]
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 101.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [7
+
+] [8
 
 ]
 \tf@nav=\write6
@@ -818,18 +894,18 @@ Package rerunfilecheck Info: File `Presentazione.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 24596 strings out of 480163
- 474496 string characters out of 5894094
- 734642 words of memory out of 5000000
- 42061 multiletter control sequences out of 15000+600000
- 490097 words of font info for 38 fonts, out of 8000000 for 9000
+ 24800 strings out of 480163
+ 478708 string characters out of 5894094
+ 737642 words of memory out of 5000000
+ 42221 multiletter control sequences out of 15000+600000
+ 512877 words of font info for 58 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 99i,12n,104p,475b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb>
-Output written on Presentazione.pdf (3 pages, 1952282 bytes).
+ 99i,14n,104p,475b,519s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
+Output written on Presentazione.pdf (8 pages, 2029410 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
