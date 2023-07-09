@@ -1346,7 +1346,8 @@ INPUT ./images/logo_dei.pdf
 INPUT images/logo_dei.pdf
 INPUT ./images/logo_dei.pdf
 INPUT ./images/logo_dei.pdf
-INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmsso10.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmssbx10.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmssbo10.tfm
 INPUT /usr/share/texmf/tex/latex/lm/ot1lmss.fd
 INPUT /usr/share/texmf/tex/latex/lm/ot1lmss.fd
 INPUT /usr/share/texmf/tex/latex/lm/ot1lmss.fd
@@ -1388,6 +1389,7 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmss8.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmsso10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmsso8.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmsso8.tfm
 INPUT ./images/logo_dei.pdf
@@ -1417,10 +1419,10 @@ INPUT Presentazione.aux
 INPUT ./Presentazione.out
 INPUT ./Presentazione.out
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc
+INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc
-INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb
@@ -1428,6 +1430,8 @@ INPUT /usr/share/texmf/fonts/type1/public/lm/lmss10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmss12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmss17.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmss8.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmssbo10.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb

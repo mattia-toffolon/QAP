@@ -37,13 +37,16 @@
 \end{frame}
 
 \begin{frame}{Quadratic assignment problem}
-Il problema di ottimizzazione di assegnamento quadratico (QAP) consiste nell'assegnare \textit{n} unità in 
-\textit{n} posizioni differenti. 
+Il problema di ottimizzazione di assegnamento quadratico (QAP) consiste nell'assegnare \textbf{\textit{n} unità} in 
+\textbf{\textit{n} posizioni} differenti. 
 
-Sono noti il flusso di informazioni in trasferimento per ogni coppia di unità 
-e la distanza tra ogni posizione e le altre.
+Sono noti il flusso di informazioni da trasferire da ogni unità alle altre
+e per ogni coppia di posizioni la distanza che le separa.
 \newline \newline
-L'assegnamento ottimale è quello che minimizza la somma dei prodotti flusso $\times$ distanza.
+L'assegnamento ottimale è quello che rende \textbf{minima} la \textbf{somma dei prodotti flusso x distanza} relativi ad ogni coppia
+di unità.
+\newline \newline
+Matematicamente, il problema può essere espresso come segue
 \begin{align*}
     \min_{\pi \, \in \, P(n)} \sum_{i\,=\,1}^{n} \sum_{j=1}^{n} a_{ij} b_{\pi_{i} \pi_{j}}
 \end{align*}
