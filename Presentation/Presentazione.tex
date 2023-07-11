@@ -53,16 +53,18 @@ Matematicamente, il problema può essere espresso come segue
 \end{frame}
 
 \begin{frame}{Istanze Tai*c}
-La classe di problemi QAP studiata è quella delle istanze Tai*c.
+La classe di problemi QAP studiata è quella delle istanze \textbf{Tai*c}.
 \newline \newline
-Queste posso essere generate tramite il metodo "Densità di grigio".
-Esso si fonda sull'utilizzo di una griglia $n_1\times n_2 \,(=n)$ dalla quale è possibile ricavare i parametri di distanza.
-Quelli di flusso invece, sono a valore unitario o nullo in base alla densità considerata.
+Tali istanze sono generate dal metodo \textbf{\textit{Densità di grigio}}.
+Questo si fonda sull'uso di un'apposita griglia composta da \textit{n} caselle ed un valore di densità per ottenere i parametri 
+di distanza e flusso.
+\newline \newline
+Le soluzioni a queste istanze possono essere visulizzate come griglie e combinate per ottenere la tonalità di grigio desiderata.
 \begin{figure}[h!]
     \centering
 \includegraphics[scale=0.12]{images/gray_36_40.png}
-\caption{Esempio di griglia "Densità di grigio" ed un suo possibile utilizzo}
-\end{figure}    
+\caption{Esempio per un'istanza di dimensione 36 a densità 40\%}
+\end{figure}   
 \end{frame}
 
 \begin{frame}{Modellazione algebrica}
@@ -76,12 +78,12 @@ Le diverse fasi in cui si è articolata la modellazione algebrica del problema d
 \item semplificazione del modello
 \end{itemize}
 \vfill
-Le ultime due fasi sono state necessarie per portare il modello in forma MIP e per ridurre il costo computazionale richiesto 
-per risolvere le istanze.
+Le ultime due fasi sono state necessarie per adattare il modello alla \textbf{forma MIP} e per \textbf{ridurre il costo computazionale}
+richiesto per risolvere le verie istanze del problema.
 \end{frame}
 
 \begin{frame}{Modellazione algebrica}
-Il modello risultante dalla modellazione algebrica è il seguente:
+Il risultato dalla modellazione algebrica è il seguente modello:
 \begin{align*}
 	\begin{array}{l}
       \min \, \sum_{i\in I} \sum_{j\in I} \, b_{ij}\cdot y_{ij} \\
@@ -93,8 +95,8 @@ Il modello risultante dalla modellazione algebrica è il seguente:
     \end{array}
 \end{align*}
 \vfill
-Si nota come, dato \textit{n} il numero di unità e di posizioni, è necessario prendere in esame $n^2$ variabili. 
-Deriva da qui l'elevata complessità di risoluzione delle istanze del problema.
+Si nota come, dato \textit{n} il numero di unità e di posizioni, è necessario prendere in esame \textbf{\textit{n}$^{\textbf{2}}$ variabili}. 
+Da qui deriva l'elevata complessità di risoluzione delle istanze del problema in questione.
 
 \end{frame}
 

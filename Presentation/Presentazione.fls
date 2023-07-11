@@ -1406,6 +1406,8 @@ INPUT ./images/logo_dei.pdf
 INPUT ./images/logo_dei.pdf
 INPUT images/logo_dei.pdf
 INPUT ./images/logo_dei.pdf
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmssbx10.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmssbx10.tfm
 INPUT ./images/logo_dei.pdf
 INPUT images/logo_dei.pdf
 INPUT ./images/logo_dei.pdf
