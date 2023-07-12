@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.3)  11 JUL 2023 18:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.3)  12 JUL 2023 13:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -868,18 +868,77 @@ Package pdftex.def Info: images/logo_dei.pdf  used on input line 83.
 ]
 File: images/logo_dei.pdf Graphic file (type pdf)
 <use images/logo_dei.pdf>
-Package pdftex.def Info: images/logo_dei.pdf  used on input line 101.
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 100.
 (pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
  [6
 
 ]
+Package epstopdf Info: Source file: <images/resolution_times.eps>
+(epstopdf)                    date: 2023-06-20 22:11:16
+(epstopdf)                    size: 30407 bytes
+(epstopdf)             Output file: <images/resolution_times-eps-converted-to.pdf>
+(epstopdf)                    date: 2023-06-20 22:11:18
+(epstopdf)                    size: 16016 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/resolution_times-eps-converted-to.pdf images/resolution_times.eps>
+(epstopdf)             \includegraphics on input line 117.
+Package epstopdf Info: Output file is already uptodate.
+<images/resolution_times-eps-converted-to.pdf, id=79, 315.1775pt x 297.11pt>
+File: images/resolution_times-eps-converted-to.pdf Graphic file (type pdf)
+<use images/resolution_times-eps-converted-to.pdf>
+Package pdftex.def Info: images/resolution_times-eps-converted-to.pdf  used on input line 117.
+(pdftex.def)             Requested size: 126.06876pt x 118.84189pt.
+
+Overfull \hbox (12.25774pt too wide) in paragraph at lines 117--117
+[][] 
+ []
+
+Package epstopdf Info: Source file: <images/resolution_times2.eps>
+(epstopdf)                    date: 2023-06-20 21:55:19
+(epstopdf)                    size: 31873 bytes
+(epstopdf)             Output file: <images/resolution_times2-eps-converted-to.pdf>
+(epstopdf)                    date: 2023-06-20 21:55:20
+(epstopdf)                    size: 16081 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/resolution_times2-eps-converted-to.pdf images/resolution_times2.eps>
+(epstopdf)             \includegraphics on input line 117.
+Package epstopdf Info: Output file is already uptodate.
+<images/resolution_times2-eps-converted-to.pdf, id=80, 463.7325pt x 347.2975pt>
+File: images/resolution_times2-eps-converted-to.pdf Graphic file (type pdf)
+<use images/resolution_times2-eps-converted-to.pdf>
+Package pdftex.def Info: images/resolution_times2-eps-converted-to.pdf  used on input line 117.
+(pdftex.def)             Requested size: 139.12082pt x 104.19005pt.
+
+Overfull \hbox (11.08342pt too wide) in paragraph at lines 117--117
+[][] 
+ []
+
 File: images/logo_dei.pdf Graphic file (type pdf)
 <use images/logo_dei.pdf>
-Package pdftex.def Info: images/logo_dei.pdf  used on input line 106.
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 117.
 (pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
- [7
+[7
 
-] [8
+ <./images/resolution_times-eps-converted-to.pdf> <./images/resolution_times2-eps-converted-to.pdf>]
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 127.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [8
+
+]
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 131.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [9
+
+]
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 136.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [10
+
+] [11
 
 ]
 \tf@nav=\write6
@@ -896,18 +955,18 @@ Package rerunfilecheck Info: File `Presentazione.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 24812 strings out of 480163
- 478981 string characters out of 5894094
- 737642 words of memory out of 5000000
- 42231 multiletter control sequences out of 15000+600000
- 523983 words of font info for 62 fonts, out of 8000000 for 9000
+ 24848 strings out of 480163
+ 479869 string characters out of 5894094
+ 737644 words of memory out of 5000000
+ 42257 multiletter control sequences out of 15000+600000
+ 526760 words of font info for 63 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 99i,14n,104p,475b,523s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on Presentazione.pdf (8 pages, 2083015 bytes).
+ 99i,14n,104p,475b,668s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
+Output written on Presentazione.pdf (11 pages, 2127622 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
- 17 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 252 PDF objects out of 1000 (max. 8388607)
+ 125 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 

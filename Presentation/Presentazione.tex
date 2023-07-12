@@ -67,7 +67,7 @@ Le soluzioni a queste istanze possono essere visulizzate come griglie e combinat
 \end{figure}   
 \end{frame}
 
-\begin{frame}{Modellazione algebrica}
+\begin{frame}{Modellazione algebrica - 1}
 Le diverse fasi in cui si è articolata la modellazione algebrica del problema di ottimizzazione sono state:
 \begin{itemize}
 \item individuazione degli insiemi
@@ -82,7 +82,7 @@ Le ultime due fasi sono state necessarie per adattare il modello alla \textbf{fo
 richiesto per risolvere le verie istanze del problema.
 \end{frame}
 
-\begin{frame}{Modellazione algebrica}
+\begin{frame}{Modellazione algebrica - 2}
 Il risultato dalla modellazione algebrica è il seguente modello:
 \begin{align*}
 	\begin{array}{l}
@@ -96,8 +96,38 @@ Il risultato dalla modellazione algebrica è il seguente modello:
 \end{align*}
 \vfill
 Si nota come, dato \textit{n} il numero di unità e di posizioni, è necessario prendere in esame \textbf{\textit{n}$^{\textbf{2}}$ variabili}. 
-Da qui deriva l'elevata complessità di risoluzione delle istanze del problema in questione.
+Da qui deriva l'elevata complessità di risoluzione delle istanze del problema in oggetto.
+\end{frame}
 
+\begin{frame}{Risultati sperimentali - 1}
+Tramite alcuni script \textit{Python} ed il software risolutore \textit{CPLEX} è stato possibile trovare le soluzioni ad alcune istanze del problema
+e ricavare i \textbf{tempi medi di risoluzione}. I dati ottenuti dalle sperimentazioni sono stati utilizzati per tracciare i seguenti grafici.
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[t]{4cm}
+		\includegraphics[scale=0.4]{images/resolution_times.eps}
+		\caption{Grafico 3D}
+	\end{subfigure}
+	\hspace{5em}
+	\begin{subfigure}[t]{4.5cm}
+		\includegraphics[scale=0.3]{images/resolution_times2.eps}
+		\caption{Grafico 2D}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Risultati sperimentali - 2}
+Dai grafici è possibile osservare una correlazione di tipo \textbf{esponenziale} tra il tempo medio di risoluzione e la dimensione dell'istanza
+per ogni valore di densità preso in esame.
+\newline \newline
+L'unica differenza tra i diversi casi risiede nella velocità con cui i valori dei tempi divergono. Per densità prossime al 50\% il fenomeno è più marcato, 
+mentre per quelle vicine allo 0\% o al 100\% esso tende ad essere più fievole.
+\newline \newline 
+Tali risultati risultano compatibili con le ipotesi formulabili limitandosi ad osservare le teoria.
+\end{frame}
+
+\begin{frame}{Conclusioni}
+	
 \end{frame}
 
 \begin{frame}{Ringraziamenti}
