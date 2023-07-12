@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.3)  12 JUL 2023 13:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.5.3)  12 JUL 2023 19:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -925,20 +925,69 @@ Package pdftex.def Info: images/logo_dei.pdf  used on input line 127.
  [8
 
 ]
+Package epstopdf Info: Source file: <images/Tai25c_5x5_10.eps>
+(epstopdf)                    date: 2023-06-22 00:11:28
+(epstopdf)                    size: 14388 bytes
+(epstopdf)             Output file: <images/Tai25c_5x5_10-eps-converted-to.pdf>
+(epstopdf)                    date: 2023-06-22 00:11:29
+(epstopdf)                    size: 7464 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/Tai25c_5x5_10-eps-converted-to.pdf images/Tai25c_5x5_10.eps>
+(epstopdf)             \includegraphics on input line 153.
+Package epstopdf Info: Output file is already uptodate.
+<images/Tai25c_5x5_10-eps-converted-to.pdf, id=162, 283.0575pt x 283.0575pt>
+File: images/Tai25c_5x5_10-eps-converted-to.pdf Graphic file (type pdf)
+<use images/Tai25c_5x5_10-eps-converted-to.pdf>
+Package pdftex.def Info: images/Tai25c_5x5_10-eps-converted-to.pdf  used on input line 153.
+(pdftex.def)             Requested size: 76.82246pt x 76.81958pt.
+Package epstopdf Info: Source file: <images/Tai49c_7x7_30.eps>
+(epstopdf)                    date: 2023-06-22 00:21:45
+(epstopdf)                    size: 21743 bytes
+(epstopdf)             Output file: <images/Tai49c_7x7_30-eps-converted-to.pdf>
+(epstopdf)                    date: 2023-06-22 00:22:59
+(epstopdf)                    size: 8065 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/Tai49c_7x7_30-eps-converted-to.pdf images/Tai49c_7x7_30.eps>
+(epstopdf)             \includegraphics on input line 153.
+Package epstopdf Info: Output file is already uptodate.
+<images/Tai49c_7x7_30-eps-converted-to.pdf, id=163, 283.0575pt x 283.0575pt>
+File: images/Tai49c_7x7_30-eps-converted-to.pdf Graphic file (type pdf)
+<use images/Tai49c_7x7_30-eps-converted-to.pdf>
+Package pdftex.def Info: images/Tai49c_7x7_30-eps-converted-to.pdf  used on input line 153.
+(pdftex.def)             Requested size: 76.82246pt x 76.81958pt.
+Package epstopdf Info: Source file: <images/Tai36c_6x6_70.eps>
+(epstopdf)                    date: 2023-06-22 00:12:45
+(epstopdf)                    size: 17619 bytes
+(epstopdf)             Output file: <images/Tai36c_6x6_70-eps-converted-to.pdf>
+(epstopdf)                    date: 2023-06-22 00:12:47
+(epstopdf)                    size: 7736 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/Tai36c_6x6_70-eps-converted-to.pdf images/Tai36c_6x6_70.eps>
+(epstopdf)             \includegraphics on input line 153.
+Package epstopdf Info: Output file is already uptodate.
+<images/Tai36c_6x6_70-eps-converted-to.pdf, id=164, 283.0575pt x 283.0575pt>
+File: images/Tai36c_6x6_70-eps-converted-to.pdf Graphic file (type pdf)
+<use images/Tai36c_6x6_70-eps-converted-to.pdf>
+Package pdftex.def Info: images/Tai36c_6x6_70-eps-converted-to.pdf  used on input line 153.
+(pdftex.def)             Requested size: 76.82246pt x 76.81958pt.
 File: images/logo_dei.pdf Graphic file (type pdf)
 <use images/logo_dei.pdf>
-Package pdftex.def Info: images/logo_dei.pdf  used on input line 131.
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 153.
 (pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
  [9
+
+ <./images/Tai25c_5x5_10-eps-converted-to.pdf> <./images/Tai49c_7x7_30-eps-converted-to.pdf> <./images/Tai36c_6x6_70-eps-converted-to.pdf>]
+File: images/logo_dei.pdf Graphic file (type pdf)
+<use images/logo_dei.pdf>
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 157.
+(pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
+ [10
 
 ]
 File: images/logo_dei.pdf Graphic file (type pdf)
 <use images/logo_dei.pdf>
-Package pdftex.def Info: images/logo_dei.pdf  used on input line 136.
+Package pdftex.def Info: images/logo_dei.pdf  used on input line 162.
 (pdftex.def)             Requested size: 45.20906pt x 27.62468pt.
- [10
+ [11
 
-] [11
+] [12
 
 ]
 \tf@nav=\write6
@@ -955,18 +1004,18 @@ Package rerunfilecheck Info: File `Presentazione.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 24848 strings out of 480163
- 479869 string characters out of 5894094
+ 24873 strings out of 480163
+ 480756 string characters out of 5894094
  737644 words of memory out of 5000000
- 42257 multiletter control sequences out of 15000+600000
+ 42277 multiletter control sequences out of 15000+600000
  526760 words of font info for 63 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 99i,14n,104p,475b,668s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 99i,14n,104p,475b,737s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on Presentazione.pdf (11 pages, 2127622 bytes).
+Output written on Presentazione.pdf (12 pages, 2147810 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 98 words of extra memory for PDF output out of 10000 (max. 10000000)
 
