@@ -9,6 +9,9 @@
 \usepackage{subcaption}
 \captionsetup{compatibility=false}
 \usepackage[italian]{babel}
+\usepackage{multirow}
+\usepackage{array,booktabs,ragged2e}
+\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
 
 \title[title]{Esperimenti MIP per una classe di\\problemi di assegnamento quadratico}
 \author[Persone]{Laureando: Mattia Toffolon\\Relatore: Prof. Domenico Salvagnin}
@@ -101,30 +104,59 @@ Da qui deriva l'elevata complessità di risoluzione delle istanze del problema i
 
 \begin{frame}{Risultati sperimentali - 1}
 Tramite alcuni script \textit{Python} ed il software risolutore \textit{CPLEX} è stato possibile trovare le soluzioni ad alcune istanze del problema
-e ricavare i \textbf{tempi medi di risoluzione}. I dati ottenuti dalle sperimentazioni sono stati utilizzati per tracciare i seguenti grafici.
-\begin{figure}[h!]
-	\centering
-	\begin{subfigure}[t]{4cm}
-		\includegraphics[scale=0.4]{images/resolution_times.eps}
-		\caption{Grafico 3D}
-	\end{subfigure}
-	\hspace{5em}
-	\begin{subfigure}[t]{4.5cm}
-		\includegraphics[scale=0.3]{images/resolution_times2.eps}
-		\caption{Grafico 2D}
-	\end{subfigure}
-\end{figure}
+e ricavare i \textbf{tempi medi di risoluzione} riportati nella seguente tabella.
+\begin{tabular}{c R{1cm}|R{1cm}|R{1cm}|R{1cm}|R{1cm}|R{1cm}|R{1cm}| l}
+    \centering
+    & \multicolumn{6}{ c }{} \\ \cline{3-8}
+    & & \multicolumn{1}{ c| }{9} & 16 \hphantom{n} & 25 \hphantom{n} & 36 \hphantom{n} & 42 \hphantom{n} & 45 \hphantom{n} & \\ \cline{2-8}
+    \multicolumn{1}{  c  }{} &
+    \multicolumn{1}{ |c| }{10\%} & 0.2 & 0.1 & 0.3 & 0.6 & 0.8 & 1.1  &  \\ \cline{2-8}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{20\%} & 0.1 & 0.1 & 0.3 & 0.9 & 5.0 & 13.0 &   \\ \cline{2-8}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{30\%} & 0.1 & 0.1 & 0.3 & 13.0 & 296.4 & 913.0 &   \\ \cline{2-8}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{40\%} & 0.1 & 0.2 & 1.6 & 66.9 & 1611.0 & 4896.7 &   \\ \cline{2-8}
+    \multicolumn{1}{  c  }{} &
+    \multicolumn{1}{ |c| }{50\%} & 0.1 & 0.2 & 2.6 & 18.4 & 373.0 & 2942.4 &   \\ \cline{2-8}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{60\%} & 0.1 & 0.2 & 2.5 & 97.7 & 2209.5 & 6708.0 &   \\ \cline{2-8}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{70\%} & 0.1 & 0.1 & 0.7 & 70.8 & 1641.5 & 5853.2 &   \\ \cline{2-8}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{80\%} & 0.1 & 0.1 & 0.5 & 6.4 & 36.4 & 158.7 &   \\ \cline{2-8}
+    \multicolumn{1}{  c  }{}                       &
+    \multicolumn{1}{ |c| }{90\%} & 0.1 & 0.1 & 0.3 & 0.8 & 1.3 & 5.7 &    \\ \cline{2-8}
+    \medskip
+\end{tabular}
 \end{frame}
 
 \begin{frame}{Risultati sperimentali - 2}
-Dai grafici è possibile osservare una correlazione di tipo \textbf{esponenziale} tra il tempo medio di risoluzione e la dimensione dell'istanza
-per ogni valore di densità preso in esame.
-\newline \newline
-L'unica differenza tra i diversi casi consiste nella velocità con cui i valori dei tempi divergono. Per densità prossime al 50\% il fenomeno è più marcato, 
-mentre per quelle vicine allo 0\% o al 100\% esso tende ad essere più fievole.
-\newline \newline 
-Tali risultati risultano compatibili con le ipotesi formulabili limitandosi ad osservare le teoria.
+	I dati ottenuti dalle sperimentazioni sono stati utilizzati per tracciare i seguenti grafici. Essi rappresentano
+	l'andamento dei tempi rispetto alla dimensione dell'istanza e alla densità di grigio.
+	\begin{figure}[h!]
+		\centering
+		\begin{subfigure}[b]{0.41\textwidth}
+			\includegraphics[width=\textwidth]{images/resolution_times.eps}
+			\caption{Grafico 3D}
+		\end{subfigure}
+		\hspace{2em}
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{images/resolution_times2.eps}
+			\caption{Grafico 2D}
+		\end{subfigure}
+	\end{figure}
 \end{frame}
+
+%\begin{frame}{Risultati sperimentali - 2}
+%Dai grafici è possibile osservare una correlazione di tipo \textbf{esponenziale} tra il tempo medio di risoluzione e la dimensione dell'istanza
+%per ogni valore di densità preso in esame.
+%\newline \newline
+%L'unica differenza tra i diversi casi consiste nella velocità con cui i valori dei tempi divergono. Per densità prossime al 50\% il fenomeno è più marcato, 
+%mentre per quelle vicine allo 0\% o al 100\% esso tende ad essere più fievole.
+%\newline \newline 
+%Tali risultati risultano compatibili con le ipotesi formulabili limitandosi ad osservare le teoria.
+%\end{frame}
 
 \begin{frame}{Risultati sperimentali - 3}
 Le soluzioni ottime delle istanze possono essere visulizzate come griglie "densità di grigio".
