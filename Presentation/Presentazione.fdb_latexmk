@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1689284722 "/home/mattiatoffolon/UniPd/Tesi/QAP/Presentation/Presentazione.tex" "Presentazione.pdf" "Presentazione" 1689284723
+["pdflatex"] 1689325843 "/home/mattiatoffolon/UniPd/Tesi/QAP/Presentation/Presentazione.tex" "Presentazione.pdf" "Presentazione" 1689325844
   "/etc/texmf/web2c/texmf.cnf" 1683106872 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/mattiatoffolon/UniPd/Tesi/QAP/Presentation/Presentazione.tex" 1689284721 8604 3e1b842a6eb10027c848921ed671b434 ""
+  "/home/mattiatoffolon/UniPd/Tesi/QAP/Presentation/Presentazione.tex" 1689325843 8605 2592bada63fb9247f4a399f465b0d371 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecss1095.tfm" 1136768653 3584 8ece407347b270c252c46fdfaef5a9ef ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -229,10 +229,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1683106877 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1683127242 1437236 ebb22a1b29e3606bcae36273da77ed2f ""
-  "Presentazione.aux" 1689284722 2606 47c918dce65e0bb6c1fd3313260398ed "pdflatex"
-  "Presentazione.nav" 1689284722 1295 ef040a83926d85743749b42a2275f515 "pdflatex"
-  "Presentazione.out" 1689284722 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Presentazione.tex" 1689284721 8604 3e1b842a6eb10027c848921ed671b434 ""
+  "Presentazione.aux" 1689325844 2606 47c918dce65e0bb6c1fd3313260398ed "pdflatex"
+  "Presentazione.nav" 1689325844 1295 ef040a83926d85743749b42a2275f515 "pdflatex"
+  "Presentazione.out" 1689325844 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Presentazione.tex" 1689325843 8605 2592bada63fb9247f4a399f465b0d371 ""
   "beamercolorthemePadovaDEI.sty" 1688660244 2079 6231811dc4ce140d7fdb2d1eba7cf65f ""
   "beamerfontthemePadovaDEI.sty" 1688656133 281 8ca8b9e11be9a304886034c3c2aa5b63 ""
   "beamerouterthemePadovaDEI.sty" 1688660254 2347 1d938c14c25dc6a92b142d3a63136ea5 ""
